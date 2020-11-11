@@ -25,8 +25,7 @@ persimg.src = "images/henryjones.png";
 const background = new Image();
 background.src = "images/firstroom.png";
 
-
-setInterval(
+let iter = 0;
 function animate()
 {
     ctx.clearRect(0,0,canvas.width,canvas.height); 
@@ -39,11 +38,10 @@ function animate()
     movePlayer();
     camina();
     
-    
+    iter++;
     requestAnimationFrame(animate);
     
 }
-)
 
 animate();
 
@@ -92,8 +90,8 @@ function movePlayer(){
 }
 
 function camina() {
-   
+    if( (iter % 10) === 0) {
         if(player.frameX < 3 && player.moving) player.frameX++;
         else player.frameX = 0;
-   
+    }
 }
