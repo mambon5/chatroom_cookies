@@ -1,10 +1,8 @@
 #my_canvas
 {
     position: absolute;
-    background-image: url('images/firstroom.png');
-    background-size:600px;
     background-repeat: no-repeat;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-20%);
+    transform: translate(-50%,-50%);
 }
