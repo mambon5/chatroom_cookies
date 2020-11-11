@@ -13,7 +13,8 @@ const player = {
     frameW: 32,
     frameH: 48,
     speed: 4,
-    moving: false
+    moving: false,
+    hi: function() {return player.x++;}
 };
 
 const persimg = new Image();
@@ -26,7 +27,7 @@ function animate()
 {
     ctx.drawImage(background,0,0,canvas.width,canvas.height);    
     
-    ctx.drawImage(persimg,player.frameX,player.frameY,player.width,player.height,player.x,player.y,player.frameW,player.frameH);
+    ctx.drawImage(persimg,player.frameX,player.frameY,player.width,player.height,player.hi(),player.y,player.frameW,player.frameH);
     requestAnimationFrame(animate);
 }
 
