@@ -26,28 +26,34 @@ const background = new Image();
 background.src = "images/firstroom.png";
 
 
+setInterval(
 function animate()
 {
     ctx.clearRect(0,0,canvas.width,canvas.height); 
     ctx.drawImage(background,0,0,canvas.width,canvas.height);    
     
 
-
-    ctx.drawImage(persimg,player.frameX,player.frameY,player.width,player.height,player.x,player.y,player.frameW,player.frameH);
+    
+    ctx.drawImage(persimg, player.frameX*player.frameW, player.frameY*player.frameH, player.width,player.height,player.x,player.y,player.frameW,player.frameH);
 
     movePlayer();
-
+    camina();
+    
+    
     requestAnimationFrame(animate);
     
 }
+)
 
 animate();
 
 window.addEventListener("keydown", function(e){
     keys[e.keyCode] = true;
+    player.moving = true;
 });
 window.addEventListener("keyup", function(e){
     delete keys[e.keyCode];
+    player.moving = false;
 });
 
 /*
@@ -62,15 +68,32 @@ window.addEventListener("keyup", function(e){
 
 function movePlayer(){
     if(keys[38]){
+        
+        player.frameY = 3;
         player.y -= player.speed;
+
     }
     if(keys[40]){
+        
+        player.frameY = 0;
         player.y += player.speed;
+
     }
     if(keys[37]){
+        
+        player.frameY = 1;
         player.x -= player.speed;
     }
     if(keys[39]){
+       
+        player.frameY = 2;
         player.x += player.speed;
     }
+}
+
+function camina() {
+   
+        if(player.frameX < 3 && player.moving) player.frameX++;
+        else player.frameX = 0;
+   
 }
