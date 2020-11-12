@@ -102,8 +102,6 @@ function animate()
     ++iter;
     
     requestAnimationFrame(animate);
-    
-    
 }
 
 
