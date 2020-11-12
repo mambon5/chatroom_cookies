@@ -1,5 +1,4 @@
-#my_canvas
-{
+#my_canvas {
     position: absolute;
     background-repeat: no-repeat;
     top: 50%;
@@ -7,9 +6,7 @@
     transform: translate(-50%,-50%);
 }
 
-
-
-#bgimage{
+#bgimage {
     position:absolute;
     top:0px;
     left:0px;
@@ -19,7 +16,7 @@
     opacity:0.8;
 }
 
-#bggradient{
+#bggradient {
     position:absolute;
     top:0px;
     left:0px;
