@@ -37,16 +37,15 @@ window.addEventListener("keyup", function(e){
 });
 
 /*
- * 
+ *
     37(left arrow)
     38(up arrow)
     39(right arrow)
-    40(down arrow) 
- * 
+    40(down arrow)
+ *
  * */
- 
 
-function movePlayer(){
+function movePlayer() {
     player.moving = false;
     if(keys[38]){
         player.frameY = 3;
@@ -79,34 +78,22 @@ let fpsint, now, then, elapsed;
 
 let iter = 0;
 
-function animate()
-{
+function animate() {
     now = Date.now();
     elapsed = now - then;
     aux2.innerHTML = "pos x: " + player.x + " <br>pos y: " + player.y;
     aux1.innerHTML = "now: " + now + "<br> then: " + then;
     if(elapsed > fpsint) {
-        
         then = now;
-    ctx.clearRect(0,0,canvas.width,canvas.height); 
-    ctx.drawImage(background,0,0,canvas.width,canvas.height);    
-    
-
-    
-    ctx.drawImage(persimg, player.frameX*player.frameW, player.frameY*player.frameH, player.width,player.height,player.x,player.y,player.frameW,player.frameH);
-    
-    camina();
-    movePlayer();
-    
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.drawImage(background,0,0,canvas.width,canvas.height);
+        ctx.drawImage(persimg, player.frameX*player.frameW, player.frameY*player.frameH, player.width,player.height,player.x,player.y,player.frameW,player.frameH);
+        camina();
+        movePlayer();
     }
     ++iter;
-    
     requestAnimationFrame(animate);
-    
-    
 }
-
-
 
 function startAnime(interval) {
     fpsint = interval;
@@ -115,4 +102,4 @@ function startAnime(interval) {
     animate();
 }
 
-startAnime(60);
+startAnime(80);
