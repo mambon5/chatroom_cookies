@@ -28,17 +28,12 @@ persimg.src = "images/henryjones.png";
 const background = new Image();
 background.src = "images/firstroom.png";
 
-
-
-
-
 window.addEventListener("keydown", function(e){
     keys[e.keyCode] = true;
    
 });
 window.addEventListener("keyup", function(e){
     delete keys[e.keyCode];
-    
 });
 
 /*
@@ -52,38 +47,32 @@ window.addEventListener("keyup", function(e){
  
 
 function movePlayer(){
-    player.moving = true;
+    player.moving = false;
     if(keys[38]){
-        
         player.frameY = 3;
         player.y -= player.speed;
-
+        player.moving = true;
     }
-    else if(keys[40]){
-        
+    if(keys[40]){
         player.frameY = 0;
         player.y += player.speed;
-
+        player.moving = true;
     }
-    else if(keys[37]){
-        
+    if(keys[37]){
         player.frameY = 1;
         player.x -= player.speed;
+        player.moving = true;
     }
-    else if(keys[39]){
-       
+    if(keys[39]){
         player.frameY = 2;
         player.x += player.speed;
+        player.moving = true;
     }
-    else player.moving = false;
 }
 
 function camina() {
-   
-        if(player.frameX < 3 && player.moving) player.frameX++;
-        else player.frameX = 0;
-    
-   
+    if(player.frameX < 3 && player.moving) player.frameX++;
+    else player.frameX = 0;
 }
 
 let fpsint, now, then, elapsed;
