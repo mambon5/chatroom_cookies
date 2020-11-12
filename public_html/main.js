@@ -9,15 +9,19 @@ canvas.height = 462;
 const keys = [];
 
 const player = {
-    x: 930/2,
-    y: 462/2,
+
+    x_init: canvas.width/2,
+    y_init: canvas.height/2,
+    x: canvas.width/2,
+    y: canvas.height/2,
+
     width: 32,
     height: 48,
     frameX: 0,
     frameY: 0,
     frameW: 32,
     frameH: 48,
-    speed: 7,
+    speed: 10,
     moving: false,
     hi: function() {return player.x++;}
 };
@@ -25,8 +29,12 @@ const player = {
 const persimg = new Image();
 persimg.src = "images/henryjones.png";
 
-const background = new Image();
-background.src = "images/firstroom.png";
+const background = {
+    x: 0,
+    y: 0,
+    image: new Image()
+};
+background.image.src = "images/firstroom.png";
 
 window.addEventListener("keydown", function(e){
     keys[e.keyCode] = true;
@@ -51,10 +59,10 @@ window.addEventListener("keyup", function(e){
 
 function movePlayer() {
     player.moving = false;
-    
-        
+  
     
     if( (keys[38] || keys[87]) && (validpos(player.x, player.y - player.speed, canvas.width, canvas.height)) ){
+
         player.frameY = 3;
         player.y -= player.speed;
         player.moving = true;
@@ -64,12 +72,16 @@ function movePlayer() {
         player.y += player.speed;
         player.moving = true;
     }
+
     if( (keys[37]||keys[65]) && (validpos(player.x - player.speed , player.y , canvas.width, canvas.height)) ){
+
         player.frameY = 1;
         player.x -= player.speed;
         player.moving = true;
     }
+
     if( (keys[39]||keys[68]) && (validpos(player.x + player.speed , player.y , canvas.width, canvas.height))){
+
         player.frameY = 2;
         player.x += player.speed;
         player.moving = true;
@@ -93,8 +105,10 @@ function animate() {
     if(elapsed > fpsint) {
         then = now;
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        ctx.drawImage(background,0,0,canvas.width,canvas.height);
-        ctx.drawImage(persimg, player.frameX*player.frameW, player.frameY*player.frameH, player.width,player.height,player.x,player.y,player.frameW,player.frameH);
+        background.x = player.x_init - player.x;
+        background.y = player.y_init - player.y;
+        ctx.drawImage(background.image,background.x,background.y,canvas.width,canvas.height);
+        ctx.drawImage(persimg, player.frameX*player.frameW, player.frameY*player.frameH, player.width,player.height,player.x_init,player.y_init,player.frameW,player.frameH);
         camina();
         movePlayer();
     }
