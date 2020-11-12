@@ -9,10 +9,12 @@ canvas.height = 462;
 const keys = [];
 
 const player = {
+
     x_init: canvas.width/2,
     y_init: canvas.height/2,
     x: canvas.width/2,
     y: canvas.height/2,
+
     width: 32,
     height: 48,
     frameX: 0,
@@ -57,26 +59,35 @@ window.addEventListener("keyup", function(e){
 
 function movePlayer() {
     player.moving = false;
-    if(keys[38] || keys[87]){
+  
+    
+    if( (keys[38] || keys[87]) && (validpos(player.x, player.y - player.speed, canvas.width, canvas.height)) ){
+
         player.frameY = 3;
         player.y -= player.speed;
         player.moving = true;
     }
-    if(keys[40] || keys[83]){
+    if( (keys[40]||keys[83]) && (validpos(player.x, player.y + player.speed, canvas.width, canvas.height))  ){
         player.frameY = 0;
         player.y += player.speed;
         player.moving = true;
     }
-    if(keys[37] || keys[65]){
+
+    if( (keys[37]||keys[65]) && (validpos(player.x - player.speed , player.y , canvas.width, canvas.height)) ){
+
         player.frameY = 1;
         player.x -= player.speed;
         player.moving = true;
     }
-    if(keys[39] || keys[68]){
+
+    if( (keys[39]||keys[68]) && (validpos(player.x + player.speed , player.y , canvas.width, canvas.height))){
+
         player.frameY = 2;
         player.x += player.speed;
         player.moving = true;
     }
+    
+    
 }
 
 function camina() {
@@ -89,8 +100,8 @@ let fpsint, now, then, elapsed;
 function animate() {
     now = Date.now();
     elapsed = now - then;
-    aux2.innerHTML = "pos x: " + player.x + " <br>pos y: " + player.y;
-    aux1.innerHTML = "now: " + now + "<br> then: " + then;
+//    aux2.innerHTML = "pos x: " + player.x + " <br>pos y: " + player.y;
+//    aux1.innerHTML = "now: " + now + "<br> then: " + then;
     if(elapsed > fpsint) {
         then = now;
         ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -108,7 +119,9 @@ function startAnime(interval) {
     fpsint = interval;
     then = Date.now();
     aux1.innerHTML = "now: " + now + ", then: " + then;
+    
     animate();
 }
 
 startAnime(80);
+
