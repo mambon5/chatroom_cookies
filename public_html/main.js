@@ -17,7 +17,7 @@ const player = {
     frameY: 0,
     frameW: 32,
     frameH: 48,
-    speed: 10,
+    speed: 7,
     moving: false,
     hi: function() {return player.x++;}
 };
@@ -36,33 +36,37 @@ window.addEventListener("keyup", function(e){
     delete keys[e.keyCode];
 });
 
-/*
+/* *
  *
     37(left arrow)
     38(up arrow)
     39(right arrow)
     40(down arrow)
+    87(w)
+    65(a)
+    83(s)
+    68(d)
  *
  * */
 
 function movePlayer() {
     player.moving = false;
-    if(keys[38]){
+    if(keys[38]||keys[87]){
         player.frameY = 3;
         player.y -= player.speed;
         player.moving = true;
     }
-    if(keys[40]){
+    if(keys[40]||keys[83]){
         player.frameY = 0;
         player.y += player.speed;
         player.moving = true;
     }
-    if(keys[37]){
+    if(keys[37]||keys[65]){
         player.frameY = 1;
         player.x -= player.speed;
         player.moving = true;
     }
-    if(keys[39]){
+    if(keys[39]||keys[68]){
         player.frameY = 2;
         player.x += player.speed;
         player.moving = true;
@@ -75,8 +79,6 @@ function camina() {
 }
 
 let fpsint, now, then, elapsed;
-
-let iter = 0;
 
 function animate() {
     now = Date.now();
@@ -91,7 +93,6 @@ function animate() {
         camina();
         movePlayer();
     }
-    ++iter;
     requestAnimationFrame(animate);
 }
 
