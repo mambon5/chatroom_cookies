@@ -9,8 +9,8 @@ canvas.height = 462;
 const keys = [];
 
 const player = {
-    x: 0,
-    y: 0,
+    x: 930/2,
+    y: 462/2,
     width: 32,
     height: 48,
     frameX: 0,
@@ -36,38 +36,46 @@ window.addEventListener("keyup", function(e){
     delete keys[e.keyCode];
 });
 
-/*
- * 
+/* *
+ *
     37(left arrow)
     38(up arrow)
     39(right arrow)
-    40(down arrow) 
- * 
+    40(down arrow)
+    87(w)
+    65(a)
+    83(s)
+    68(d)
+ *
  * */
- 
 
-function movePlayer(){
+function movePlayer() {
     player.moving = false;
-    if(keys[38]){
+    
+        
+    
+    if( (keys[38] || keys[87]) && (validpos(player.x, player.y - player.speed, canvas.width, canvas.height)) ){
         player.frameY = 3;
         player.y -= player.speed;
         player.moving = true;
     }
-    if(keys[40]){
+    if( (keys[40]||keys[83]) && (validpos(player.x, player.y + player.speed, canvas.width, canvas.height))  ){
         player.frameY = 0;
         player.y += player.speed;
         player.moving = true;
     }
-    if(keys[37]){
+    if( (keys[37]||keys[65]) && (validpos(player.x - player.speed , player.y , canvas.width, canvas.height)) ){
         player.frameY = 1;
         player.x -= player.speed;
         player.moving = true;
     }
-    if(keys[39]){
+    if( (keys[39]||keys[68]) && (validpos(player.x + player.speed , player.y , canvas.width, canvas.height))){
         player.frameY = 2;
         player.x += player.speed;
         player.moving = true;
     }
+    
+    
 }
 
 function camina() {
@@ -77,44 +85,29 @@ function camina() {
 
 let fpsint, now, then, elapsed;
 
-
-
-function animate()
-{
+function animate() {
     now = Date.now();
     elapsed = now - then;
-    aux2.innerHTML = "pos x: " + player.x + " <br>pos y: " + player.y;
-    aux1.innerHTML = "now: " + now + "<br> then: " + then;
+//    aux2.innerHTML = "pos x: " + player.x + " <br>pos y: " + player.y;
+//    aux1.innerHTML = "now: " + now + "<br> then: " + then;
     if(elapsed > fpsint) {
-        
-    then = now;
-    ctx.clearRect(0,0,canvas.width,canvas.height); 
-    ctx.drawImage(background,0,0,canvas.width,canvas.height);    
-    
-
-    
-    ctx.drawImage(persimg, player.frameX*player.frameW, player.frameY*player.frameH, player.width,player.height,player.x,player.y,player.frameW,player.frameH);
-    
-    camina();
-    movePlayer();
-    
+        then = now;
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.drawImage(background,0,0,canvas.width,canvas.height);
+        ctx.drawImage(persimg, player.frameX*player.frameW, player.frameY*player.frameH, player.width,player.height,player.x,player.y,player.frameW,player.frameH);
+        camina();
+        movePlayer();
     }
-    
-    
     requestAnimationFrame(animate);
 }
-
-
 
 function startAnime(interval) {
     fpsint = interval;
     then = Date.now();
     aux1.innerHTML = "now: " + now + ", then: " + then;
+    
     animate();
 }
 
 startAnime(80);
-
-
-
 
