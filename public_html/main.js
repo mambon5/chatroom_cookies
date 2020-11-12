@@ -17,7 +17,7 @@ const player = {
     frameY: 0,
     frameW: 32,
     frameH: 48,
-    speed: 10,
+    speed: 7,
     moving: false,
     hi: function() {return player.x++;}
 };
@@ -77,7 +77,7 @@ function camina() {
 
 let fpsint, now, then, elapsed;
 
-let iter = 0;
+
 
 function animate()
 {
@@ -87,7 +87,7 @@ function animate()
     aux1.innerHTML = "now: " + now + "<br> then: " + then;
     if(elapsed > fpsint) {
         
-        then = now;
+    then = now;
     ctx.clearRect(0,0,canvas.width,canvas.height); 
     ctx.drawImage(background,0,0,canvas.width,canvas.height);    
     
@@ -99,7 +99,7 @@ function animate()
     movePlayer();
     
     }
-    ++iter;
+    
     
     requestAnimationFrame(animate);
 }
@@ -113,4 +113,4 @@ function startAnime(interval) {
     animate();
 }
 
-startAnime(60);
+startAnime(80);
