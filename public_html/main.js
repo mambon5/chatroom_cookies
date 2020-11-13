@@ -7,6 +7,7 @@ canvas.width = 930;
 canvas.height = 462;
 
 const keys = [];
+const scale = 2;
 
 const player = {
 
@@ -14,20 +15,21 @@ const player = {
     y_init: canvas.height/2,
     x: canvas.width/2,
     y: canvas.height/2,
-
-    width: 32*2,
-    height: 32*2,
+    
+    
+    width: 32*scale,
+    height: 32*scale,
     frameX: 0,
     frameY: 0,
-    frameW: 32*1,
-    frameH: 32*1,
+    frameW: 32,
+    frameH: 32,
     speed: 10,
     moving: false,
     hi: function() {return player.x++;}
 };
 
 const persimg = new Image();
-persimg.src = "images/greebo.png";
+persimg.src = "images/greebo2.png";
 
 const background = {
     x: 0,
