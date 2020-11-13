@@ -15,8 +15,8 @@ const player = {
     x: canvas.width/2,
     y: canvas.height/2,
 
-    width: 32,
-    height: 48,
+    width: 32*1.3,
+    height: 48*1.3,
     frameX: 0,
     frameY: 0,
     frameW: 32*1,
@@ -109,7 +109,7 @@ function animate() {
         background.y = player.y_init - player.y;
         ctx.drawImage(background.image,background.x,background.y,canvas.width,canvas.height);
         drawmatrix(canvas.width, canvas.height);
-        ctx.drawImage(persimg, player.frameX*player.frameW, player.frameY*player.frameH, player.width,player.height,player.x_init,player.y_init,player.frameW,player.frameH);
+        ctx.drawImage(persimg, player.frameX*player.frameW, player.frameY*player.frameH, player.frameW,player.frameH,player.x_init,player.y_init, player.width,player.height);
         camina();
         movePlayer();
     }
