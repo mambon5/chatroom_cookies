@@ -15,19 +15,19 @@ const player = {
     x: canvas.width/2,
     y: canvas.height/2,
 
-    width: 32*1.3,
-    height: 48*1.3,
+    width: 32*2,
+    height: 32*2,
     frameX: 0,
     frameY: 0,
     frameW: 32*1,
-    frameH: 48*1,
+    frameH: 32*1,
     speed: 10,
     moving: false,
     hi: function() {return player.x++;}
 };
 
 const persimg = new Image();
-persimg.src = "images/henryjones.png";
+persimg.src = "images/greebo.png";
 
 const background = {
     x: 0,
