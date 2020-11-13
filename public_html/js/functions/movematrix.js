@@ -6,11 +6,11 @@
 
 
 var movmat = [
-                [0,0,0,0,0],
+                [0,0,1,1,0],
+                [1,1,1,1,1],
                 [0,1,1,1,0],
                 [0,1,1,1,0],
-                [0,1,1,1,0],
-                [0,0,0,0,0]
+                [0,0,1,1,0]
             ];
             
 function validpos(objx, objy, canvW, canvH) {
@@ -19,10 +19,13 @@ function validpos(objx, objy, canvW, canvH) {
     let resh = canvW/c;
     let resv = canvH/f;
     
-    pos1 = Math.round(objx/resh);
-    pos2 = Math.round(objy/resv);
+    pos1 = Math.floor(objx/resh);
+    pos2 = Math.floor(objy/resv);
     
     
+    
+    
+    if(pos2 <0 || pos2 > f-1 || pos1<0 || pos1 > c-1) return 0;
     
     aux1.innerHTML = "files: " + f + ", columnes: " + c + "<br>, canvW: " + canvW +
             " resv:" + resv + " resh" + resh + "<br> pos1: "+pos1 +

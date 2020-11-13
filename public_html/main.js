@@ -19,8 +19,8 @@ const player = {
     height: 48,
     frameX: 0,
     frameY: 0,
-    frameW: 32,
-    frameH: 48,
+    frameW: 32*1,
+    frameH: 48*1,
     speed: 10,
     moving: false,
     hi: function() {return player.x++;}
