@@ -61,26 +61,26 @@ function movePlayer() {
     player.moving = false;
   
     
-    if( (keys[38] || keys[87]) && (validpos(player.x, player.y - player.speed, canvas.width, canvas.height)) ){
+    if( (keys[38] || keys[87]) && (validcorners(player.x, player.y - player.speed, player.width, player.height, canvas.width, canvas.height)) ){
 
         player.frameY = 3;
         player.y -= player.speed;
         player.moving = true;
     }
-    if( (keys[40]||keys[83]) && (validpos(player.x, player.y + player.speed, canvas.width, canvas.height))  ){
+    if( (keys[40]||keys[83]) && (validcorners(player.x, player.y + player.speed , player.width, player.height, canvas.width, canvas.height))  ){
         player.frameY = 0;
         player.y += player.speed;
         player.moving = true;
     }
 
-    if( (keys[37]||keys[65]) && (validpos(player.x - player.speed , player.y , canvas.width, canvas.height)) ){
+    if( (keys[37]||keys[65]) && (validcorners(player.x - player.speed , player.y , player.width, player.height, canvas.width, canvas.height)) ){
 
         player.frameY = 1;
         player.x -= player.speed;
         player.moving = true;
     }
 
-    if( (keys[39]||keys[68]) && (validpos(player.x + player.speed , player.y , canvas.width, canvas.height))){
+    if( (keys[39]||keys[68]) && (validcorners(player.x + player.speed , player.y , player.width, player.height, canvas.width, canvas.height))){
 
         player.frameY = 2;
         player.x += player.speed;
@@ -108,6 +108,7 @@ function animate() {
         background.x = player.x_init - player.x;
         background.y = player.y_init - player.y;
         ctx.drawImage(background.image,background.x,background.y,canvas.width,canvas.height);
+        drawmatrix(canvas.width, canvas.height);
         ctx.drawImage(persimg, player.frameX*player.frameW, player.frameY*player.frameH, player.width,player.height,player.x_init,player.y_init,player.frameW,player.frameH);
         camina();
         movePlayer();
