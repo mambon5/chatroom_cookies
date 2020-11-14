@@ -47,31 +47,19 @@ function movePlayer() {
     player.moving = false;
     if( (keys[38] || keys[87])  ){
         player.frameY = 3;
-        if(validcorners(player.x, player.y - player.speed, player.width, player.height, canvas.width, canvas.height)) {
-            player.y -= player.speed;
-            player.moving = true;
-        }
+        apuramove(player, 1, canvas.width, canvas.height);
     }
     if( (keys[40]||keys[83])   ){
         player.frameY = 0;
-        if(validcorners(player.x, player.y + player.speed , player.width, player.height, canvas.width, canvas.height)) {
-            player.y += player.speed;
-            player.moving = true;
-        }
+        apuramove(player, 3, canvas.width, canvas.height);
     }
     if( (keys[37]||keys[65]) ){
         player.frameY = 1;
-        if(validcorners(player.x - player.speed , player.y , player.width, player.height, canvas.width, canvas.height)) {
-            player.x -= player.speed;
-            player.moving = true;
-        }
+        apuramove(player, 4, canvas.width, canvas.height);
     }
     if( (keys[39]||keys[68]) ){
         player.frameY = 2;
-        if(validcorners(player.x + player.speed , player.y , player.width, player.height, canvas.width, canvas.height)) {
-            player.x += player.speed;
-            player.moving = true;
-        }
+        apuramove(player, 2, canvas.width, canvas.height);
     }
 }
 
@@ -90,10 +78,11 @@ function animate() {
     if(elapsed > fpsint) {
         then = now;
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        //background.x = player.x_init - player.x;
-        //background.y = player.y_init - player.y;
         ctx.drawImage(background.image, background.x(), background.y(), canvas.width, canvas.height);
         drawmatrix(canvas.width, canvas.height);
+        //ctx.fillStyle = "red";
+        //ctx.fillRect(player.x_init, player.y_init, player.width, player.height);
+        //ctx.fillStyle = "black";
         ctx.drawImage(player.image, player.frameX*player.frameW, player.frameY*player.frameH, player.frameW, player.frameH, player.x_init, player.y_init, player.width, player.height);
         camina();
         movePlayer();
@@ -105,7 +94,6 @@ function startAnime(interval) {
     fpsint = interval;
     then = Date.now();
     aux1.innerHTML = "now: " + now + ", then: " + then;
-    
     animate();
 }
 

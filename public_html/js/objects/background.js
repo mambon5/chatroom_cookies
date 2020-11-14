@@ -20,8 +20,4 @@ class Cbackground {
     setImage(s) {
         this._image.src = s;
     }
-    
-    getImage() {
-        return this._image;
-    }
 };
