@@ -7,33 +7,20 @@ canvas.width = 930;
 canvas.height = 462;
 
 const keys = [];
-const scale = 2;
+const scale = 1.2;
 
-const player = {
-    x_init: canvas.width/2,
-    y_init: canvas.height/2,
-    x: canvas.width/2,
-    y: canvas.height/2,
-    width: 32*scale,
-    height: 32*scale,
-    frameX: 0,
-    frameY: 0,
-    frameW: 32,
-    frameH: 32,
-    speed: 10,
-    moving: false,
-    hi: function() {return player.x++;}
-};
+const player = new Cplayer(canvas.width/2,canvas.height/2,32,48,scale,10);
+player.setImage("images/captainamerica_shield.png");
 
-const persimg = new Image();
-persimg.src = "images/greebo2.png";
+const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
+background.setImage("images/firstroom.png");
 
-const background = {
+/*const background = {
     x: function() {return player.x_init - player.x;},
     y: function() {return player.y_init - player.y;},
     image: new Image()
 };
-background.image.src = "images/firstroom.png";
+background.image.src = "images/firstroom.png";*/
 
 window.addEventListener("keydown", function(e){
     keys[e.keyCode] = true;
@@ -58,29 +45,33 @@ window.addEventListener("keyup", function(e){
 
 function movePlayer() {
     player.moving = false;
-  
-    if( (keys[38] || keys[87]) && (validcorners(player.x, player.y - player.speed, player.width, player.height, canvas.width, canvas.height)) ){
-
+    if( (keys[38] || keys[87])  ){
         player.frameY = 3;
-        player.y -= player.speed;
-        player.moving = true;
+        if(validcorners(player.x, player.y - player.speed, player.width, player.height, canvas.width, canvas.height)) {
+            player.y -= player.speed;
+            player.moving = true;
+        }
     }
-    if( (keys[40]||keys[83]) && (validcorners(player.x, player.y + player.speed , player.width, player.height, canvas.width, canvas.height))  ){
+    if( (keys[40]||keys[83])   ){
         player.frameY = 0;
-        player.y += player.speed;
-        player.moving = true;
+        if(validcorners(player.x, player.y + player.speed , player.width, player.height, canvas.width, canvas.height)) {
+            player.y += player.speed;
+            player.moving = true;
+        }
     }
-    if( (keys[37]||keys[65]) && (validcorners(player.x - player.speed , player.y , player.width, player.height, canvas.width, canvas.height)) ){
-
+    if( (keys[37]||keys[65]) ){
         player.frameY = 1;
-        player.x -= player.speed;
-        player.moving = true;
+        if(validcorners(player.x - player.speed , player.y , player.width, player.height, canvas.width, canvas.height)) {
+            player.x -= player.speed;
+            player.moving = true;
+        }
     }
-    if( (keys[39]||keys[68]) && (validcorners(player.x + player.speed , player.y , player.width, player.height, canvas.width, canvas.height))){
-
+    if( (keys[39]||keys[68]) ){
         player.frameY = 2;
-        player.x += player.speed;
-        player.moving = true;
+        if(validcorners(player.x + player.speed , player.y , player.width, player.height, canvas.width, canvas.height)) {
+            player.x += player.speed;
+            player.moving = true;
+        }
     }
 }
 
@@ -101,9 +92,9 @@ function animate() {
         ctx.clearRect(0,0,canvas.width,canvas.height);
         //background.x = player.x_init - player.x;
         //background.y = player.y_init - player.y;
-        ctx.drawImage(background.image,background.x(),background.y(),canvas.width,canvas.height);
+        ctx.drawImage(background.image, background.x(), background.y(), canvas.width, canvas.height);
         drawmatrix(canvas.width, canvas.height);
-        ctx.drawImage(persimg, player.frameX*player.frameW, player.frameY*player.frameH, player.frameW,player.frameH,player.x_init,player.y_init, player.width,player.height);
+        ctx.drawImage(player.image, player.frameX*player.frameW, player.frameY*player.frameH, player.frameW, player.frameH, player.x_init, player.y_init, player.width, player.height);
         camina();
         movePlayer();
     }
