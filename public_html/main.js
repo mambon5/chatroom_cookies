@@ -21,13 +21,13 @@ const player = {
     frameY: 0,
     frameW: 32,
     frameH: 48,
-    speed: 10,
+    speed: 12,
     moving: false,
     hi: function() {return player.x++;}
 };
 
 const persimg = new Image();
-persimg.src = "images/captainamerica_shield.png";
+persimg.src = "images/henryjones.png";
 
 const background = {
     x: 0,
@@ -64,35 +64,23 @@ function movePlayer() {
     if( (keys[38] || keys[87])  ){
 
         player.frameY = 3;
-        if(validcorners(player.x, player.y - player.speed, player.width, player.height, canvas.width, canvas.height)) {
-            player.y -= player.speed;
-            player.moving = true;
-        }
+        apuramove(player, 1, canvas.width, canvas.height);
     }
     if( (keys[40]||keys[83])   ){
         player.frameY = 0;
-        if(validcorners(player.x, player.y + player.speed , player.width, player.height, canvas.width, canvas.height)) {
-            player.y += player.speed;
-            player.moving = true;
-        }
+        apuramove(player, 3, canvas.width, canvas.height);
     }
 
     if( (keys[37]||keys[65]) ){
 
         player.frameY = 1;
-        if(validcorners(player.x - player.speed , player.y , player.width, player.height, canvas.width, canvas.height)) {
-            player.x -= player.speed;
-            player.moving = true;
-        }
+        apuramove(player, 4, canvas.width, canvas.height);
     }
 
     if( (keys[39]||keys[68]) ){
 
         player.frameY = 2;
-        if(validcorners(player.x + player.speed , player.y , player.width, player.height, canvas.width, canvas.height)) {
-            player.x += player.speed;
-            player.moving = true;
-        }
+        apuramove(player, 2, canvas.width, canvas.height);
     }
     
     
@@ -117,6 +105,10 @@ function animate() {
         background.y = player.y_init - player.y;
         ctx.drawImage(background.image,background.x,background.y,canvas.width,canvas.height);
         drawmatrix(canvas.width, canvas.height);
+//        ctx.fillStyle = "red";
+//        ctx.fillRect(player.x_init, player.y_init, player.width, player.height);
+//        ctx.fillStyle = "black";
+        
         ctx.drawImage(persimg, player.frameX*player.frameW, player.frameY*player.frameH, player.frameW,player.frameH,player.x_init,player.y_init, player.width,player.height);
         camina();
         movePlayer();
