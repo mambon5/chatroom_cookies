@@ -10,13 +10,10 @@ const keys = [];
 const scale = 2;
 
 const player = {
-
     x_init: canvas.width/2,
     y_init: canvas.height/2,
     x: canvas.width/2,
     y: canvas.height/2,
-    
-    
     width: 32*scale,
     height: 32*scale,
     frameX: 0,
@@ -32,8 +29,8 @@ const persimg = new Image();
 persimg.src = "images/greebo2.png";
 
 const background = {
-    x: 0,
-    y: 0,
+    x: function() {return player.x_init - player.x;},
+    y: function() {return player.y_init - player.y;},
     image: new Image()
 };
 background.image.src = "images/firstroom.png";
@@ -62,7 +59,6 @@ window.addEventListener("keyup", function(e){
 function movePlayer() {
     player.moving = false;
   
-    
     if( (keys[38] || keys[87]) && (validcorners(player.x, player.y - player.speed, player.width, player.height, canvas.width, canvas.height)) ){
 
         player.frameY = 3;
@@ -74,22 +70,18 @@ function movePlayer() {
         player.y += player.speed;
         player.moving = true;
     }
-
     if( (keys[37]||keys[65]) && (validcorners(player.x - player.speed , player.y , player.width, player.height, canvas.width, canvas.height)) ){
 
         player.frameY = 1;
         player.x -= player.speed;
         player.moving = true;
     }
-
     if( (keys[39]||keys[68]) && (validcorners(player.x + player.speed , player.y , player.width, player.height, canvas.width, canvas.height))){
 
         player.frameY = 2;
         player.x += player.speed;
         player.moving = true;
     }
-    
-    
 }
 
 function camina() {
@@ -107,9 +99,9 @@ function animate() {
     if(elapsed > fpsint) {
         then = now;
         ctx.clearRect(0,0,canvas.width,canvas.height);
-        background.x = player.x_init - player.x;
-        background.y = player.y_init - player.y;
-        ctx.drawImage(background.image,background.x,background.y,canvas.width,canvas.height);
+        //background.x = player.x_init - player.x;
+        //background.y = player.y_init - player.y;
+        ctx.drawImage(background.image,background.x(),background.y(),canvas.width,canvas.height);
         drawmatrix(canvas.width, canvas.height);
         ctx.drawImage(persimg, player.frameX*player.frameW, player.frameY*player.frameH, player.frameW,player.frameH,player.x_init,player.y_init, player.width,player.height);
         camina();
