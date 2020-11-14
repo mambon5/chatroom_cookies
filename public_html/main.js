@@ -6,25 +6,17 @@ const ctx = canvas.getContext('2d');
 canvas.width = 930;
 canvas.height = 462;
 
-const keys = [];
 const scale = 1.2;
 
 const player = new Cplayer(canvas.width/2,canvas.height/2,32,48,scale,10);
-player.setImage("images/captainamerica_shield.png");
+player.image.src = "images/henryjones.png";
 
 const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
-background.setImage("images/firstroom.png");
+background.image.src = "images/firstroom.png";
 
-/*const background = {
-    x: function() {return player.x_init - player.x;},
-    y: function() {return player.y_init - player.y;},
-    image: new Image()
-};
-background.image.src = "images/firstroom.png";*/
-
+const keys = [];
 window.addEventListener("keydown", function(e){
     keys[e.keyCode] = true;
-   
 });
 window.addEventListener("keyup", function(e){
     delete keys[e.keyCode];
@@ -49,23 +41,24 @@ function movePlayer() {
         player.frameY = 3;
         apuramove(player, 1, canvas.width, canvas.height);
     }
-    if( (keys[40]||keys[83])   ){
+    if( (keys[40] || keys[83])   ){
         player.frameY = 0;
         apuramove(player, 3, canvas.width, canvas.height);
     }
-    if( (keys[37]||keys[65]) ){
+    if( (keys[37] || keys[65]) ){
         player.frameY = 1;
         apuramove(player, 4, canvas.width, canvas.height);
     }
-    if( (keys[39]||keys[68]) ){
+    if( (keys[39] || keys[68]) ){
         player.frameY = 2;
         apuramove(player, 2, canvas.width, canvas.height);
     }
-}
-
-function camina() {
-    if(player.frameX < 3 && player.moving) player.frameX++;
-    else player.frameX = 0;
+    if(player.frameX < 3 && player.moving) {
+        player.frameX++;
+    }
+    else {
+        player.frameX = 0;
+    }
 }
 
 let fpsint, now, then, elapsed;
@@ -84,7 +77,6 @@ function animate() {
         //ctx.fillRect(player.x_init, player.y_init, player.width, player.height);
         //ctx.fillStyle = "black";
         ctx.drawImage(player.image, player.frameX*player.frameW, player.frameY*player.frameH, player.frameW, player.frameH, player.x_init, player.y_init, player.width, player.height);
-        camina();
         movePlayer();
     }
     requestAnimationFrame(animate);

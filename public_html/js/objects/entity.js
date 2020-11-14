@@ -14,8 +14,4 @@ class Centity extends Crectangle {
     
     set speed(e) {this._speed = e;}
     set image(e) {this._image = e;}
-    
-    setImage(s) {
-        this._image.src = s;
-    }
 };
