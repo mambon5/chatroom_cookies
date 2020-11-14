@@ -7,10 +7,10 @@ canvas.width = 930;
 canvas.height = 462;
 
 const keys = [];
-const scale = 1.2;
+const scale = 1.7;
 
 const player = new Cplayer(canvas.width/2,canvas.height/2,32,48,scale,10);
-player.setImage("images/captainamerica_shield.png");
+player.setImage("images/henryjones.png");
 
 const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
 background.setImage("images/firstroom.png");
@@ -80,9 +80,9 @@ function animate() {
         ctx.clearRect(0,0,canvas.width,canvas.height);
         ctx.drawImage(background.image, background.x(), background.y(), canvas.width, canvas.height);
         drawmatrix(canvas.width, canvas.height);
-        //ctx.fillStyle = "red";
-        //ctx.fillRect(player.x_init, player.y_init, player.width, player.height);
-        //ctx.fillStyle = "black";
+//        ctx.fillStyle = "red";
+//        ctx.fillRect(player.x_init, player.y_init, player.width, player.height);
+//        ctx.fillStyle = "black";
         ctx.drawImage(player.image, player.frameX*player.frameW, player.frameY*player.frameH, player.frameW, player.frameH, player.x_init, player.y_init, player.width, player.height);
         camina();
         movePlayer();
