@@ -17,6 +17,12 @@ monst1.image.src = "images/captainamerica_shield.png";
 const monst2 = new Cmonster(  350,  360, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 32, scale, 5);
 monst2.image.src = "images/greebo2.png";
 
+const monst3 = new Cmonster(  10,  100, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 48, scale, 5);
+monst3.image.src = "images/protocoldroid2.png";
+
+const monst4 = new Cmonster(  400,  100, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 48, scale, 10);
+monst4.image.src = "images/tiana2.png";
+
 const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
 //background.image.src = "images/firstroom.png";
 
