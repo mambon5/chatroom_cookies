@@ -32,7 +32,6 @@ class Cmonster extends Cplayer {
     } else {num = this._pastdir;}
         if( num===1  ){
             this._frameY = 3;
-    //        this._x += this.speed;
             apuramove(this, 1);
         }
         if( num===2   ){

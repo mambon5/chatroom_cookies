@@ -8,7 +8,7 @@ canvas.height = 462;
 
 
 
-const scale = 1.3;
+const scale = 1.6;
 
 
 const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, 10);
@@ -16,6 +16,9 @@ player.image.src = "images/henryjones.png";
 
 const monst1 = new Cmonster(  350,  60, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 0,0, 32, 48, scale, 10);
 monst1.image.src = "images/captainamerica_shield.png";
+
+const monst2 = new Cmonster(  350,  360, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 0,0, 32, 32, scale, 5);
+monst2.image.src = "images/greebo2.png";
 
 const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
 background.image.src = "images/firstroom.png";
@@ -91,6 +94,8 @@ function animate() {
         //ctx.drawImage(player.image, player.frameX*player.frameW, player.frameY*player.frameH, player.frameW, player.frameH, player.x_init, player.y_init, player.width, player.height);
         ctx.drawImage(monst1.image, monst1.frameX*monst1.frameW, monst1.frameY*monst1.frameH, monst1.frameW, monst1.frameH, monst1.x_cent(), monst1.y_cent(), monst1.width, monst1.height);
         monst1.randmove();
+        ctx.drawImage(monst2.image, monst2.frameX*monst2.frameW, monst2.frameY*monst2.frameH, monst2.frameW, monst2.frameH, monst2.x_cent(), monst2.y_cent(), monst2.width, monst2.height);
+        monst2.randmove();
         movePlayer();
     }
     requestAnimationFrame(animate);
