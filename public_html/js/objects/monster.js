@@ -12,6 +12,7 @@ class Cmonster extends Cplayer {
         this._y = y;
         this._callback_x_cent = callback_x_cent;
         this._callback_y_cent = callback_y_cent;
+        this._pastdir = -1;
     }
     
     get x() {return this._x;}
@@ -24,24 +25,29 @@ class Cmonster extends Cplayer {
     
     randmove() {
     this._moving = false;
-    let num = Math.floor(Math.random()*5);
-    if( num===1  ){
-        this._frameY = 3;
-//        this._x += this.speed;
-        apuramove(this, 1);
-    }
-    if( num===2   ){
-        this.frameY = 0;
-        apuramove(this, 3);
-    }
-    if( num===3 ){
-        this.frameY = 1;
-         apuramove(this, 4);
-     }
-    if( num===4 ){
-        this.frameY = 2;
-         apuramove(this, 2);
-    }
+    let num = Math.floor(Math.random()*10);
+    if(this._pastdir === -1 || num > 8) {
+        let num = Math.floor(Math.random()*5);
+        this._pastdir = num;
+    } else {num = this._pastdir;}
+        if( num===1  ){
+            this._frameY = 3;
+    //        this._x += this.speed;
+            apuramove(this, 1);
+        }
+        if( num===2   ){
+            this.frameY = 0;
+            apuramove(this, 3);
+        }
+        if( num===3 ){
+            this.frameY = 1;
+             apuramove(this, 4);
+         }
+        if( num===4 ){
+            this.frameY = 2;
+             apuramove(this, 2);
+        }
+    
     camina(this);
     }
 };
