@@ -52,8 +52,10 @@ function getresol(canvW, canvH){
     return [resh, resv];
 }
 
-function apuramove(obj, dir, canvW, canvH) { //obj needs to have: x, y, width, height, speed
+function apuramove(obj, dir) { //obj needs to have: x, y, width, height, speed
             //dir is 1-top 2-right 3-down 4-left
+            canvW = canvas.width;
+            canvH = canvas.height;
      resol = getresol(canvW, canvH); // get resolution of each cell
      let pos = getmatpos(obj.x, obj.y, canvW, canvH);
      if(dir===1) {

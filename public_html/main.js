@@ -11,10 +11,10 @@ canvas.height = 462;
 const scale = 1.3;
 
 
-const player = new Cplayer(canvas.width/2,canvas.height/2,32,48,scale,10);
+const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, 10);
 player.image.src = "images/henryjones.png";
 
-const monst1 = new Cmonster(function() {return this.x_init - player.x-30;}, function() {return this.y_init - player.y+30;}, canvas.width,canvas.height,32,48,scale,10);
+const monst1 = new Cmonster(  350,  60, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 0,0, 32, 48, scale, 10);
 monst1.image.src = "images/captainamerica_shield.png";
 
 const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
@@ -45,25 +45,29 @@ function movePlayer() {
     player.moving = false;
     if( (keys[38] || keys[87])  ){
         player.frameY = 3;
-        apuramove(player, 1, canvas.width, canvas.height);
+        apuramove(player, 1);
     }
     if( (keys[40] || keys[83])   ){
         player.frameY = 0;
-        apuramove(player, 3, canvas.width, canvas.height);
+        apuramove(player, 3);
     }
     if( (keys[37] || keys[65]) ){
         player.frameY = 1;
-        apuramove(player, 4, canvas.width, canvas.height);
+        apuramove(player, 4);
     }
     if( (keys[39] || keys[68]) ){
         player.frameY = 2;
-        apuramove(player, 2, canvas.width, canvas.height);
+        apuramove(player, 2);
     }
-    if(player.frameX < 3 && player.moving) {
-        player.frameX++;
+    camina(player);
+}
+
+function camina(obj) {
+    if(obj.frameX < 3 && obj.moving) {
+        obj.frameX++;
     }
     else {
-        player.frameX = 0;
+        obj.frameX = 0;
     }
 }
 
@@ -85,8 +89,8 @@ function animate() {
         drawobject(ctx, player);
         //drawobject(ctx, monst1);
         //ctx.drawImage(player.image, player.frameX*player.frameW, player.frameY*player.frameH, player.frameW, player.frameH, player.x_init, player.y_init, player.width, player.height);
-        ctx.drawImage(monst1.image, monst1.frameX*monst1.frameW, monst1.frameY*monst1.frameH, monst1.frameW, monst1.frameH, monst1.x(), monst1.y(), monst1.width, monst1.height);
-
+        ctx.drawImage(monst1.image, monst1.frameX*monst1.frameW, monst1.frameY*monst1.frameH, monst1.frameW, monst1.frameH, monst1.x_cent(), monst1.y_cent(), monst1.width, monst1.height);
+        monst1.randmove();
         movePlayer();
     }
     requestAnimationFrame(animate);

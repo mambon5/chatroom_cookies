@@ -6,39 +6,42 @@
 
 
 class Cmonster extends Cplayer {
-     constructor(callback_x, callback_y, x_init, y_init, width, height, scale=1, speed) {
+     constructor(x, y, callback_x_cent, callback_y_cent, x_init, y_init, width, height, scale=1, speed) {
         super(x_init, y_init, width, height, scale, speed);
-        this._callback_x = callback_x;
-        this._callback_y = callback_y;
+        this._x = x;
+        this._y = y;
+        this._callback_x_cent = callback_x_cent;
+        this._callback_y_cent = callback_y_cent;
     }
     
-     get x() {return this._callback_x;}
-    get y() {return this._callback_y;}
+    get x() {return this._x;}
+    get y() {return this._y;}
+    get x_cent() {return this._callback_x_cent;}
+    get y_cent() {return this._callback_y_cent;}
     
-//    randmove() {
-//         player.moving = false;
-//         
-//    if( (keys[38] || keys[87])  ){
-//        player.frameY = 3;
-//        apuramove(player, 1, canvas.width, canvas.height);
-//    }
-//    if( (keys[40] || keys[83])   ){
-//        player.frameY = 0;
-//        apuramove(player, 3, canvas.width, canvas.height);
-//    }
-//    if( (keys[37] || keys[65]) ){
-//        player.frameY = 1;
-//        apuramove(player, 4, canvas.width, canvas.height);
-//    }
-//    if( (keys[39] || keys[68]) ){
-//        player.frameY = 2;
-//        apuramove(player, 2, canvas.width, canvas.height);
-//    }
-//    if(player.frameX < 3 && player.moving) {
-//        player.frameX++;
-//    }
-//    else {
-//        player.frameX = 0;
-//    }
-//    }
+    set x(e) {this._x = e;};
+    set y(e) {this._y = e;};
+    
+    randmove() {
+    this._moving = false;
+    let num = Math.floor(Math.random()*5);
+    if( num===1  ){
+        this._frameY = 3;
+//        this._x += this.speed;
+        apuramove(this, 1);
+    }
+    if( num===2   ){
+        this.frameY = 0;
+        apuramove(this, 3);
+    }
+    if( num===3 ){
+        this.frameY = 1;
+         apuramove(this, 4);
+     }
+    if( num===4 ){
+        this.frameY = 2;
+         apuramove(this, 2);
+    }
+    camina(this);
+    }
 };
