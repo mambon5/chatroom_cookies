@@ -14,7 +14,7 @@ class Cmonster extends Ccharacter {
     get x_cent() {return this._callback_x_cent;}
     get y_cent() {return this._callback_y_cent;}
     
-    randmove() {
+    move() {
     this._moving = false;
     let num = Math.floor(Math.random()*10);
     if(this._pastdir === -1 || num > 8) {

@@ -25,4 +25,10 @@ class Ccharacter extends Centity {
     set frameX(e) {this._frameX = e;}
     set frameY(e) {this._frameY = e;}
     set moving(e) {this._moving = e;}
+    
+    move() {
+        
+    }
+    
+    
 }
