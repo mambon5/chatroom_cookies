@@ -30,5 +30,7 @@ class Ccharacter extends Centity {
         
     }
     
-    
+    apuramove() {
+       
+   }
 }
