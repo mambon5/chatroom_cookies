@@ -130,13 +130,22 @@ function drawmatrix(canvW, canvH) {
     
     for(i=0;i<c;i++){
         for(j=0;j<f;j++){
-            if(movmat[j][i])  ctx.strokeRect(i*resh+x,j*resv+y,resh,resv);
-            else {
-                ctx.globalAlpha = 0.2;
-                ctx.fillStyle = "orange";
+            if(movmat[j][i])  {
+                
+                ctx.globalAlpha = 0.3;
+                ctx.fillStyle = "Gainsboro";
                 ctx.fillRect(i*resh+x,j*resv+y,resh,resv);
                 ctx.fillStyle = "black";
                 ctx.globalAlpha = 1;
+            }
+                
+            else {
+                ctx.globalAlpha = 0.2;
+                ctx.fillStyle = "IndianRed";
+                ctx.fillRect(i*resh+x,j*resv+y,resh,resv);
+                ctx.fillStyle = "black";
+                ctx.globalAlpha = 1;
+                ctx.strokeRect(i*resh+x,j*resv+y,resh,resv);
             }
         }
     }
