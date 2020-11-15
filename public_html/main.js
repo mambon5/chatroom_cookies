@@ -6,10 +6,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = 930;
 canvas.height = 462;
 
-
-
 const scale = 1.6;
-
 
 const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, 10);
 player.image.src = "images/henryjones.png";
@@ -21,7 +18,7 @@ const monst2 = new Cmonster(  350,  360, function() {return this.x - player.x + 
 monst2.image.src = "images/greebo2.png";
 
 const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
-background.image.src = "images/firstroom.png";
+//background.image.src = "images/firstroom.png";
 
 const keys = [];
 window.addEventListener("keydown", function(e){
