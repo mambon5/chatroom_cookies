@@ -30,6 +30,10 @@ class Cgame {
             monst1.move();
             ctx.drawImage(monst2.image, monst2.frameX*monst2.frameW, monst2.frameY*monst2.frameH, monst2.frameW, monst2.frameH, monst2.x_cent(), monst2.y_cent(), monst2.width, monst2.height);
             monst2.move();
+            ctx.drawImage(monst3.image, monst3.frameX*monst3.frameW, monst3.frameY*monst3.frameH, monst3.frameW, monst3.frameH, monst3.x_cent(), monst3.y_cent(), monst3.width, monst3.height);
+            monst3.move();
+            ctx.drawImage(monst4.image, monst4.frameX*monst4.frameW, monst4.frameY*monst4.frameH, monst4.frameW, monst4.frameH, monst4.x_cent(), monst4.y_cent(), monst4.width, monst4.height);
+            monst4.move();
             player.move();
         }
         requestAnimationFrame(()=>this.loop());
