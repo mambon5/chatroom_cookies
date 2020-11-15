@@ -11,10 +11,10 @@ const scale = 1.6;
 const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, 10);
 player.image.src = "images/henryjones.png";
 
-const monst1 = new Cmonster(  350,  60, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 0,0, 32, 48, scale, 10);
+const monst1 = new Cmonster(  350,  60, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 48, scale, 10);
 monst1.image.src = "images/captainamerica_shield.png";
 
-const monst2 = new Cmonster(  350,  360, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 0,0, 32, 32, scale, 5);
+const monst2 = new Cmonster(  350,  360, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 32, scale, 5);
 monst2.image.src = "images/greebo2.png";
 
 const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
@@ -71,7 +71,7 @@ function camina(obj) {
     }
 }
 
-let fpsint, now, then, elapsed;
+/*let fpsint, now, then, elapsed;
 
 function animate() {
     now = Date.now();
@@ -103,7 +103,11 @@ function startAnime(interval) {
     then = Date.now();
     aux1.innerHTML = "now: " + now + ", then: " + then;
     animate();
-}
+}*/
 
-startAnime(80);
+//startAnime(80);
+
+const game = new Cgame(80);
+
+game.startGame();
 

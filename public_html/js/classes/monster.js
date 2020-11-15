@@ -1,27 +1,18 @@
 /* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Monster class
  */
 
 
-class Cmonster extends Cplayer {
-     constructor(x, y, callback_x_cent, callback_y_cent, x_init, y_init, width, height, scale=1, speed) {
-        super(x_init, y_init, width, height, scale, speed);
-        this._x = x;
-        this._y = y;
+class Cmonster extends Ccharacter {
+    constructor(x, y, callback_x_cent, callback_y_cent, width, height, scale=1, speed) {
+        super(x, y, width, height, scale, speed);
         this._callback_x_cent = callback_x_cent;
         this._callback_y_cent = callback_y_cent;
         this._pastdir = -1;
     }
     
-    get x() {return this._x;}
-    get y() {return this._y;}
     get x_cent() {return this._callback_x_cent;}
     get y_cent() {return this._callback_y_cent;}
-    
-    set x(e) {this._x = e;};
-    set y(e) {this._y = e;};
     
     randmove() {
     this._moving = false;
