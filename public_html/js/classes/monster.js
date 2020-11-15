@@ -21,21 +21,21 @@ class Cmonster extends Ccharacter {
         let num = Math.floor(Math.random()*5);
         this._pastdir = num;
     } else {num = this._pastdir;}
-        if( num===1  ){
+        if( num===1 ){
             this._frameY = 3;
             apuramove(this, 1);
         }
-        if( num===2   ){
+        if( num===2 ){
             this.frameY = 0;
             apuramove(this, 3);
         }
         if( num===3 ){
             this.frameY = 1;
-             apuramove(this, 4);
+            apuramove(this, 4);
          }
         if( num===4 ){
             this.frameY = 2;
-             apuramove(this, 2);
+            apuramove(this, 2);
         }
     
     camina(this);
