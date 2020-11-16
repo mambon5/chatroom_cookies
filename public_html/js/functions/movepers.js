@@ -14,18 +14,18 @@ function randmove(obj) { // move an object randomly in 4 directions
     } else {num = obj.pastdir;}
         if( num===1 ){
             obj.frameY = 3;
-            apuramove(obj, 1);
+            obj.apuramove(obj, 1);
         }
         if( num===2 ){
             obj.frameY = 0;
-            apuramove(obj, 3);
+           obj.apuramove(obj, 3);
         }
         if( num===3 ){
             obj.frameY = 1;
-            apuramove(obj, 4);
+            obj.apuramove(obj, 4);
          }
         if( num===4 ){
             obj.frameY = 2;
-            apuramove(obj, 2);
+            obj.apuramove(obj, 2);
         }
 }

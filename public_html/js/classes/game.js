@@ -36,7 +36,7 @@ class Cgame {
             monst4.move();
             player.move();
             
-            getpixelmats(ctx);
+//            getpixelmats(ctx);
             outputpixels(ctx);
             
             

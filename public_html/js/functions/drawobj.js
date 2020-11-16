@@ -14,10 +14,10 @@ function getpixelmats(contxt, x=0, y=0, width = 10, height=10) {
     let imgData = contxt.getImageData(x,y,width,height);
     let i=0;
     let j=0;
-    let matR = [];
-    for(var w=0; w<9; w++) {
-        matR[w] = [];
-    }
+//    let matR = [];
+//    for(var w=0; w<9; w++) {
+//        matR[w] = [];
+//    }
     for (w = 0; w < imgData.data.length; w += 4) {
         matR[i][j] = imgData.data[w];
         ++i;
