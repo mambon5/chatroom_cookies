@@ -19,11 +19,11 @@ class Cgame {
             this._then = this._now;
             ctx.clearRect(0,0,canvas.width,canvas.height);
             ctx.drawImage(background.image, background.x(), background.y(), canvas.width, canvas.height);
-            drawmatrix(canvas.width, canvas.height);
+            map.drawmatrix(canvas.width, canvas.height);
     //        ctx.fillStyle = "red";
     //        ctx.fillRect(player.x_init, player.y_init, player.width, player.height);
     //        ctx.fillStyle = "black";
-            drawobject(ctx, player);
+            player.draw();
             //drawobject(ctx, monst1);
             //ctx.drawImage(player.image, player.frameX*player.frameW, player.frameY*player.frameH, player.frameW, player.frameH, player.x_init, player.y_init, player.width, player.height);
             ctx.drawImage(monst1.image, monst1.frameX*monst1.frameW, monst1.frameY*monst1.frameH, monst1.frameW, monst1.frameH, monst1.x_cent(), monst1.y_cent(), monst1.width, monst1.height);

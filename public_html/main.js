@@ -8,6 +8,8 @@ canvas.height = 462;
 
 const scale = 1.6;
 
+const map = new Cmap();
+
 const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, 10);
 player.image.src = "images/henryjones.png";
 
