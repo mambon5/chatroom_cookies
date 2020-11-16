@@ -1,5 +1,6 @@
 let aux1 =  document.getElementById('aux');
 let aux2 =  document.getElementById('aux2');
+let aux3 =  document.getElementById('aux3');
 
 const canvas = document.getElementById('my_canvas');
 const ctx = canvas.getContext('2d');

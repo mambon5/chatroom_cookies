@@ -10,10 +10,15 @@ and open the template in the editor.
 
 #aux2{
     position:absolute;
-    top:140px;
+    top:240px;
 }
 
 #aux{
     position:absolute;
     top:60px;
+}
+
+#aux3{
+    position:absolute;
+    top:140px;
 }

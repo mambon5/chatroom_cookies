@@ -35,6 +35,11 @@ class Cgame {
             ctx.drawImage(monst4.image, monst4.frameX*monst4.frameW, monst4.frameY*monst4.frameH, monst4.frameW, monst4.frameH, monst4.x_cent(), monst4.y_cent(), monst4.width, monst4.height);
             monst4.move();
             player.move();
+            
+            getpixelmats(ctx);
+            outputpixels(ctx);
+            
+            
         }
         requestAnimationFrame(()=>this.loop());
     }
