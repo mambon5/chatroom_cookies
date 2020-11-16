@@ -30,7 +30,62 @@ class Ccharacter extends Centity {
         
     }
     
-    apuramove() {
-       
-   }
+    apuramove(dir) {    //dir is 1-top 2-right 3-down 4-left
+        let canvW = canvas.width;
+        let canvH = canvas.height;
+        let resol = map.getresol(canvW, canvH); // get resolution of each cell
+        let pos = map.getmatpos(this.x, this.y, canvW, canvH);
+        if(dir===1) {
+            if( map.validcorners(this.x , this.y - this.speed , this.width, this.height, canvW, canvH)) {
+                this.y -= this.speed;
+                this.moving = true;
+            } else {
+                let limy = pos[0]*resol[1];
+                let speed = this.y - limy - 1;
+                if(speed>0) {
+                    this.y -= speed;
+                    this.moving = true;
+                }
+            }
+        }
+        if(dir===2) {
+            if( map.validcorners(this.x + this.speed , this.y , this.width, this.height, canvW, canvH)) {
+                this.x += this.speed;
+                this.moving = true;
+            } else {
+                let limx = (pos[1]+1)*resol[0];
+                let speed = limx - (this.x+this.width) - 1;
+                if(speed>0) {
+                    this.x += speed;
+                    this.moving = true;
+                }
+            }
+        }
+        if(dir===3) {
+            if( map.validcorners(this.x  , this.y + this.speed, this.width, this.height, canvW, canvH)) {
+                this.y += this.speed;
+                this.moving = true;
+            } else {
+                let limy = (pos[0]+1)*resol[1];
+                let speed = limy - (this.y+this.height) - 1;
+                if(speed>0) {
+                    this.y += speed;
+                    this.moving = true;
+                }
+            }
+        }
+        if(dir===4) {
+            if( map.validcorners(this.x - this.speed, this.y , this.width, this.height, canvW, canvH)) {
+                this.x -= this.speed;
+                this.moving = true;
+            } else {
+                let limx = pos[1]*resol[0];
+                let speed = this.x - limx - 1;
+                if(speed>0) {
+                    this.x -= speed;
+                    this.moving = true;
+                }
+            }
+        }
+    }
 }

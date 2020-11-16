@@ -15,7 +15,9 @@ class Cmonster extends Ccharacter {
     get y_cent() {return this._callback_y_cent;}
     
     move() {
+
         randmove(this);    
+
         camina(this);
     }
 };
