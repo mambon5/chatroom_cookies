@@ -5,7 +5,8 @@
  */
 
 
-function drawobject(contxt, obj) {
-    contxt.drawImage(obj.image, obj.frameX*obj.frameW, obj.frameY*obj.frameH, obj.frameW, obj.frameH, obj.x_init, obj.y_init, obj.width, obj.height);
+function pad(num, size) {
+    num = num.toString();
+    while (num.length < size) num = "0" + num;
+    return num;
 }
-
