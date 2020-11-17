@@ -57,6 +57,63 @@ function getpixelmats(contxt, x=0, y=0, width = 10, height=10) {
     
 }
 
+function imgmargins(contxt, x=0, y=0, width = 10, height=10) {
+    let mats =  getpixelmats(contxt, x, y, width, height);
+    matR = mats[0];
+    //find first nonwhite pixel on left:
+    let w = -1;
+    f = matR.length;
+    c = matR[0].length
+    
+    for(let i=0; i<c; ++i) {
+        for(let j=0; j<f; ++j) {
+            if(matR[j][i] != 255) {
+                w = j+1;
+                j=f; i = c;
+            }
+        }
+    }
+    margl = w;
+    
+    //margin top:
+     for(let i=0; i<f; ++i) {
+        for(let j=0; j<c; ++j) {
+            if(matR[i][j] != 255) {
+                w = i+1;
+                j=c; i = f;
+            }
+        }
+    }
+    margt = w;
+    
+    //margin right:
+     for(let j=(c-1); j>(-1) ; --j) {
+        for(let i=(f-1); i>(-1) ; --i) {
+            if(matR[i][j] != 255) {
+                w = c-1- i;
+                j=-1; i = -1;
+            }
+        }
+    }
+    margr = w;
+    
+    //margin bottom:
+     for(let j=(f-1); j>(-1) ; --j) {
+        for(let i=(c-1); i>(-1) ; --i) {
+            if(matR[j][i] != 255) {
+                w = f-1- j;
+                j=-1; i = -1;
+            }
+        }
+    }
+    margb = w;
+    
+    
+    aux3.innerHTML = "margins: " + margl + ", " + margt + 
+            ", "+margr + ", " + margb;
+    return [margl, margt, margr, margb];
+}
+
 
 function pad(num, size) {
     num = num.toString();
