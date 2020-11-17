@@ -37,7 +37,7 @@ class Cgame {
             player.move();
             
             aux3.innerHTML = "hola";
-            getpixelmats(ctx, player.x_init, player.y_init, 32, 48);
+            getpixelmats(ctx, player.x_init, player.y_init, player.width, player.height);
 //            outputpixels(ctx);
 
             

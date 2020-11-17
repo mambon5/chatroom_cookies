@@ -11,6 +11,8 @@ function drawobject(contxt, obj) {
 
 function getpixelmats(contxt, x=0, y=0, width = 10, height=10) {
     //get the 4 matrices from the selected pixels
+     width = Math.ceil(width);
+    height = Math.ceil(height);
     let imgData = contxt.getImageData(x,y,width,height);
     let i=0;
     let j=0;
@@ -18,6 +20,7 @@ function getpixelmats(contxt, x=0, y=0, width = 10, height=10) {
     let matG = [];
     let matB = [];
     let matA = [];
+   
     for(var f = 0; f < height; f++) {
         matR[f] = [];
         matG[f] = [];
@@ -36,7 +39,9 @@ function getpixelmats(contxt, x=0, y=0, width = 10, height=10) {
         ++i;
     }
     }
-    aux3.innerHTML = "";
+     aux3.innerHTML = " dim: " + matR.length + ", " + matR[0].length +
+               " rwidth; " + player.width + "<br>" + 
+               "height: " + height + ", width: " + width + "<br>";
     for(let i=0; i<matR.length; ++i) {
         for(let j=0; j<matR[0].length; ++j) {
             aux3.innerHTML += pad(matR[i][j],3) + " ";
