@@ -4,7 +4,8 @@
 
 class Ccharacter extends Centity {
     constructor(x, y, width, height, scale, speed, margins) {
-        super(x, y, width*scale, height*scale, speed, margins);
+        super(x, y, width*scale, height*scale, speed, 
+        margins.map(function(x) {return x*scale} ));
         this._x_init = x;
         this._y_init = y;
         this._frameX = 0;

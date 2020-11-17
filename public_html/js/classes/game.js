@@ -34,6 +34,8 @@ class Cgame {
             monst3.move();
             ctx.drawImage(monst4.image, monst4.frameX*monst4.frameW, monst4.frameY*monst4.frameH, monst4.frameW, monst4.frameH, monst4.x_cent(), monst4.y_cent(), monst4.width, monst4.height);
             monst4.move();
+            ctx.drawImage(monst5.image, monst5.frameX*monst5.frameW, monst5.frameY*monst5.frameH, monst5.frameW, monst5.frameH, monst5.x_cent(), monst5.y_cent(), monst5.width, monst5.height);
+            monst5.move();
             player.move();
             
             aux2.innerHTML =  marg_henry;

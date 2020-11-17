@@ -7,11 +7,12 @@ const ctx = canvas.getContext('2d');
 canvas.width = 930;
 canvas.height = 462;
 
-const scale = 1;
+const scale = 1.2;
 
 const map = new Cmap();
 
-const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, 10, margins = marg_greebo2);
+const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48,
+scale, 10, margins = marg_henry);
 player.image.src = "images/henryjones.png"; // 24.25, 45.5
 
 const monst1 = new Cmonster(  350,  60, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 
@@ -29,6 +30,10 @@ monst3.image.src = "images/protocoldroid2.png";
 const monst4 = new Cmonster(  400,  100, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
 32, 48, scale, 10, margins = marg_tiana2);
 monst4.image.src = "images/tiana2.png";
+
+const monst5 = new Cmonster(  400,  100, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
+32, 48, scale, 10, margins = marg_rhodey);
+monst5.image.src = "images/rhodey.png";
 
 const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
 //background.image.src = "images/firstroom.png";
