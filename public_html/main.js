@@ -7,7 +7,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = 930;
 canvas.height = 462;
 
-const scale = 1.2;
+const scale = 1.6;
 
 const map = new Cmap();
 
@@ -125,7 +125,7 @@ function startAnime(interval) {
 
 //startAnime(80);
 
-const game = new Cgame(100);
+const game = new Cgame(80);
 
 game.startGame();
 

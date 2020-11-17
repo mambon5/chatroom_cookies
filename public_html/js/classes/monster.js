@@ -43,6 +43,8 @@ class Cmonster extends Ccharacter {
             this._frameY = 1;
         }
         if(num < 9 && num > 0) {
+           
+          
             super.apuramove(num);
         }
         

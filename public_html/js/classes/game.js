@@ -38,10 +38,10 @@ class Cgame {
             monst5.move();
             player.move();
             
-            aux2.innerHTML =  marg_henry;
+           
 //            getpixelmats(ctx, player.x_init, player.y_init, player.width, player.height);
 //            outputpixels(ctx);
-//         imgmargins(ctx, player.x_init, player.y_init, player.width, player.height);
+         imgmargins(ctx, player.x_init, player.y_init, player.width, player.height);
 
             
             
