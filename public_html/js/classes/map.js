@@ -26,7 +26,7 @@ class Cmap {
             for(let j=0; j<f; j++) {
                 if(this._map_matrix[j][i])  {
                     ctx.globalAlpha = 0.3;
-                    ctx.fillStyle = "Gainsboro";
+                    ctx.fillStyle = "white";
                     ctx.fillRect(i*resh+x,j*resv+y,resh,resv);
                     ctx.fillStyle = "black";
                     ctx.globalAlpha = 1;

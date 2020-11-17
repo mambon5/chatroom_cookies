@@ -36,8 +36,10 @@ class Cgame {
             monst4.move();
             player.move();
             
-//            getpixelmats(ctx);
-            outputpixels(ctx);
+            aux3.innerHTML = "hola";
+            getpixelmats(ctx, player.x_init, player.y_init, 32, 48);
+//            outputpixels(ctx);
+
             
             
         }
@@ -46,6 +48,7 @@ class Cgame {
     
     startGame() {
         this._then = Date.now();
+        
         this.loop();
     }
 }

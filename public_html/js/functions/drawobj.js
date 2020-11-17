@@ -14,23 +14,52 @@ function getpixelmats(contxt, x=0, y=0, width = 10, height=10) {
     let imgData = contxt.getImageData(x,y,width,height);
     let i=0;
     let j=0;
-//    let matR = [];
-//    for(var w=0; w<9; w++) {
-//        matR[w] = [];
-//    }
-    for (w = 0; w < imgData.data.length; w += 4) {
+    let matR = [];
+    let matG = [];
+    let matB = [];
+    let matA = [];
+    for(var f = 0; f < height; f++) {
+        matR[f] = [];
+        matG[f] = [];
+        matB[f] = [];
+        matA[f] = [];
+    }
+    for (let w = 0; w < imgData.data.length; w += 4) {
         matR[i][j] = imgData.data[w];
-        ++i;
-    if( (w+4) % (width*4) === 0) {
-        i=0;
+        matG[i][j] = imgData.data[w+1];
+        matB[i][j] = imgData.data[w+2];
+        matA[i][j] = imgData.data[w+3];
+        
         ++j;
+    if( (w+4) % (width*4) === 0) {
+        j=0;
+        ++i;
     }
     }
-   matR[0][0] = 1;
-    aux3.innerHTML = "hola: " + matR;
-    return matR;
+    aux3.innerHTML = "";
+    for(let i=0; i<matR.length; ++i) {
+        for(let j=0; j<matR[0].length; ++j) {
+            aux3.innerHTML += pad(matR[i][j],3) + " ";
+        }
+        aux3.innerHTML += " <br> ";
+    }
+       aux3.innerHTML += " dim: " + matR.length + ", " + matR[0].length +
+               " rwidth; " + player.width;
+//    aux3.innerHTML = "<br> red: <br> " + matR + " <br> green: <br>" +
+//            matG + " <br> blue: <br>" + matB + 
+//            " <br> alpha: <br>" + matA;
+    return [matR, matG, matB, matA];
     
 }
+
+
+function pad(num, size) {
+    num = num.toString();
+    while (num.length < size) num = "0" + num;
+    return num;
+}
+
+
 
 function outputpixels(contxt, width=20, height=20) {
     let imgData = contxt.getImageData(0,0,width,height);
