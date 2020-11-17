@@ -36,7 +36,7 @@ class Cgame {
             monst4.move();
             player.move();
             
-            aux3.innerHTML = "hola";
+            aux2.innerHTML =  marg_henry;
 //            getpixelmats(ctx, player.x_init, player.y_init, player.width, player.height);
 //            outputpixels(ctx);
          imgmargins(ctx, player.x_init, player.y_init, player.width, player.height);

@@ -4,8 +4,8 @@
 
 
 class Cmonster extends Ccharacter {
-    constructor(x, y, callback_x_cent, callback_y_cent, width, height, scale=1, speed) {
-        super(x, y, width, height, scale, speed);
+    constructor(x, y, callback_x_cent, callback_y_cent, width, height, scale=1, speed, margins) {
+        super(x, y, width, height, scale, speed, margins);
         this._callback_x_cent = callback_x_cent;
         this._callback_y_cent = callback_y_cent;
         this._pastdir = -1;

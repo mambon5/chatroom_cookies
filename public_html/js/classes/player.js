@@ -3,8 +3,8 @@
  */
 
 class Cplayer extends Ccharacter {
-    constructor(x, y, width, height, scale, speed) {
-        super(x, y, width, height, scale, speed);
+    constructor(x, y, width, height, scale, speed, margins) {
+        super(x, y, width, height, scale, speed, margins);
     }
     
     move() {
