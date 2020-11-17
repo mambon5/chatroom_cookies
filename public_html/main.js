@@ -32,7 +32,7 @@ const monst4 = new Cmonster(  400,  100, function() {return this.x - player.x + 
 monst4.image.src = "images/tiana2.png";
 
 const monst5 = new Cmonster(  400,  100, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
-32, 48, scale, 10, margins = marg_rhodey);
+32, 48, scale, 13, margins = marg_rhodey);
 monst5.image.src = "images/rhodey.png";
 
 const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
