@@ -15,15 +15,15 @@ class Cplayer extends Ccharacter {
         }
         if( (keys[40] || keys[83])   ){
             this.frameY = 0;
-            super.apuramove(3);
+            super.apuramove(5);
         }
         if( (keys[37] || keys[65]) ){
             this.frameY = 1;
-            super.apuramove(4);
+            super.apuramove(7);
         }
         if( (keys[39] || keys[68]) ){
             this.frameY = 2;
-            super.apuramove(2);
+            super.apuramove(3);
         }
         if(this.frameX < 3 && this.moving) {
             this.frameX++;

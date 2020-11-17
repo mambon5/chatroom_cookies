@@ -25,26 +25,26 @@ class Cmonster extends Ccharacter {
         this._moving = false;
         let num = Math.floor(Math.random()*10);
         if(this._pastdir === -1 || num > 8) {
-            let num = Math.floor(Math.random()*5);
+            let num = Math.floor(Math.random()*10);
             this._pastdir = num;
         } else {
             num = this._pastdir;
         }
-        if( num===1 ){
+        if( num===1 || num === 2 ){
             this._frameY = 3;
-            super.apuramove(1);
         }
-        if( num===2 ){
-            this.frameY = 0;
-            super.apuramove(3);
+        if( num===3 || num === 4 ){
+            this._frameY = 2;
         }
-        if( num===3 ){
-            this.frameY = 1;
-            super.apuramove(4);
-         }
-        if( num===4 ){
-            this.frameY = 2;
-            super.apuramove(2);
+        if( num===5 || num === 6 ){
+            this._frameY = 0;
         }
+        if( num===7 || num === 8 ){
+            this._frameY = 1;
+        }
+        if(num < 9 && num > 0) {
+            super.apuramove(num);
+        }
+        
     }
 };

@@ -125,7 +125,7 @@ function startAnime(interval) {
 
 //startAnime(80);
 
-const game = new Cgame(180);
+const game = new Cgame(100);
 
 game.startGame();
 
