@@ -11,7 +11,7 @@ const scale = 1;
 
 const map = new Cmap();
 
-const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, 10, margins = marg_henry);
+const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, 10, margins = marg_greebo2);
 player.image.src = "images/henryjones.png"; // 24.25, 45.5
 
 const monst1 = new Cmonster(  350,  60, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 
