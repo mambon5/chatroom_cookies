@@ -45,7 +45,7 @@ class Ccharacter extends Centity {
         let height = this.height - marg[1] - marg[3];
         
         let pos = map.getmatpos(x, y, canvW, canvH);
-        let newpos = 0;;
+        let newpos = 0;
         if( dir==8 || dir===1 || dir == 2) {
             newpos = [x , y - this.speed , width, height];
             if( map.validcorners(newpos[0] , newpos[1] , newpos[2], newpos[3], canvW, canvH)) {
@@ -59,7 +59,12 @@ class Ccharacter extends Centity {
                     this.moving = true;
                 }
             }
+            
         }
+        x = this.x + marg[0];
+        y = this.y + marg[1];
+        pos = map.getmatpos(x, y, canvW, canvH);
+        
         if(dir===2 || dir == 3 ||dir == 4) {
             newpos = [x + this.speed ,y , width, height];
             if( map.validcorners(newpos[0] , newpos[1] , newpos[2], newpos[3], canvW, canvH)) {
@@ -74,6 +79,9 @@ class Ccharacter extends Centity {
                 }
             }
         }
+        x = this.x + marg[0];
+        y = this.y + marg[1];
+        pos = map.getmatpos(x, y, canvW, canvH);
         if(dir===4 || dir == 5 ||dir == 6) {
             newpos = [x  , y + this.speed , width, height];
             if( map.validcorners(newpos[0] , newpos[1] , newpos[2], newpos[3], canvW, canvH)) {
@@ -88,6 +96,9 @@ class Ccharacter extends Centity {
                 }
             }
         }
+        x = this.x + marg[0];
+        y = this.y + marg[1];
+        pos = map.getmatpos(x, y, canvW, canvH);
         if(dir===6 || dir == 7 ||dir == 8) {
             newpos = [x - this.speed, y , width, height];
             if( map.validcorners(newpos[0] , newpos[1] , newpos[2], newpos[3], canvW, canvH)) {
