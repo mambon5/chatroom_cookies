@@ -27,8 +27,15 @@ class Ccharacter extends Centity {
     set frameY(e) {this._frameY = e;}
     set moving(e) {this._moving = e;}
     
-    move() {
+    basemove(dir) {
+        let marg = this.margins;//margins are left, top, right, bottom
         
+        let canvW = canvas.width;
+        let canvH = canvas.height;
+        
+        if(!checkxoc(this, monst1, dir)) {
+            apuramove(dir);
+        }
     }
     
     apuramove(dir) {    //dir is 1-top 2-right 3-down 4-left
@@ -39,21 +46,16 @@ class Ccharacter extends Centity {
         let canvH = canvas.height;
         let resol = map.getresol(canvW, canvH); // get resolution of each cell
         
-        let x = this.x + marg[0];
-        let y = this.y + marg[1];
-        let width = this.width - marg[0] - marg[2];
-        let height = this.height - marg[1] - marg[3];
-        
-        let pos = map.getmatpos(x, y, canvW, canvH);
-        let newpos = 0;
+        let cutrect = new Cutrect(this, marg); //cuts rectangl according to margins
+
+        let pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         if( dir==8 || dir===1 || dir == 2) {
-            newpos = [x , y - this.speed , width, height];
-            if( map.validcorners(newpos[0] , newpos[1] , newpos[2], newpos[3], canvW, canvH)) {
+            if( map.validcorners(cutrect.x , cutrect.y - this.speed , cutrect.width, cutrect.height, canvW, canvH)) {
                 this.y -= this.speed;
                 this.moving = true;
             } else {
                 let limy = pos[0]*resol[1] ;
-                let speed = y - limy - 1;
+                let speed =  cutrect.y - limy - 1;
                 if(speed>0) {
                     this.y -= speed;
                     this.moving = true;
@@ -61,52 +63,47 @@ class Ccharacter extends Centity {
             }
             
         }
-        x = this.x + marg[0];
-        y = this.y + marg[1];
-        pos = map.getmatpos(x, y, canvW, canvH);
+        
+        cutrect = new Cutrect(this, marg);        
+        pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         
         if(dir===2 || dir == 3 ||dir == 4) {
-            newpos = [x + this.speed ,y , width, height];
-            if( map.validcorners(newpos[0] , newpos[1] , newpos[2], newpos[3], canvW, canvH)) {
+            if( map.validcorners(cutrect.x + this.speed ,cutrect.y , cutrect.width, cutrect.height, canvW, canvH)) {
                 this.x += this.speed;
                 this.moving = true;
             } else {
                 let limx = (pos[1]+1)*resol[0] ;
-                let speed = limx - (x + width) - 1;
+                let speed = limx - (cutrect.x + cutrect.width) - 1;
                 if(speed>0) {
                     this.x += speed;
                     this.moving = true;
                 }
             }
         }
-        x = this.x + marg[0];
-        y = this.y + marg[1];
-        pos = map.getmatpos(x, y, canvW, canvH);
+        cutrect = new Cutrect(this, marg);
+        pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         if(dir===4 || dir == 5 ||dir == 6) {
-            newpos = [x  , y + this.speed , width, height];
-            if( map.validcorners(newpos[0] , newpos[1] , newpos[2], newpos[3], canvW, canvH)) {
+            if( map.validcorners(cutrect.x  , cutrect.y + this.speed , cutrect.width, cutrect.height, canvW, canvH)) {
                 this.y += this.speed;
                 this.moving = true;
             } else {
                 let limy = (pos[0]+1)*resol[1] ;
-                let speed = limy - (y+height) - 1;
+                let speed = limy - (cutrect.y+cutrect.height) - 1;
                 if(speed>0) {
                     this.y += speed;
                     this.moving = true;
                 }
             }
         }
-        x = this.x + marg[0];
-        y = this.y + marg[1];
-        pos = map.getmatpos(x, y, canvW, canvH);
+        cutrect = new Cutrect(this, marg);
+        pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         if(dir===6 || dir == 7 ||dir == 8) {
-            newpos = [x - this.speed, y , width, height];
-            if( map.validcorners(newpos[0] , newpos[1] , newpos[2], newpos[3], canvW, canvH)) {
+            if( map.validcorners(cutrect.x - this.speed, cutrect.y , cutrect.width, cutrect.height, canvW, canvH)) {
                 this.x -= this.speed;
                 this.moving = true;
             } else {
                 let limx = pos[1]*resol[0] ;
-                let speed = x - limx - 1;
+                let speed = cutrect.x - limx - 1;
                 if(speed>0) {
                     this.x -= speed;
                     this.moving = true;

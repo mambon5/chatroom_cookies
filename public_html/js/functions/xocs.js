@@ -4,6 +4,25 @@
  * and open the template in the editor.
  */
 
+function Cutrect(obj, marg) {// pass object with .x .y .width .height and image margins
+    this.x = obj.x + marg[0];
+    this.y =  obj.y + marg[1];
+    this.width = obj.width - marg[0] - marg[2];
+    this.height = obj.height - marg[1] - marg[3];
+    
+}
+
+function arrayxoc(rect1, array) {
+    xoc = false;
+    for(let i = 0; i < array.length; i++){ 
+        if(checkxoc(array[i], rect1)) xoc = true;
+    }
+    return xoc;
+}
+//
+//function checkmovexoc(rect1, rect2, dir) {
+//    if()
+//}
 
 function checkxoc(rect1, rect2) {
    if(rect1.x < rect2.x + rect2.width &&

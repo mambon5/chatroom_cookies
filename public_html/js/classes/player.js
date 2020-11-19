@@ -3,9 +3,11 @@
  */
 
 class Cplayer extends Ccharacter {
-    constructor(x, y, width, height, scale, speed, margins) {
+    constructor(x, y, width, height, scale, speed, margins, name="hero") {
         super(x, y, width, height, scale, speed, margins);
+         this._name = name;
     }
+    get name() {return this._name;}
     
     move() {
         this.moving = false;

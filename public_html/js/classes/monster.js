@@ -4,15 +4,17 @@
 
 
 class Cmonster extends Ccharacter {
-    constructor(x, y, callback_x_cent, callback_y_cent, width, height, scale=1, speed, margins) {
+    constructor(x, y, callback_x_cent, callback_y_cent, width, height, scale=1, speed, margins, name="") {
         super(x, y, width, height, scale, speed, margins);
         this._callback_x_cent = callback_x_cent;
         this._callback_y_cent = callback_y_cent;
         this._pastdir = -1;
+        this._name = name;
     }
     
     get x_cent() {return this._callback_x_cent;}
     get y_cent() {return this._callback_y_cent;}
+    get name() {return this._name;}
     
     move() {
 
@@ -44,8 +46,9 @@ class Cmonster extends Ccharacter {
         }
         if(num < 9 && num > 0) {
            
-          
+            
             super.apuramove(num);
+        
         }
         
     }
