@@ -25,8 +25,8 @@ class Cmonster extends Ccharacter {
     
     randmove() {
         this._moving = false;
-        let num = Math.floor(Math.random()*10);
-        if(this._pastdir === -1 || num > 8) {
+        let num = Math.floor(Math.random()*20);
+        if(this._pastdir === -1 || num > 18) {
             let num = Math.floor(Math.random()*10);
             this._pastdir = num;
         } else {

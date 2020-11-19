@@ -57,10 +57,8 @@ class Ccharacter extends Centity {
             
         }
         
-        cutrect = super.cut_rect();
-        
+        cutrect = super.cut_rect();        
         pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
-        
         if(dir===2 || dir == 3 ||dir == 4) {
             if( map.validcorners(cutrect.x + this.speed ,cutrect.y , cutrect.width, cutrect.height, canvW, canvH)) {
                 this.x += this.speed;
@@ -74,8 +72,7 @@ class Ccharacter extends Centity {
                 }
             }
         }
-        cutrect = super.cut_rect();
-        
+        cutrect = super.cut_rect();        
         pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         if(dir===4 || dir == 5 ||dir == 6) {
             if( map.validcorners(cutrect.x  , cutrect.y + this.speed , cutrect.width, cutrect.height, canvW, canvH)) {

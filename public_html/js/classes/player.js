@@ -10,23 +10,30 @@ class Cplayer extends Ccharacter {
     get name() {return this._name;}
     
     move() {
+        let dir = 0;
         this.moving = false;
-        if( (keys[38] || keys[87])  ){
+        if( (keys[38] || keys[87])  ){//up
             this.frameY = 3;
-            super.apuramove(1);
+            dir=1;
         }
-        if( (keys[40] || keys[83])   ){
+        if( (keys[40] || keys[83])   ){//down
             this.frameY = 0;
-            super.apuramove(5);
+            dir=5;
         }
-        if( (keys[37] || keys[65]) ){
+        if( (keys[37] || keys[65]) ){//left
             this.frameY = 1;
-            super.apuramove(7);
+            if(dir === 1) dir=8;
+            else if(dir === 5) dir = 6;
+            else dir = 7;
         }
-        if( (keys[39] || keys[68]) ){
+        if( (keys[39] || keys[68]) ){//right
             this.frameY = 2;
-            super.apuramove(3);
+            if(dir === 1) dir=2;
+            else if(dir === 5) dir = 4;
+            else dir = 3;
         }
+        if(dir !== 0) super.apuramove(dir);;
+        
         if(this.frameX < 3 && this.moving) {
             this.frameX++;
         }
