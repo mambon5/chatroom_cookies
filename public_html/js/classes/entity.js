@@ -17,4 +17,12 @@ class Centity extends Crectangle {
     set speed(e) {this._speed = e;}
     set image(e) {this._image = e;}
     set margins(e) {this._margins = e;} //margins are left, top, right, bottom
+    
+    cut_rect() {
+        return new Crectangle(
+        this.x + this.margins[0], 
+        this.y + this.margins[1],
+        this.width - this.margins[0] - this.margins[2],
+        this.height - this.margins[1] - this.margins[3]);
+    }
 };

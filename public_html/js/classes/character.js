@@ -27,15 +27,8 @@ class Ccharacter extends Centity {
     set frameY(e) {this._frameY = e;}
     set moving(e) {this._moving = e;}
     
-    basemove(dir) {
-        let marg = this.margins;//margins are left, top, right, bottom
-        
-        let canvW = canvas.width;
-        let canvH = canvas.height;
-        
-        if(!checkxoc(this, monst1, dir)) {
-            apuramove(dir);
-        }
+   move() {
+      
     }
     
     apuramove(dir) {    //dir is 1-top 2-right 3-down 4-left
@@ -45,8 +38,8 @@ class Ccharacter extends Centity {
         let canvW = canvas.width;
         let canvH = canvas.height;
         let resol = map.getresol(canvW, canvH); // get resolution of each cell
-        
-        let cutrect = new Cutrect(this, marg); //cuts rectangl according to margins
+                
+        let cutrect = super.cut_rect(); //cuts rectangl according to margins
 
         let pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         if( dir==8 || dir===1 || dir == 2) {
@@ -64,7 +57,8 @@ class Ccharacter extends Centity {
             
         }
         
-        cutrect = new Cutrect(this, marg);        
+        cutrect = super.cut_rect();
+        
         pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         
         if(dir===2 || dir == 3 ||dir == 4) {
@@ -80,7 +74,8 @@ class Ccharacter extends Centity {
                 }
             }
         }
-        cutrect = new Cutrect(this, marg);
+        cutrect = super.cut_rect();
+        
         pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         if(dir===4 || dir == 5 ||dir == 6) {
             if( map.validcorners(cutrect.x  , cutrect.y + this.speed , cutrect.width, cutrect.height, canvW, canvH)) {
@@ -95,7 +90,7 @@ class Ccharacter extends Centity {
                 }
             }
         }
-        cutrect = new Cutrect(this, marg);
+        cutrect = super.cut_rect();
         pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         if(dir===6 || dir == 7 ||dir == 8) {
             if( map.validcorners(cutrect.x - this.speed, cutrect.y , cutrect.width, cutrect.height, canvW, canvH)) {

@@ -4,13 +4,7 @@
  * and open the template in the editor.
  */
 
-function Cutrect(obj, marg) {// pass object with .x .y .width .height and image margins
-    this.x = obj.x + marg[0];
-    this.y =  obj.y + marg[1];
-    this.width = obj.width - marg[0] - marg[2];
-    this.height = obj.height - marg[1] - marg[3];
-    
-}
+
 
 function arrayxoc(rect1, array) {
     xoc = false;
