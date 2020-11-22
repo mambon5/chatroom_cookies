@@ -17,9 +17,7 @@ class Cmonster extends Ccharacter {
     get name() {return this._name;}
     
     move() {
-
         this.randmove();
-
         super.moveX();
     }
     
@@ -45,11 +43,11 @@ class Cmonster extends Ccharacter {
             this._frameY = 1;
         }
         if(num < 9 && num > 0) {
-           
-            
             super.apuramove(num);
-        
         }
-        
+    }
+    
+    draw() {
+        ctx.drawImage(this.image, this.frameX*this.frameW, this.frameY*this.frameH, this.frameW, this.frameH, this.x_cent(), this.y_cent(), this.width, this.height);
     }
 };

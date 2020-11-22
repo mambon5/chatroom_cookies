@@ -2,13 +2,18 @@
  * Character Manager class
  */
 
+var v = [];
+
 class CcharacterManager {
-    constructor() {
-        //vector
+    static add(obj) {
+        v.push(obj);
     }
     
+    static update() {
+        v.forEach(character => character.move());
+    }
     
-    
-    static hello() {return "Hello!";}
-    
+    static draw() {
+        v.forEach(character => character.draw());
+    }
 }

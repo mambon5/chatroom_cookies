@@ -39,5 +39,5 @@ class Cplayer extends Ccharacter {
     
     draw() {
         ctx.drawImage(this.image, this.frameX*this.frameW, this.frameY*this.frameH, this.frameW, this.frameH, this.x_init, this.y_init, this.width, this.height);
-    }
+    }     
 };
