@@ -10,7 +10,7 @@ class CcharacterManager {
     }
     
     static update() {
-        v.forEach(character => character.move());
+        v.forEach(character => character.move());  //we should do an update function on character, to generalize, for now we call draw
     }
     
     static draw() {
