@@ -66,47 +66,7 @@ window.addEventListener("keyup", function(e){
  *
  * */
 
-
-
-
-
-/*let fpsint, now, then, elapsed;
-
-function animate() {
-    now = Date.now();
-    elapsed = now - then;
-//    aux2.innerHTML = "pos x: " + player.x + " <br>pos y: " + player.y;
-//    aux1.innerHTML = "now: " + now + "<br> then: " + then;
-    if(elapsed > fpsint) {
-        then = now;
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        ctx.drawImage(background.image, background.x(), background.y(), canvas.width, canvas.height);
-        drawmatrix(canvas.width, canvas.height);
-//        ctx.fillStyle = "red";
-//        ctx.fillRect(player.x_init, player.y_init, player.width, player.height);
-//        ctx.fillStyle = "black";
-        drawobject(ctx, player);
-        //drawobject(ctx, monst1);
-        //ctx.drawImage(player.image, player.frameX*player.frameW, player.frameY*player.frameH, player.frameW, player.frameH, player.x_init, player.y_init, player.width, player.height);
-        ctx.drawImage(monst1.image, monst1.frameX*monst1.frameW, monst1.frameY*monst1.frameH, monst1.frameW, monst1.frameH, monst1.x_cent(), monst1.y_cent(), monst1.width, monst1.height);
-        monst1.randmove();
-        ctx.drawImage(monst2.image, monst2.frameX*monst2.frameW, monst2.frameY*monst2.frameH, monst2.frameW, monst2.frameH, monst2.x_cent(), monst2.y_cent(), monst2.width, monst2.height);
-        monst2.randmove();
-        movePlayer();
-    }
-    requestAnimationFrame(animate);
-}
-
-function startAnime(interval) {
-    fpsint = interval;
-    then = Date.now();
-    aux1.innerHTML = "now: " + now + ", then: " + then;
-    animate();
-}*/
-
-//startAnime(80);
-
-const game = new Cgame(80);
+const game = new Cgame(12.5);
 
 game.startGame();
 

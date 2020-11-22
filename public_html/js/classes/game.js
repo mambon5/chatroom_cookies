@@ -15,7 +15,7 @@ class Cgame {
         this._elapsed = this._now - this._then;
     //    aux2.innerHTML = "pos x: " + player.x + " <br>pos y: " + player.y;
     //    aux1.innerHTML = "now: " + now + "<br> then: " + then;
-        if(this._elapsed > this._fps) {
+        if(this._elapsed > 1000/this._fps) {
             this._then = this._now;
             ctx.clearRect(0,0,canvas.width,canvas.height);
             ctx.drawImage(background.image, background.x(), background.y(), canvas.width, canvas.height);
@@ -38,14 +38,9 @@ class Cgame {
             ctx.drawImage(monst5.image, monst5.frameX*monst5.frameW, monst5.frameY*monst5.frameH, monst5.frameW, monst5.frameH, monst5.x_cent(), monst5.y_cent(), monst5.width, monst5.height);
             monst5.move();
             player.move();
-            
-           
 //            getpixelmats(ctx, player.x_init, player.y_init, player.width, player.height);
 //            outputpixels(ctx);
          imgmargins(ctx, player.x_init, player.y_init, player.width, player.height);
-
-            
-            
         }
         requestAnimationFrame(()=>this.loop());
     }

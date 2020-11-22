@@ -20,9 +20,10 @@ class Centity extends Crectangle {
     
     cut_rect() {
         return new Crectangle(
-        this.x + this.margins[0], 
-        this.y + this.margins[1],
-        this.width - this.margins[0] - this.margins[2],
-        this.height - this.margins[1] - this.margins[3]);
+                        this.x + this.margins[0], 
+                        this.y + this.margins[1],
+                        this.width - this.margins[0] - this.margins[2],
+                        this.height - this.margins[1] - this.margins[3]
+                            );
     }
 };

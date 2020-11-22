@@ -20,7 +20,7 @@ class Cmonster extends Ccharacter {
 
         this.randmove();
 
-        camina(this);
+        super.moveX();
     }
     
     randmove() {

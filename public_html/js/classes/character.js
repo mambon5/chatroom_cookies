@@ -103,4 +103,13 @@ class Ccharacter extends Centity {
             }
         }
     }
+    
+    moveX() {
+        if(this.frameX < 3 && this.moving) {
+            this.frameX++;
+        }
+        else {
+            this.frameX = 0;
+        }
+    }
 }

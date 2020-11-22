@@ -34,12 +34,7 @@ class Cplayer extends Ccharacter {
         }
         if(dir !== 0) super.apuramove(dir);;
         
-        if(this.frameX < 3 && this.moving) {
-            this.frameX++;
-        }
-        else {
-            this.frameX = 0;
-        }
+        super.moveX();
     }
     
     draw() {
