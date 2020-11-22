@@ -3,9 +3,12 @@
  */
 
 class CcharacterManager {
-    constructor() {}
+    constructor() {
+        //vector
+    }
+    
+    
     
     static hello() {return "Hello!";}
-    
     
 }
