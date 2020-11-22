@@ -3,21 +3,27 @@
  */
 
 class Cmap {
-    constructor() {
+    constructor(rows, cols) {
         this._map_matrix = [
-                [0,0,1,1,0,0,0],
-                [1,1,1,1,1,1,0],
-                [0,0,1,1,0,1,1],
-                [0,1,1,1,0,0,1],
-                [0,0,1,1,1,1,1]
+                [0,0,1,1,0,0,0,0,0,1,1],
+                [1,1,1,1,1,1,0,0,0,0,0],
+                [0,0,1,1,0,1,1,1,1,1,0],
+                [0,1,1,1,0,0,1,0,0,1,0],
+                [0,0,1,1,1,1,1,0,0,1,0],
+                [0,0,1,1,0,0,0,0,0,1,0],
+                [1,1,1,1,1,1,0,0,0,1,0],
+                [0,0,1,1,0,1,1,0,0,1,0],
+                [0,1,1,1,0,0,1,1,1,1,1]
             ];
+        this._v_rows = rows;
+        this._v_cols = cols;
     }
     
     drawmatrix(canvW, canvH) {
         let f = this._map_matrix.length;
         let c = this._map_matrix[0].length;
-        let resh = canvW/c;
-        let resv = canvH/f;
+        let resh = canvW/this._v_cols; //dependera solo del canvas
+        let resv = canvH/this._v_rows;
 
         let x = player.x_init - player.x;
         let y = player.y_init - player.y;
@@ -44,18 +50,14 @@ class Cmap {
     }
     
     getresol(canvW, canvH){
-        let f = this._map_matrix.length;
-        let c = this._map_matrix[0].length;
-        let resh = canvW/c;
-        let resv = canvH/f;
+        let resh = canvW/this._v_cols;
+        let resv = canvH/this._v_rows;
         return [resh, resv];
     }
     
     getmatpos(x,y, canvW, canvH) {
-        let f = this._map_matrix.length;
-        let c = this._map_matrix[0].length;
-        let resh = canvW/c;
-        let resv = canvH/f;
+        let resh = canvW/this._v_cols;
+        let resv = canvH/this._v_rows;
         let pos2 = Math.floor(x/resh);
         let pos1 = Math.floor(y/resv);
 
@@ -79,8 +81,7 @@ class Cmap {
 
         if(pos2 <0 || pos1 > f-1 || pos1<0 || pos2 > c-1) return 0;
 
-        aux1.innerHTML = "matrix pos: " + pos + 
-                "<br> valid move: " + this._map_matrix[pos1][pos2];
+        //aux1.innerHTML = "matrix pos: " + pos + "<br> valid move: " + this._map_matrix[pos1][pos2];
         return this._map_matrix[pos1][pos2];
     }
 }

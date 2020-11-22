@@ -27,6 +27,11 @@ class Ccharacter extends Centity {
     set frameY(e) {this._frameY = e;}
     set moving(e) {this._moving = e;}
     
+    //update() {
+        //update position
+        //move
+    //}
+    
    move() {
       
     }
@@ -112,4 +117,11 @@ class Ccharacter extends Centity {
             this.frameX = 0;
         }
     }
+    /*
+     * animacion() {
+     *      vector(frames);
+     *      vector(10,15,23,35);
+     * }
+     * 
+     */
 }

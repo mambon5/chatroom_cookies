@@ -3,7 +3,7 @@
  */
 
 class Cgame {
-    constructor(fps) {
+    constructor(fps) { //filas, columnas
         this._fps = fps;
         this._now;
         this._then;
@@ -13,13 +13,17 @@ class Cgame {
     loop() { //needs to be generalized
         this._now = Date.now();
         this._elapsed = this._now - this._then;
-    //    aux2.innerHTML = "pos x: " + player.x + " <br>pos y: " + player.y;
+       aux2.innerHTML = "pos x: " + CcharacterManager.hello() + " <br>pos y: " + player.y;
     //    aux1.innerHTML = "now: " + now + "<br> then: " + then;
         if(this._elapsed > 1000/this._fps) {
             this._then = this._now;
+            //vector.update()
+            //vector.draw()
             ctx.clearRect(0,0,canvas.width,canvas.height);
             ctx.drawImage(background.image, background.x(), background.y(), canvas.width, canvas.height);
             map.drawmatrix(canvas.width, canvas.height);
+            
+            
     //        ctx.fillStyle = "red";
     //        ctx.fillRect(player.x_init, player.y_init, player.width, player.height);
     //        ctx.fillStyle = "black";
