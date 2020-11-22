@@ -17,7 +17,6 @@ class Cmonster extends Ccharacter {
     get name() {return this._name;}
 
     move() {
-
         this.randmove();
 
         this.animation.animate();

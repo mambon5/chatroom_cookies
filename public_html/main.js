@@ -26,8 +26,7 @@ player.animations.push(playerMoveLeftAnimation);
 player.animations.push(playerMoveRightAnimation);
 player.animations.push(playerMoveUpAnimation);
 player.animation = player.animations[0];
-
-var units = [player];
+CcharacterManager.add(player);
 
 const monster1AnimationSheet = new AnimationSheet("images/captainamerica_shield.png", 128, 192, 4, 4);
 
@@ -44,7 +43,7 @@ monst1.animations.push(monster1MoveLeftAnimation);
 monst1.animations.push(monster1MoveRightAnimation);
 monst1.animations.push(monster1MoveUpAnimation);
 monst1.animation = monst1.animations[0];
-units.push(monst1);
+CcharacterManager.add(monst1);
 
 const monster2AnimationSheet = new AnimationSheet("images/greebo2.png", 128, 128, 4, 4);
 
@@ -61,7 +60,7 @@ monst2.animations.push(monster2MoveLeftAnimation);
 monst2.animations.push(monster2MoveRightAnimation);
 monst2.animations.push(monster2MoveUpAnimation);
 monst2.animation = monst2.animations[0];
-units.push(monst2);
+CcharacterManager.add(monst2);
 
 const monster3AnimationSheet = new AnimationSheet("images/protocoldroid2.png", 128, 192, 4, 4);
 
@@ -78,7 +77,7 @@ monst3.animations.push(monster3MoveLeftAnimation);
 monst3.animations.push(monster3MoveRightAnimation);
 monst3.animations.push(monster3MoveUpAnimation);
 monst3.animation = monst3.animations[0];
-units.push(monst3);
+CcharacterManager.add(monst3);
 
 const monster4AnimationSheet = new AnimationSheet("images/tiana2.png", 128, 192, 4, 4);
 
@@ -88,14 +87,14 @@ const monster4MoveRightAnimation = new Animation(monster4AnimationSheet, 2, [5, 
 const monster4MoveUpAnimation = new Animation(monster4AnimationSheet, 3, [5, 5, 5, 5]);
 
 const monst4 = new Cmonster(canvas.width/2, canvas.height/2, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
-32, 48, scale, 10, margins = marg_tiana2, name="monst4");
+32, 48, scale, 8, margins = marg_tiana2, name="monst4");
 monst4.image.src = "images/tiana2.png";
 monst4.animations.push(monster4MoveDownAnimation);
 monst4.animations.push(monster4MoveLeftAnimation);
 monst4.animations.push(monster4MoveRightAnimation);
 monst4.animations.push(monster4MoveUpAnimation);
 monst4.animation = monst4.animations[0];
-units.push(monst4);
+CcharacterManager.add(monst4);
 
 const monster5AnimationSheet = new AnimationSheet("images/rhodey.png", 128, 192, 4, 4);
 
@@ -105,14 +104,14 @@ const monster5MoveRightAnimation = new Animation(monster5AnimationSheet, 2, [5, 
 const monster5MoveUpAnimation = new Animation(monster5AnimationSheet, 3, [5, 5, 5, 5]);
 
 const monst5 = new Cmonster(canvas.width/2, canvas.height/2, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
-32, 48, scale, 13, margins = marg_rhodey, name="monst5");
+32, 48, scale, 10, margins = marg_rhodey, name="monst5");
 monst5.image.src = "images/rhodey.png";
 monst5.animations.push(monster5MoveDownAnimation);
 monst5.animations.push(monster5MoveLeftAnimation);
 monst5.animations.push(monster5MoveRightAnimation);
 monst5.animations.push(monster5MoveUpAnimation);
 monst5.animation = monst5.animations[0];
-units.push(monst5);
+CcharacterManager.add(monst5);
 
 const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
 //background.image.src = "images/firstroom.png";
@@ -139,5 +138,4 @@ window.addEventListener("keyup", function(e){
  * */
 
 const game = new Cgame(60);
-
 game.startGame();
