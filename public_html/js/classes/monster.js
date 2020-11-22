@@ -49,6 +49,9 @@ class Cmonster extends Ccharacter {
         } else{
           this.animation.animating = false;
         }
+    }
 
+    draw() {
+        ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, this.x_cent(), this.y_cent(), this.width, this.height);
     }
 };
