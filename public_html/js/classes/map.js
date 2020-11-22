@@ -25,25 +25,33 @@ class Cmap {
         let resh = canvW/this._v_cols; //dependera solo del canvas
         let resv = canvH/this._v_rows;
 
+        //image to use for pattern:
+        var img1 = document.getElementById("wall");
+        var img2 = document.getElementById("floor");
+        
+        //
+        
         let x = player.x_init - player.x;
         let y = player.y_init - player.y;
 
         for(let i=0; i<c; i++) {
             for(let j=0; j<f; j++) {
                 if(this._map_matrix[j][i])  {
-                    ctx.globalAlpha = 0.3;
-                    ctx.fillStyle = "white";
-                    ctx.fillRect(i*resh+x,j*resv+y,resh,resv);
-                    ctx.fillStyle = "black";
-                    ctx.globalAlpha = 1;
+//                    ctx.globalAlpha = 0.4;
+//                    ctx.fillStyle = pat2;
+                    ctx.drawImage(img2,i*resh+x,j*resv+y,resh,resv);
+//                    ctx.fillRect(i*resh+x,j*resv+y,resh,resv);
+//                    ctx.fillStyle = "black";
+//                    ctx.globalAlpha = 1;
                 }
                 else {
-                    ctx.globalAlpha = 0.2;
-                    ctx.fillStyle = "IndianRed";
-                    ctx.fillRect(i*resh+x,j*resv+y,resh,resv);
-                    ctx.fillStyle = "black";
-                    ctx.globalAlpha = 1;
-                    ctx.strokeRect(i*resh+x,j*resv+y,resh,resv);
+//                    ctx.globalAlpha = 1;
+//                    ctx.fillStyle = pat1;
+//                    ctx.fillRect(i*resh+x,j*resv+y,resh,resv);
+                    ctx.drawImage(img1,i*resh+x,j*resv+y,resh,resv);
+//                    ctx.fillStyle = "black";
+//                    ctx.globalAlpha = 1;
+//                    ctx.strokeRect(i*resh+x,j*resv+y,resh,resv);
                 }
             }
         }
