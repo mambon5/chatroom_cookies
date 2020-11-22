@@ -27,7 +27,9 @@ class Cmap {
 
         //image to use for pattern:
         var img1 = document.getElementById("wall");
+//        var pat1 = ctx.createPattern(img1, "repeat");
         var img2 = document.getElementById("floor");
+//        var pat2 = ctx.createPattern(img2, "repeat");
         
         //
         
