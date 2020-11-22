@@ -1,49 +1,45 @@
-/* 
+/*
  * Character class
  */
 
 class Ccharacter extends Centity {
     constructor(x, y, width, height, scale, speed, margins) {
-        super(x, y, width*scale, height*scale, speed, 
+        super(x, y, width*scale, height*scale, speed,
         margins.map(function(x) {return Math.floor(x*scale) } ));
         this._x_init = x;
         this._y_init = y;
-        this._frameX = 0;
-        this._frameY = 0;
-        this._frameW = width;
-        this._frameH = height;
         this._moving = false;
+        this._animation = null;
+        this._animations = [];
     }
-    
+
     get x_init() {return this._x_init;}
     get y_init() {return this._y_init;}
-    get frameX() {return this._frameX;}
-    get frameY() {return this._frameY;}
-    get frameW() {return this._frameW;}
-    get frameH() {return this._frameH;}
     get moving() {return this._moving;}
-    
-    set frameX(e) {this._frameX = e;}
-    set frameY(e) {this._frameY = e;}
+    get animations() {return this._animations;}
+    get animation() {return this._animation;}
+
     set moving(e) {this._moving = e;}
-    
+    set animations(e) {this._animations = e;}
+    set animation(e) {this._animation = e;}
+
     //update() {
         //update position
         //move
     //}
-    
+
    move() {
-      
+
     }
-    
+
     apuramove(dir) {    //dir is 1-top 2-right 3-down 4-left
-        
+
         let marg = this.margins;//margins are left, top, right, bottom
-        
+
         let canvW = canvas.width;
         let canvH = canvas.height;
         let resol = map.getresol(canvW, canvH); // get resolution of each cell
-                
+
         let cutrect = super.cut_rect(); //cuts rectangl according to margins
 
         let pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
@@ -59,10 +55,10 @@ class Ccharacter extends Centity {
                     this.moving = true;
                 }
             }
-            
+
         }
-        
-        cutrect = super.cut_rect();        
+
+        cutrect = super.cut_rect();
         pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         if(dir===2 || dir == 3 ||dir == 4) {
             if( map.validcorners(cutrect.x + this.speed ,cutrect.y , cutrect.width, cutrect.height, canvW, canvH)) {
@@ -77,7 +73,7 @@ class Ccharacter extends Centity {
                 }
             }
         }
-        cutrect = super.cut_rect();        
+        cutrect = super.cut_rect();
         pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         if(dir===4 || dir == 5 ||dir == 6) {
             if( map.validcorners(cutrect.x  , cutrect.y + this.speed , cutrect.width, cutrect.height, canvW, canvH)) {
@@ -108,20 +104,4 @@ class Ccharacter extends Centity {
             }
         }
     }
-    
-    moveX() {
-        if(this.frameX < 3 && this.moving) {
-            this.frameX++;
-        }
-        else {
-            this.frameX = 0;
-        }
-    }
-    /*
-     * animacion() {
-     *      vector(frames);
-     *      vector(10,15,23,35);
-     * }
-     * 
-     */
 }
