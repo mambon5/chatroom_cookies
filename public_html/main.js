@@ -66,7 +66,7 @@ window.addEventListener("keyup", function(e){
  *
  * */
 
-const game = new Cgame(12.5);
+const game = new Cgame(12);
 
 game.startGame();
 
