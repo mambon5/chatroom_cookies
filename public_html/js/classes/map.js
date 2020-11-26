@@ -7,13 +7,13 @@ class Cmap {
         this._map_matrix = [
                 [0,0,1,1,0,0,0,0,0,1,1],
                 [1,1,1,1,1,1,0,0,0,1,0],
-                [0,0,1,1,0,1,1,1,1,1,0],
+                [0,0,1,1,0,2,1,1,1,1,0],
                 [0,1,1,1,0,0,1,0,0,1,0],
                 [0,0,1,1,1,1,1,1,0,1,0],
                 [0,0,1,1,0,0,0,1,1,1,0],
                 [1,1,1,1,1,1,0,0,0,1,0],
-                [0,0,1,1,0,1,1,0,0,1,0],
-                [0,1,1,1,0,1,1,1,1,1,1],
+                [0,0,1,1,0,1,2,0,0,1,0],
+                [0,1,1,1,0,1,2,2,1,1,1],
                 [0,1,1,1,1,0,1,1,1,1,1]
             ];
         this._v_rows = rows;
@@ -31,7 +31,7 @@ class Cmap {
 //        var pat1 = ctx.createPattern(img1, "repeat");
         var img2 = document.getElementById("floor");
 //        var pat2 = ctx.createPattern(img2, "repeat");
-        
+        var img3 = document.getElementById("grass");
         //
         
         let x = player.x_init - player.x;
@@ -39,7 +39,7 @@ class Cmap {
 
         for(let i=0; i<c; i++) {
             for(let j=0; j<f; j++) {
-                if(this._map_matrix[j][i])  {
+                if(this._map_matrix[j][i]===1)  {
 //                    ctx.globalAlpha = 0.4;
 //                    ctx.fillStyle = pat2;
                     ctx.drawImage(img2,i*resh+x,j*resv+y,resh,resv);
@@ -47,6 +47,9 @@ class Cmap {
 //                    ctx.fillStyle = "black";
 //                    ctx.globalAlpha = 1;
                 }
+                else if(this._map_matrix[j][i]===2){
+                    ctx.drawImage(img3,i*resh+x,j*resv+y,resh,resv);
+                } 
                 else {
 //                    ctx.globalAlpha = 1;
 //                    ctx.fillStyle = pat1;

@@ -14,6 +14,11 @@ class CcharacterManager {
     }
     
     static draw() {
+        CcharacterManager.sortfordraw();
         v.forEach(character => character.draw());
+    }
+    
+    static sortfordraw() {//sort for printing on screen, lowest y first to print
+        v.sort(function(a,b){return a.y-b.y;});        
     }
 }

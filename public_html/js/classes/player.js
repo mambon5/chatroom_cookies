@@ -33,7 +33,8 @@ class Cplayer extends Ccharacter {
             else dir = 3;
         }
         if(dir !== 0){
-          super.apuramove(dir);
+          let xoc = super.choque(dir);
+          if(!xoc) super.apuramove(dir);
           this.animation.animating = true;
         } else{
           this.animation.animating = false;

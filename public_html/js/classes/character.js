@@ -32,6 +32,20 @@ class Ccharacter extends Centity {
 
     }
 
+   choque(dir) {
+    var arrxoc = []; //array con characteres excepto el mismo
+    for(let i = 0; i < v.length; i++){ 
+        if(v[i].name !== this.name) arrxoc.push(v[i].cut_rect());
+    }
+    
+    let cutrect = super.cut_rect();
+    cutrect.dirmove(dir); //this moves the cut rectangle in order to foresee where the 
+                //ninotet will be after the move
+    let xocat = arrayxoc(cutrect, arrxoc);
+    return xocat;
+    
+    }
+
     apuramove(dir) {    //dir is 1-top 2-right 3-down 4-left
 
         let marg = this.margins;//margins are left, top, right, bottom

@@ -43,7 +43,8 @@ class Cmonster extends Ccharacter {
         if( num===7 || num === 8 ){
             this.animation = this.animations[1];
         }
-        if(num < 9 && num > 0) {
+        
+        if(num < 9 && num > 0 && !super.choque(num)){
           super.apuramove(num);
           this.animation.animating = true;
         } else{
