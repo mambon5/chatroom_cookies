@@ -4,10 +4,8 @@
 
 class Cplayer extends Ccharacter {
     constructor(x, y, width, height, scale, speed, margins, name="hero") {
-        super(x, y, width, height, scale, speed, margins);
-         this._name = name;
+        super(x, y, width, height, scale, speed, margins, name);
     }
-    get name() {return this._name;}
 
     move() {
         let dir = 0;

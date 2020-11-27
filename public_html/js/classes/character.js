@@ -3,7 +3,7 @@
  */
 
 class Ccharacter extends Centity {
-    constructor(x, y, width, height, scale, speed, margins) {
+    constructor(x, y, width, height, scale, speed, margins, name) {
         super(x, y, width*scale, height*scale, speed,
         margins.map(function(x) {return Math.floor(x*scale) } ));
         this._x_init = x;
@@ -11,6 +11,7 @@ class Ccharacter extends Centity {
         this._moving = false;
         this._animation = null;
         this._animations = [];
+        this._name = name;
     }
 
     get x_init() {return this._x_init;}
@@ -18,6 +19,7 @@ class Ccharacter extends Centity {
     get moving() {return this._moving;}
     get animations() {return this._animations;}
     get animation() {return this._animation;}
+    get name() {return this._name;}
 
     set moving(e) {this._moving = e;}
     set animations(e) {this._animations = e;}

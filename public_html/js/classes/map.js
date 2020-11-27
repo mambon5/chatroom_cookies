@@ -78,14 +78,14 @@ class Cmap {
         return [pos1,pos2];
     }
     
-    validcorners( objx, objy, objw, objh, canvW, canvH ) {
+    validcorners(objx, objy, objw, objh, canvW, canvH) {
         return  this.validpos(objx, objy, canvW, canvH) &&
                 this.validpos(objx + objw, objy, canvW, canvH) &&
                 this.validpos(objx, objy + objh, canvW, canvH) &&
                 this.validpos(objx + objw, objy + objh, canvW, canvH);
     }       
 
-    validpos(objx, objy,canvW, canvH) {
+    validpos(objx, objy, canvW, canvH) {
         let f = this._map_matrix.length;
         let c = this._map_matrix[0].length;
 
@@ -97,5 +97,15 @@ class Cmap {
 
         //aux1.innerHTML = "matrix pos: " + pos + "<br> valid move: " + this._map_matrix[pos1][pos2];
         return this._map_matrix[pos1][pos2];
+    }
+    
+    generateValidPos(width, height) {
+        let x = -1;
+        let y = -1;
+        while(!map.validcorners(x, y, width, height, canvas.width, canvas.height)) {
+            x = Math.random() * canvas.width * this._v_cols;
+            y = Math.random() * canvas.height * this._v_rows;
+        }
+        return [x, y];
     }
 }
