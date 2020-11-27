@@ -17,6 +17,7 @@ const monster2AnimationSheet = new AnimationSheet("images/greebo2.png", 128, 128
 const monster3AnimationSheet = new AnimationSheet("images/protocoldroid2.png", 128, 192, 4, 4);
 const monster4AnimationSheet = new AnimationSheet("images/tiana2.png", 128, 192, 4, 4);
 const monster5AnimationSheet = new AnimationSheet("images/rhodey.png", 128, 192, 4, 4);
+const monster6AnimationSheet = new AnimationSheet("images/laila.png", 128, 192, 4, 4);
 
 const player = new Cplayer(canvas.width/2, canvas.height/10*5, 32, 48, scale, 10, margins = marg_henry, name="hjones");
 player.image.src = "images/henryjones.png"; // 24.25, 45.5
@@ -70,6 +71,15 @@ for (var i = 0; i < 4; i ++){
 }
 monst5.animation = monst5.animations[0];
 CcharacterManager.add(monst5);
+
+const monst6 = new Cmonster(canvas.width/10*6, canvas.height/2, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
+32, 48, scale, 10, margins = marg_laila, name="monst6");
+monst6.image.src = "images/laila.png";
+for (var i = 0; i < 4; i ++){
+  monst6.animations.push(new Animation(monster6AnimationSheet, i, [5, 5, 5, 5]));
+}
+monst6.animation = monst6.animations[0];
+CcharacterManager.add(monst6);
 
 const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
 //background.image.src = "images/firstroom.png";
