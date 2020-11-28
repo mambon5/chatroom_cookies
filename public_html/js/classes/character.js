@@ -48,6 +48,16 @@ class Ccharacter extends Centity {
     
     }
 
+    generateValidPos() {
+        let x = -1;
+        let y = -1;
+        while( this.choque(0) || !map.validcorners(x, y, this.width, this.height, canvas.width, canvas.height)) {
+            x = Math.random() * map._resh * map._cols;
+            y = Math.random() * map._resv * map._rows;
+        }
+        return [x, y];
+    }
+
     apuramove(dir) {    //dir is 1-top 2-right 3-down 4-left
 
         let marg = this.margins;//margins are left, top, right, bottom

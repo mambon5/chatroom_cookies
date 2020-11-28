@@ -104,13 +104,5 @@ class Cmap {
         return this._map_matrix[pos1][pos2];
     }
     
-    generateValidPos(width, height) {
-        let x = -1;
-        let y = -1;
-        while(!map.validcorners(x, y, width, height, canvas.width, canvas.height)) {
-            x = Math.random() * this._resh * this._cols;
-            y = Math.random() * this._resv * this._rows;
-        }
-        return [x, y];
-    }
+    
 }

@@ -24,7 +24,7 @@ class Centity extends Crectangle {
                         this.y + this.margins[1],
                         this.width - this.margins[0] - this.margins[2],
                         this.height - this.margins[1] - this.margins[3],
-                        this.speed    );
+                        this.speed);
     }
     
     dirmove(dir) {
