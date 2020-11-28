@@ -1,6 +1,6 @@
-/*
+/**
  * Animation class
- */
+ **/
 
 class Animation {
     constructor(animationSheet, animation, timePerFrame) {
@@ -36,7 +36,7 @@ class Animation {
           }
         }
         this._animationTick++;
-        if (this._animationTick > this._timePerFrame.reduce((a, b) => a+b,0)){
+        if (this._animationTick > this._timePerFrame.reduce((a, b) => a+b,0)) {
           this._animationTick = 0;
         }
       }else{

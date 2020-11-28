@@ -72,7 +72,9 @@ class Ccharacter extends Centity {
         
         let rspeed = 0;
         
-        if(dir===2 || dir===4 ||dir === 6 ||dir === 8 ) rspeed=this.speed/Math.sqrt(2);
+        if(dir===2 || dir===4 ||dir === 6 ||dir === 8 ) {
+            Math.floor(rspeed=this.speed/Math.sqrt(2));
+        }
         else rspeed = this.speed; //adjusting speed for diagonal displacement
         if( dir==8 || dir===1 || dir == 2) {
             if( map.validcorners(cutrect.x , cutrect.y - rspeed , cutrect.width, cutrect.height, canvW, canvH)) {
