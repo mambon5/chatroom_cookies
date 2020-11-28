@@ -16,8 +16,12 @@ class Cmap {
                 [0,1,1,1,0,1,2,2,1,1,1],
                 [0,1,1,1,1,0,1,1,1,1,1]
             ];
+        this._rows = this._map_matrix.length;
+        this._cols = this._map_matrix[0].length;
         this._v_rows = rows;
         this._v_cols = cols;
+        this._resh = canvas.width/this._v_cols;
+        this._resv = canvas.height/this._v_rows;
     }
     
     drawmatrix(canvW, canvH) {
@@ -104,8 +108,8 @@ class Cmap {
         let x = -1;
         let y = -1;
         while(!map.validcorners(x, y, width, height, canvas.width, canvas.height)) {
-            x = Math.random() * canvas.width * this._v_cols;
-            y = Math.random() * canvas.height * this._v_rows;
+            x = Math.random() * this._resh * this._cols;
+            y = Math.random() * this._resv * this._rows;
         }
         return [x, y];
     }

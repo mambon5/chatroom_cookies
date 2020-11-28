@@ -20,9 +20,9 @@ const monster4AnimationSheet = new AnimationSheet("images/tiana2.png", 128, 192,
 const monster5AnimationSheet = new AnimationSheet("images/rhodey.png", 128, 192, 4, 4);
 const monster6AnimationSheet = new AnimationSheet("images/laila.png", 128, 192, 4, 4);
 
-const player = new Cplayer(canvas.width/2, canvas.height/10*5, 32, 48, scale, speed, margins = marg_henry, name="hjones");
+const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, speed, margins = marg_henry, name="hjones");
 player.image.src = "images/henryjones.png"; // 24.25, 45.5
-let init_pos = map.generateValidPos(32, 48);
+let init_pos = map.generateValidPos(player.width, player.height);
 player.x = init_pos[0];
 player.y = init_pos[1];
 for (var i = 0; i < 4; i ++){
