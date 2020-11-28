@@ -7,7 +7,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = 930;
 canvas.height = 462;
 
-const scale = 1.6;
+const scale = 2;
 
 const map = new Cmap(3,5);
 
