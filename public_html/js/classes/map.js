@@ -30,8 +30,9 @@ class Cmap {
         var img1 = document.getElementById("wall");
 //        var pat1 = ctx.createPattern(img1, "repeat");
         var img2 = document.getElementById("floor");
-//        var pat2 = ctx.createPattern(img2, "repeat");
+        var pat2 = ctx.createPattern(img2, "repeat");
         var img3 = document.getElementById("grass");
+        var img4 = document.getElementById("tiles1");
         //
         
         let x = player.x_init - player.x;
@@ -40,15 +41,15 @@ class Cmap {
         for(let i=0; i<c; i++) {
             for(let j=0; j<f; j++) {
                 if(this._map_matrix[j][i]===1)  {
-//                    ctx.globalAlpha = 0.4;
+//                    ctx.globalAlpha = 1;
 //                    ctx.fillStyle = pat2;
-                    ctx.drawImage(img2,i*resh+x,j*resv+y,resh,resv);
+                    ctx.drawImage(img4,i*resh+x,j*resv+y,resh,resv);
 //                    ctx.fillRect(i*resh+x,j*resv+y,resh,resv);
 //                    ctx.fillStyle = "black";
 //                    ctx.globalAlpha = 1;
                 }
                 else if(this._map_matrix[j][i]===2){
-                    ctx.drawImage(img3,i*resh+x,j*resv+y,resh,resv);
+                    ctx.drawImage(img4,i*resh+x,j*resv+y,resh,resv);
                 } 
                 else {
 //                    ctx.globalAlpha = 1;

@@ -59,9 +59,14 @@ class Ccharacter extends Centity {
         let cutrect = super.cut_rect(); //cuts rectangl according to margins
 
         let pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
+        
+        let rspeed = 0;
+        
+        if(dir===2 || dir===4 ||dir === 6 ||dir === 8 ) rspeed=this.speed/Math.sqrt(2);
+        else rspeed = this.speed; //adjusting speed for diagonal displacement
         if( dir==8 || dir===1 || dir == 2) {
-            if( map.validcorners(cutrect.x , cutrect.y - this.speed , cutrect.width, cutrect.height, canvW, canvH)) {
-                this.y -= this.speed;
+            if( map.validcorners(cutrect.x , cutrect.y - rspeed , cutrect.width, cutrect.height, canvW, canvH)) {
+                this.y -= rspeed;
                 this.moving = true;
             } else {
                 let limy = pos[0]*resol[1] ;
@@ -77,8 +82,8 @@ class Ccharacter extends Centity {
         cutrect = super.cut_rect();
         pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         if(dir===2 || dir == 3 ||dir == 4) {
-            if( map.validcorners(cutrect.x + this.speed ,cutrect.y , cutrect.width, cutrect.height, canvW, canvH)) {
-                this.x += this.speed;
+            if( map.validcorners(cutrect.x + rspeed ,cutrect.y , cutrect.width, cutrect.height, canvW, canvH)) {
+                this.x += rspeed;
                 this.moving = true;
             } else {
                 let limx = (pos[1]+1)*resol[0] ;
@@ -92,8 +97,8 @@ class Ccharacter extends Centity {
         cutrect = super.cut_rect();
         pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         if(dir===4 || dir == 5 ||dir == 6) {
-            if( map.validcorners(cutrect.x  , cutrect.y + this.speed , cutrect.width, cutrect.height, canvW, canvH)) {
-                this.y += this.speed;
+            if( map.validcorners(cutrect.x  , cutrect.y +rspeed , cutrect.width, cutrect.height, canvW, canvH)) {
+                this.y += rspeed;
                 this.moving = true;
             } else {
                 let limy = (pos[0]+1)*resol[1] ;
@@ -107,8 +112,8 @@ class Ccharacter extends Centity {
         cutrect = super.cut_rect();
         pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
         if(dir===6 || dir == 7 ||dir == 8) {
-            if( map.validcorners(cutrect.x - this.speed, cutrect.y , cutrect.width, cutrect.height, canvW, canvH)) {
-                this.x -= this.speed;
+            if( map.validcorners(cutrect.x - rspeed, cutrect.y , cutrect.width, cutrect.height, canvW, canvH)) {
+                this.x -= rspeed;
                 this.moving = true;
             } else {
                 let limx = pos[1]*resol[0] ;
