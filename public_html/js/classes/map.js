@@ -46,7 +46,7 @@ class Cmap {
             for(let j=0; j<f; j++) {
                 if(this._map_matrix[j][i]===1)  {
 //                    ctx.globalAlpha = 1;
-//                    ctx.fillStyle = pat2;
+//                    ctx.fillStyle = "white";
                     ctx.drawImage(img4,i*resh+x,j*resv+y,resh,resv);
 //                    ctx.fillRect(i*resh+x,j*resv+y,resh,resv);
 //                    ctx.fillStyle = "black";

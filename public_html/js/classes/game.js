@@ -23,7 +23,7 @@ class Cgame {
 
             CcharacterManager.update();
             CcharacterManager.draw();
-//            imgmargins(ctx, canvas.width/2, canvas.height/2, player.width, player.height);
+            imgmargins(ctx, canvas.width/2, canvas.height/2, player.width, player.height);
 
         }
         requestAnimationFrame(()=>this.loop());
