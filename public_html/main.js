@@ -103,17 +103,29 @@ barril2.x = init_pos[0];
 barril2.y = init_pos[1];
 CcharacterManager.add(barril2);
 
+ //genera i barrils aleatoriament de candy:
+for(let i=0; i<20; ++i) {
+    barril3 = new Cobject(canvas.width/10*6, canvas.height*3/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 37, scale, 0, 
+    margins = marg_barril1,  name= "barril1");
+    barril3.animations.push(new Animation(barril1AnimationSheet, 0, 1));
+    barril3.animation = barril3.animations[0];
+    init_pos = barril3.generateValidPos();
+    barril3.x = init_pos[0];
+    barril3.y = init_pos[1];
+    CcharacterManager.add(barril3);
+}
 
-const barril3 = new Cobject(canvas.width/10*6, canvas.height*3/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 37, scale, 0, 
-margins = marg_barril1,  name= "barril1");
-barril3.animations.push(new Animation(barril2AnimationSheet, 0, 1));
-barril3.animation = barril3.animations[0];
-init_pos = barril3.generateValidPos();
-barril3.x = init_pos[0];
-barril3.y = init_pos[1];
-CcharacterManager.add(barril3);
-
-
+ //genera i barrils aleatoriament de vi:
+for(let i=0; i<20; ++i) {
+    barril3 = new Cobject(canvas.width/10*6, canvas.height*3/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 37, scale, 0, 
+    margins = marg_barril1,  name= "barril1");
+    barril3.animations.push(new Animation(barril2AnimationSheet, 0, 1));
+    barril3.animation = barril3.animations[0];
+    init_pos = barril3.generateValidPos();
+    barril3.x = init_pos[0];
+    barril3.y = init_pos[1];
+    CcharacterManager.add(barril3);
+}
 
 
 const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});

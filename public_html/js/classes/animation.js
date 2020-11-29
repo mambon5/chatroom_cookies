@@ -5,11 +5,11 @@
 class Animation {
     constructor(animationSheet, animation, timePerFrame) {
         this._animationSheet = animationSheet;
-        this._animation = animation;
+        this._animation = animation;//frameY
         this._timePerFrame = timePerFrame;
         this._animating = false;
         this._animationTick = 0;
-        this._currentFrame = 0;
+        this._currentFrame = 0;//frameX
     }
 
     get animationSheet() {return this._animationSheet;}
