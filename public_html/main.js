@@ -19,6 +19,9 @@ const monster3AnimationSheet = new AnimationSheet("images/protocoldroid2.png", 1
 const monster4AnimationSheet = new AnimationSheet("images/tiana2.png", 128, 192, 4, 4);
 const monster5AnimationSheet = new AnimationSheet("images/rhodey.png", 128, 192, 4, 4);
 const monster6AnimationSheet = new AnimationSheet("images/laila.png", 128, 192, 4, 4);
+const barril1AnimationSheet = new AnimationSheet("images/barril1.png", 115, 130, 1, 1);
+const barril2AnimationSheet = new AnimationSheet("images/barril2.png", 164, 178, 1, 1);
+
 
 const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, speed, margins = marg_henry, name="hjones");
 //player.image.src = "images/asdf.png"; // 24.25, 45.5
@@ -78,16 +81,39 @@ CcharacterManager.add(monst5);
 
 const monst6 = new Cmonster(canvas.width/10*6, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
 32, 48, scale, 7, margins = marg_laila, name="monst6");
-//monst6.image.src = "images/laila.png";
 for (var i = 0; i < 4; i ++){
   monst6.animations.push(new Animation(monster6AnimationSheet, i, [5, 5, 5, 5]));
 }
 monst6.animation = monst6.animations[0];
 CcharacterManager.add(monst6);
 
-const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
-//background.image.src = "images/firstroom.png";
 
+const barril1 = new Cobject(canvas.width/10*7, canvas.height/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 37, scale, 0, 
+margins = marg_barril1,  name= "barril1");
+barril1.animations.push(new Animation(barril1AnimationSheet, 0, 1));
+barril1.animation = barril1.animations[0];
+CcharacterManager.add(barril1);
+
+const barril2 = new Cobject(canvas.width/10*6, canvas.height*2/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 37, scale, 0, 
+margins = marg_barril1,  name= "barril1");
+barril2.animations.push(new Animation(barril1AnimationSheet, 0, 1));
+barril2.animation = barril2.animations[0];
+CcharacterManager.add(barril2);
+init_pos = barril2.generateValidPos();
+barril2.x = init_pos[0];
+barril2.y = init_pos[1];
+
+const barril3 = new Cobject(canvas.width/10*6, canvas.height*3/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 37, scale, 0, 
+margins = marg_barril1,  name= "barril1");
+barril3.animations.push(new Animation(barril2AnimationSheet, 0, 1));
+barril3.animation = barril3.animations[0];
+CcharacterManager.add(barril3);
+init_pos = barril3.generateValidPos();
+barril3.x = init_pos[0];
+barril3.y = init_pos[1];
+
+const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
+//background.image.src = "images/fix, y, width, height, speed, margins = [0,0,0,0]
 const keys = [];
 window.addEventListener("keydown", function(e){
     keys[e.keyCode] = true;

@@ -19,11 +19,11 @@ class Cgame {
 
             ctx.clearRect(0,0,canvas.width,canvas.height);
             ctx.drawImage(background.image, background.x(), background.y(), canvas.width, canvas.height);
-            map.drawmatrix(canvas.width, canvas.height);
+            map.drawmatrix();
 
             CcharacterManager.update();
             CcharacterManager.draw();
-//            imgmargins(ctx, canvas.width/2, canvas.height/2, player.width, player.height);
+            //imgmargins(ctx, canvas.width/2, canvas.height/2, player.width, player.height);
 
         }
         requestAnimationFrame(()=>this.loop());

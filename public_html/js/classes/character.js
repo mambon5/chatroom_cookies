@@ -64,11 +64,11 @@ class Ccharacter extends Centity {
 
         let canvW = canvas.width;
         let canvH = canvas.height;
-        let resol = map.getresol(canvW, canvH); // get resolution of each cell
+        let resol = map.getresol(); // get resolution of each cell
 
         let cutrect = super.cut_rect(); //cuts rectangl according to margins
 
-        let pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
+        let pos = map.getmatpos(cutrect.x, cutrect.y);
         
         let rspeed = 0;
         
@@ -92,7 +92,7 @@ class Ccharacter extends Centity {
         }
 
         cutrect = super.cut_rect();
-        pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
+        pos = map.getmatpos(cutrect.x, cutrect.y);
         if(dir===2 || dir == 3 ||dir == 4) {
             if( map.validcorners(cutrect.x + rspeed ,cutrect.y , cutrect.width, cutrect.height, canvW, canvH)) {
                 this.x += rspeed;
@@ -107,7 +107,7 @@ class Ccharacter extends Centity {
             }
         }
         cutrect = super.cut_rect();
-        pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
+        pos = map.getmatpos(cutrect.x, cutrect.y);
         if(dir===4 || dir == 5 ||dir == 6) {
             if( map.validcorners(cutrect.x  , cutrect.y +rspeed , cutrect.width, cutrect.height, canvW, canvH)) {
                 this.y += rspeed;
@@ -122,7 +122,7 @@ class Ccharacter extends Centity {
             }
         }
         cutrect = super.cut_rect();
-        pos = map.getmatpos(cutrect.x, cutrect.y, canvW, canvH);
+        pos = map.getmatpos(cutrect.x, cutrect.y);
         if(dir===6 || dir == 7 ||dir == 8) {
             if( map.validcorners(cutrect.x - rspeed, cutrect.y , cutrect.width, cutrect.height, canvW, canvH)) {
                 this.x -= rspeed;
