@@ -21,7 +21,7 @@ const monster5AnimationSheet = new AnimationSheet("images/rhodey.png", 128, 192,
 const monster6AnimationSheet = new AnimationSheet("images/laila.png", 128, 192, 4, 4);
 
 const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, speed, margins = marg_henry, name="hjones");
-player.image.src = "images/asdf.png"; // 24.25, 45.5
+//player.image.src = "images/asdf.png"; // 24.25, 45.5
 let init_pos = player.generateValidPos();
 player.x = init_pos[0];
 player.y = init_pos[1];
@@ -33,7 +33,7 @@ CcharacterManager.add(player);
 
 const monst1 = new Cmonster(canvas.width/10*0, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
                 32, 48, scale, 7, margins = marg_cpmerica, name="monst1");
-monst1.image.src = "images/captainamerica_shield.png";
+//monst1.image.src = "images/captainamerica_shield.png";
 for (var i = 0; i < 4; i ++){
   monst1.animations.push(new Animation(monster1AnimationSheet, i, [5, 5, 5, 5]));
 }
@@ -42,7 +42,7 @@ CcharacterManager.add(monst1);
 
 const monst2 = new Cmonster(canvas.width/10*1, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
 32, 32, scale, 3, margins = marg_greebo2, name="monst2");
-monst2.image.src = "images/greebo2.png";
+//monst2.image.src = "images/greebo2.png";
 for (var i = 0; i < 4; i ++){
   monst2.animations.push(new Animation(monster2AnimationSheet, i, [5, 5, 5, 5]));
 }
@@ -51,7 +51,7 @@ CcharacterManager.add(monst2);
 
 const monst3 = new Cmonster(canvas.width/10*2, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
 32, 48, scale, 3, margins = marg_prodroid2, name="monst3");
-monst3.image.src = "images/protocoldroid2.png";
+//monst3.image.src = "images/protocoldroid2.png";
 for (var i = 0; i < 4; i ++){
   monst3.animations.push(new Animation(monster3AnimationSheet, i, [5, 5, 5, 5]));
 }
@@ -60,7 +60,7 @@ CcharacterManager.add(monst3);
 
 const monst4 = new Cmonster(canvas.width/10*3, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
 32, 48, scale, 7, margins = marg_tiana2, name="monst4");
-monst4.image.src = "images/tiana2.png";
+//monst4.image.src = "images/tiana2.png";
 for (var i = 0; i < 4; i ++){
   monst4.animations.push(new Animation(monster4AnimationSheet, i, [5, 5, 5, 5]));
 }
@@ -69,7 +69,7 @@ CcharacterManager.add(monst4);
 
 const monst5 = new Cmonster(canvas.width/10*4, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
 32, 48, scale, 10, margins = marg_rhodey, name="monst5");
-monst5.image.src = "images/rhodey.png";
+//monst5.image.src = "images/rhodey.png";
 for (var i = 0; i < 4; i ++){
   monst5.animations.push(new Animation(monster5AnimationSheet, i, [5, 5, 5, 5]));
 }
@@ -78,7 +78,7 @@ CcharacterManager.add(monst5);
 
 const monst6 = new Cmonster(canvas.width/10*6, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
 32, 48, scale, 7, margins = marg_laila, name="monst6");
-monst6.image.src = "images/laila.png";
+//monst6.image.src = "images/laila.png";
 for (var i = 0; i < 4; i ++){
   monst6.animations.push(new Animation(monster6AnimationSheet, i, [5, 5, 5, 5]));
 }
