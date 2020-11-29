@@ -40,11 +40,16 @@ class Cmap {
             for(let j = 0; j < this._rows; j++) {
                 switch(this._map_matrix[j][i]) {
                     case 0:
-                        ctx.drawImage(img1,i*this._resh+x,j*this._resv+y,this._resh,this._resv);
+                        ctx.drawImage(img1,i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1);
                         break;
                     case 1:
                     case 2:
-                        ctx.drawImage(img4,i*this._resh+x,j*this._resv+y,this._resh,this._resv);
+//                    ctx.globalAlpha = 1;
+//                    ctx.fillStyle = "white";
+//                    ctx.fillRect(i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1);
+//                    ctx.fillStyle = "black";
+//                    ctx.globalAlpha = 1;
+                        ctx.drawImage(img4,i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1);
                         break;
                 }
             }
