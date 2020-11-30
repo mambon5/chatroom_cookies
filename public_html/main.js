@@ -21,6 +21,9 @@ const monster5AnimationSheet = new AnimationSheet("images/rhodey.png", 128, 192,
 const monster6AnimationSheet = new AnimationSheet("images/laila.png", 128, 192, 4, 4);
 const barril1AnimationSheet = new AnimationSheet("images/barril1.png", 115, 130, 1, 1);
 const barril2AnimationSheet = new AnimationSheet("images/barril2.png", 164, 178, 1, 1);
+const lollypalAnimationSheet = new AnimationSheet("images/lollypoppal.png", 100, 237, 1, 1);
+const candybowlAnimationSheet = new AnimationSheet("images/candybowl1.png", 62, 93, 1, 1);
+
 
 
 const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, speed, margins = marg_henry, name="hjones");
@@ -125,6 +128,31 @@ for(let i=0; i<10; ++i) {
     barril3.x = init_pos[0];
     barril3.y = init_pos[1];
     CcharacterManager.add(barril3);
+}
+//palo de piruletas:
+for(let i=0; i<10; ++i) {
+    lollypal = new Cobject(canvas.width/10*6, canvas.height*3/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 
+    20, 47, scale, 0, 
+    margins = marg_lollypal,  name= ("lollypopbar"+i));
+    lollypal.animations.push(new Animation(lollypalAnimationSheet, 0, 1));
+    lollypal.animation = lollypal.animations[0];
+    init_pos = lollypal.generateValidPos();
+//    lollypal.x = init_pos[0];
+//    lollypal.y = init_pos[1];
+    CcharacterManager.add(lollypal);
+}
+
+//bol de chuches
+for(let i=0; i<10; ++i) {
+    candybowl = new Cobject(canvas.width/10*6, canvas.height*3/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 
+    15, 20, scale, 0, 
+    margins = marg_candybowl,  name= ("candybowl"+i));
+    candybowl.animations.push(new Animation(candybowlAnimationSheet, 0, 1));
+    candybowl.animation = candybowl.animations[0];
+    init_pos = candybowl.generateValidPos();
+//    lollypal.x = init_pos[0];
+//    lollypal.y = init_pos[1];
+    CcharacterManager.add(candybowl);
 }
 
 
