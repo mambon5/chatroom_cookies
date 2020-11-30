@@ -54,6 +54,8 @@ class Ccharacter extends Centity {
         while( this.choque(0) || !map.validcorners(x, y, this.width, this.height, canvas.width, canvas.height)) {
             x = Math.random() * map._resh * map._cols;
             y = Math.random() * map._resv * map._rows;
+            this.x = x;
+            this.y = y;
         }
         return [x, y];
     }
