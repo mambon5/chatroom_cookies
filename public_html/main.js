@@ -104,7 +104,7 @@ barril2.y = init_pos[1];
 CcharacterManager.add(barril2);
 
  //genera i barrils aleatoriament de candy:
-for(let i=0; i<20; ++i) {
+for(let i=0; i<10; ++i) {
     barril3 = new Cobject(canvas.width/10*6, canvas.height*3/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 37, scale, 0, 
     margins = marg_barril1,  name= ("barrillcandy"+i));
     barril3.animations.push(new Animation(barril1AnimationSheet, 0, 1));
@@ -116,7 +116,7 @@ for(let i=0; i<20; ++i) {
 }
 
  //genera i barrils aleatoriament de vi:
-for(let i=0; i<20; ++i) {
+for(let i=0; i<10; ++i) {
     barril3 = new Cobject(canvas.width/10*6, canvas.height*3/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 37, scale, 0, 
     margins = marg_barril1,  name= ("barrilwine"+i));
     barril3.animations.push(new Animation(barril2AnimationSheet, 0, 1));
