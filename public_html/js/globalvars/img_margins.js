@@ -15,5 +15,5 @@ var marg_rhodey = [5, 3, 4, 2]; marg_rhodey[1] += extrah;
 var marg_laila = [8, 5, 6, 1]; marg_laila[1] += extrah;
 var marg_barril1 = [1, 1, 1, 1]; marg_barril1[1] += extrah*2/3;
 var marg_lollypal = [1, 1, 1, 1]; marg_lollypal[1] += extrah*1.3;
-var marg_candybowl = [1, 1, 1, 1]; marg_candybowl[1] += extrah/10;
+var marg_candybowl = [2, 1, 1, 1]; marg_candybowl[1] += extrah/10;
 

@@ -23,6 +23,7 @@ const barril1AnimationSheet = new AnimationSheet("images/barril1.png", 115, 130,
 const barril2AnimationSheet = new AnimationSheet("images/barril2.png", 164, 178, 1, 1);
 const lollypalAnimationSheet = new AnimationSheet("images/lollypoppal.png", 100, 237, 1, 1);
 const candybowlAnimationSheet = new AnimationSheet("images/candybowl1.png", 62, 93, 1, 1);
+const bubble1AnimationSheet = new AnimationSheet("images/bubble1.png", 54, 16, 1, 3);
 
 
 
@@ -154,6 +155,16 @@ for(let i=0; i<10; ++i) {
 //    lollypal.y = init_pos[1];
     CcharacterManager.add(candybowl);
 }
+
+
+const bubble1 = new Cobject(canvas.width/10*4, canvas.height/3, function() {return this.x; },function() {return this.y; },
+18, 16, scale, 0, margins = [2,0,2,0], name="bubble1");
+//monst5.image.src = "images/rhodey.png";
+bubble1.animations.push(new Animation(bubble1AnimationSheet, 0, [4,4,4]));
+bubble1.animation = bubble1.animations[0];
+bubble1.animation.animating = true;
+
+
 
 
 const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
