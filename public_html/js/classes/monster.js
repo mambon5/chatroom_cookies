@@ -4,8 +4,8 @@
 
 
 class Cmonster extends Ccharacter {
-    constructor(x, y, callback_x_cent, callback_y_cent, width, height, scale=1, speed, margins, name="") {
-        super(x, y, width, height, scale, speed, margins, name);
+    constructor(x, y, callback_x_cent, callback_y_cent, width, height, scale=1, speed, margins, name="", clase="char") {
+        super(x, y, width, height, scale, speed, margins, name, clase);
         this._callback_x_cent = callback_x_cent;
         this._callback_y_cent = callback_y_cent;
         this._pastdir = -1;
@@ -41,10 +41,16 @@ class Cmonster extends Ccharacter {
         if( num===7 || num === 8 ){
             this.animation = this.animations[1];
         }
-        
-        if(num < 9 && num > 0 && !super.choque(num)){
-          super.apuramove(num);
-          this.animation.animating = true;
+        let xoc = super.choque(num);
+        if(num < 9 && num > 0 ){
+            if( xoc === "null") {
+                super.apuramove(num);
+                this.animation.animating = true;
+            }
+            else if(this === bubble1.host && xoc.clase==="char" ){
+               bubble1.host = xoc;
+            }
+            
         } else {
           this.animation.animating = false;
         }

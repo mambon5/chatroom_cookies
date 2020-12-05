@@ -7,11 +7,11 @@
 
 
 function arrayxoc(rect1, array) {
-    xoc = false;
+    let ind = -1;
     for(let i = 0; i < array.length; i++){ 
-        if(checkxoc(array[i], rect1)) xoc = true;
+        if(checkxoc(array[i], rect1)) {ind=i;}
     }
-    return xoc;
+    return ind;
 }
 //
 //function checkmovexoc(rect1, rect2, dir) {

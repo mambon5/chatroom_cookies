@@ -3,15 +3,16 @@
  */
 
 class Ccharacter extends Centity {
-    constructor(x, y, width, height, scale, speed, margins, name) {
+    constructor(x, y, width, height, scale, speed, margins, name, clase="null") {
         super(x, y, width*scale, height*scale, speed,
-        margins.map(function(x) {return Math.floor(x*scale) } ));
+        margins.map(function(x) {return Math.floor(x*scale); } ));
         this._x_init = x;
         this._y_init = y;
         this._moving = false;
         this._animation = null;
         this._animations = [];
         this._name = name;
+        this._clase = clase;
     }
 
     get x_init() {return this._x_init;}
@@ -20,6 +21,7 @@ class Ccharacter extends Centity {
     get animations() {return this._animations;}
     get animation() {return this._animation;}
     get name() {return this._name;}
+    get clase() {return this._clase;}
 
     set moving(e) {this._moving = e;}
     set animations(e) {this._animations = e;}
@@ -36,22 +38,29 @@ class Ccharacter extends Centity {
 
    choque(dir) {
     var arrxoc = []; //array con characteres excepto el mismo
+    let cind=-1;
     for(let i = 0; i < v.length; i++){ 
         if(v[i].name !== this.name) arrxoc.push(v[i].cut_rect());
+        else cind = i;//get this character index for later use
     }
     
     let cutrect = super.cut_rect();
     cutrect.dirmove(dir); //this moves the cut rectangle in order to foresee where the 
                 //ninotet will be after the move
-    let xocat = arrayxoc(cutrect, arrxoc);
-    return xocat;
+                
+    let index = arrayxoc(cutrect, arrxoc);
+    let obj = "null";
+    if(cind < index) index +=1;
+    if(index > (-1)) obj = v[index];
+    
+    return obj;
     
     }
 
     generateValidPos() {
         let x = -1;
         let y = -1;
-        while( this.choque(0) || !map.validcorners(x, y, this.width, this.height, canvas.width, canvas.height)) {
+        while( this.choque(0)!=="null" || !map.validcorners(x, y, this.width, this.height, canvas.width, canvas.height)) {
             x = Math.random() * map._resh * map._cols;
             y = Math.random() * map._resv * map._rows;
             this.x = x;

@@ -1,5 +1,5 @@
 class Cobject extends Ccharacter {
-     constructor(x, y, callback_x_cent, callback_y_cent, width, height, scale=1, speed, margins, name="") {
+     constructor(x, y, callback_x_cent, callback_y_cent, width, height, scale=1, speed, margins, name="", clase="obj") {
         super(x, y, width, height, scale, speed, margins, name);
         this._callback_x_cent = callback_x_cent;
         this._callback_y_cent = callback_y_cent;

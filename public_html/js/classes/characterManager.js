@@ -4,6 +4,7 @@
 
 var v = [];
 
+
 class CcharacterManager {
     static add(obj) {
         v.push(obj);
@@ -11,15 +12,14 @@ class CcharacterManager {
     
     static update() {
         v.forEach(character => character.move());  //we should do an update function on character, to generalize, for now we call draw
-        bubble1.x = player.x_init + player.width/2 - bubble1.width/2;
-        bubble1.y = player.y_init - bubble1.width;
+        bubble1.move();
     }
     
     static draw() {
         CcharacterManager.sortfordraw();
         v.forEach(character => character.draw());
         bubble1.draw();
-        bubble1.animation.animate();
+        
     }
     
     static sortfordraw() {//sort for printing on screen, lowest y first to print
