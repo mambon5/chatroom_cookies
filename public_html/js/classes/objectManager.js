@@ -27,9 +27,8 @@ class CobjectManager {
     }
 
     static generateValidPos(item, index) {
-        init_pos = item.generateValidPos();
-        item.x = init_pos[0];
-        item.y = init_pos[1];
+       item.generateValidPos();
+        
         console.log(item.name);
     }
 }

@@ -20,6 +20,7 @@ const monster3AnimationSheet = new AnimationSheet("images/protocoldroid2.png", 1
 const monster4AnimationSheet = new AnimationSheet("images/tiana2.png", 128, 192, 4, 4);
 const monster5AnimationSheet = new AnimationSheet("images/rhodey.png", 128, 192, 4, 4);
 const monster6AnimationSheet = new AnimationSheet("images/laila.png", 128, 192, 4, 4);
+const monster7AnimationSheet = new AnimationSheet("images/officewoman5.png", 128, 192, 4, 4);
 const barril1AnimationSheet = new AnimationSheet("images/barril1.png", 115, 130, 1, 1);
 const barril2AnimationSheet = new AnimationSheet("images/barril2.png", 164, 178, 1, 1);
 const lollypalAnimationSheet = new AnimationSheet("images/lollypoppal.png", 100, 237, 1, 1);
@@ -30,9 +31,8 @@ const bubble1AnimationSheet = new AnimationSheet("images/bubble1.png", 54, 16, 1
 
 const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, speed, marg_henry, name="hjones");
 //player.image.src = "images/asdf.png"; // 24.25, 45.5
-let init_pos = player.generateValidPos();
-player.x = init_pos[0];
-player.y = init_pos[1];
+player.generateValidPos();
+
 console.log("Player: " + player.x + " | " + player.y);
 for (var i = 0; i < 4; i ++){
   player.animations.push(new Animation(playerAnimationSheet, i, [adt, adt, adt, adt]));
@@ -47,6 +47,7 @@ for (var i = 0; i < 4; i ++){
   monst1.animations.push(new Animation(monster1AnimationSheet, i, [adt, adt, adt, adt]));
 }
 monst1.animation = monst1.animations[0];
+monst1.generateValidPos();
 CcharacterManager.add(monst1);
 
 const monst2 = new Cmonster(canvas.width/10*1, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
@@ -56,6 +57,7 @@ for (var i = 0; i < 4; i ++){
   monst2.animations.push(new Animation(monster2AnimationSheet, i, [adt, adt, adt, adt]));
 }
 monst2.animation = monst2.animations[0];
+monst2.generateValidPos();
 CcharacterManager.add(monst2);
 
 const monst3 = new Cmonster(canvas.width/10*2, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
@@ -65,6 +67,7 @@ for (var i = 0; i < 4; i ++){
   monst3.animations.push(new Animation(monster3AnimationSheet, i, [adt, adt, adt, adt]));
 }
 monst3.animation = monst3.animations[0];
+monst3.generateValidPos();
 CcharacterManager.add(monst3);
 
 const monst4 = new Cmonster(canvas.width/10*3, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
@@ -74,6 +77,7 @@ for (var i = 0; i < 4; i ++){
   monst4.animations.push(new Animation(monster4AnimationSheet, i, [adt, adt, adt, adt]));
 }
 monst4.animation = monst4.animations[0];
+monst4.generateValidPos();
 CcharacterManager.add(monst4);
 
 const monst5 = new Cmonster(canvas.width/10*4, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
@@ -83,6 +87,7 @@ for (var i = 0; i < 4; i ++){
   monst5.animations.push(new Animation(monster5AnimationSheet, i, [adt, adt, adt, adt]));
 }
 monst5.animation = monst5.animations[0];
+monst5.generateValidPos();
 CcharacterManager.add(monst5);
 
 const monst6 = new Cmonster(canvas.width/10*6, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
@@ -91,7 +96,17 @@ for (var i = 0; i < 4; i ++){
   monst6.animations.push(new Animation(monster6AnimationSheet, i, [adt, adt, adt, adt]));
 }
 monst6.animation = monst6.animations[0];
+monst6.generateValidPos();
 CcharacterManager.add(monst6);
+
+const monst7 = new Cmonster(canvas.width/10*6, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
+32, 48, scale, speed*1, marg_laila, name="monst7");
+for (var i = 0; i < 4; i ++){
+  monst7.animations.push(new Animation(monster7AnimationSheet, i, [adt, adt, adt, adt]));
+}
+monst7.animation = monst7.animations[0];
+monst7.generateValidPos();
+CcharacterManager.add(monst7);
 
 
 const barril1 = new Cobject(canvas.width/10*7, canvas.height/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 37, scale, 0, 

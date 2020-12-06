@@ -89,7 +89,7 @@ class Centity extends Crectangle {
             this.y = y;
         }
         //console.log(this.name);
-        return [x, y];
+        
     }
 
     apuramove(dir) {    //dir is 1-top 2-right 3-down 4-left
