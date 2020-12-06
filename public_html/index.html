@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -15,20 +15,21 @@ and open the template in the editor.
         <link rel="stylesheet" href="style/tiles.css">
 
     </head>
-    <body >
+    <body>
         <div id="bgimage"></div>
         <div id="bggradient"></div>
         <canvas id="my_canvas_background"></canvas>
-        <canvas id="my_canvas" ></canvas>
+        <canvas id="my_canvas"></canvas>
         <div id="aux" class="aux">hola</div>
         <div id="aux2" class="aux">aux2</div>
         <div id="aux3" class="aux">aux3</div>
-        
+
         <img src="images/floor-tile3_light.jpg" id="floor" width="32" height="32">
         <img src="images/wood_big1.png" id="wall" width="32" height="32">
         <img src="images/grass1.png" id="grass" width="32" height="32">
         <img src="images/tileset2.png" id="tiles1" width="32" height="32">
 
+        <script src="js/globalvars/entityVars.js"></script>
         <script src="js/globalvars/img_margins.js"></script>
 
         <script src="js/functions/underscore.js"></script>
@@ -46,11 +47,13 @@ and open the template in the editor.
         <script src="js/classes/character.js"></script>
         <script src="js/classes/object.js"></script>
         <script src="js/classes/characterManager.js"></script>
+        <script src="js/classes/objectManager.js"></script>
+        <script src="js/classes/entityManager.js"></script>
         <script src="js/classes/player.js"></script>
         <script src="js/classes/monster.js"></script>
         <script src="js/classes/background.js"></script>
         <script src="js/classes/game.js"></script>
-         <script src="js/classes/bubble.js"></script>
+        <script src="js/classes/bubble.js"></script>
 
         <script src="main.js"></script>
     </body>

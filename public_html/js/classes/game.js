@@ -21,8 +21,8 @@ class Cgame {
             ctx.drawImage(background.image, background.x(), background.y(), canvas.width, canvas.height);
             map.drawmatrix();
 
-            CcharacterManager.update();
-            CcharacterManager.draw();
+            CentityManager.update();
+            CentityManager.draw();
             //imgmargins(ctx, canvas.width/2, canvas.height/2, player.width, player.height);
 
         }
