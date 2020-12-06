@@ -10,6 +10,7 @@ class CentityManager {
 
     static update() {
         ventities.forEach(entity => entity.move());  //we should do an update function on character, to generalize, for now we call draw
+         bubble1.move();
     }
 
     static draw() {

@@ -40,7 +40,7 @@ for (var i = 0; i < 4; i ++){
 player.animation = player.animations[0];
 CcharacterManager.add(player);
 
-const monst1 = new Cmonster(canvas.width/10*0, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
+const monst1 = new Cmonster(canvas.width/10*0, canvas.height/3,
                 32, 48, scale, speed, marg_cpmerica, name="monst1");
 //monst1.image.src = "images/captainamerica_shield.png";
 for (var i = 0; i < 4; i ++){
@@ -50,7 +50,7 @@ monst1.animation = monst1.animations[0];
 monst1.generateValidPos();
 CcharacterManager.add(monst1);
 
-const monst2 = new Cmonster(canvas.width/10*1, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
+const monst2 = new Cmonster(canvas.width/10*1, canvas.height/3,
 32, 32, scale, speed/2, marg_greebo2, name="monst2");
 //monst2.image.src = "images/greebo2.png";
 for (var i = 0; i < 4; i ++){
@@ -60,7 +60,7 @@ monst2.animation = monst2.animations[0];
 monst2.generateValidPos();
 CcharacterManager.add(monst2);
 
-const monst3 = new Cmonster(canvas.width/10*2, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
+const monst3 = new Cmonster(canvas.width/10*2, canvas.height/3,
 32, 48, scale, speed/2, marg_prodroid2, name="monst3");
 //monst3.image.src = "images/protocoldroid2.png";
 for (var i = 0; i < 4; i ++){
@@ -70,7 +70,7 @@ monst3.animation = monst3.animations[0];
 monst3.generateValidPos();
 CcharacterManager.add(monst3);
 
-const monst4 = new Cmonster(canvas.width/10*3, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
+const monst4 = new Cmonster(canvas.width/10*3, canvas.height/3,
 32, 48, scale, speed*1.1, marg_tiana2, name="monst4");
 //monst4.image.src = "images/tiana2.png";
 for (var i = 0; i < 4; i ++){
@@ -80,7 +80,7 @@ monst4.animation = monst4.animations[0];
 monst4.generateValidPos();
 CcharacterManager.add(monst4);
 
-const monst5 = new Cmonster(canvas.width/10*4, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
+const monst5 = new Cmonster(canvas.width/10*4, canvas.height/3,
 32, 48, scale, speed*1.5, marg_rhodey, name="monst5");
 //monst5.image.src = "images/rhodey.png";
 for (var i = 0; i < 4; i ++){
@@ -90,7 +90,7 @@ monst5.animation = monst5.animations[0];
 monst5.generateValidPos();
 CcharacterManager.add(monst5);
 
-const monst6 = new Cmonster(canvas.width/10*6, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
+const monst6 = new Cmonster(canvas.width/10*6, canvas.height/3,
 32, 48, scale, speed*1.1, marg_laila, name="monst6");
 for (var i = 0; i < 4; i ++){
   monst6.animations.push(new Animation(monster6AnimationSheet, i, [adt, adt, adt, adt]));
@@ -99,7 +99,7 @@ monst6.animation = monst6.animations[0];
 monst6.generateValidPos();
 CcharacterManager.add(monst6);
 
-const monst7 = new Cmonster(canvas.width/10*6, canvas.height/3, function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;},
+const monst7 = new Cmonster(canvas.width/10*6, canvas.height/3,
 32, 48, scale, speed*1, marg_laila, name="monst7");
 for (var i = 0; i < 4; i ++){
   monst7.animations.push(new Animation(monster7AnimationSheet, i, [adt, adt, adt, adt]));
@@ -109,13 +109,13 @@ monst7.generateValidPos();
 CcharacterManager.add(monst7);
 
 
-const barril1 = new Cobject(canvas.width/10*7, canvas.height/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 32, 37, scale, 0, 
+const barril1 = new Cobject(canvas.width/10*7, canvas.height/3, 32, 37, scale, 0, 
 marg_barril1,  name= "barril1");
 barril1.animations.push(new Animation(barril1AnimationSheet, 0, 1));
 barril1.animation = barril1.animations[0];
 CobjectManager.add(barril1);
 
-const barril2 = new Cobject(canvas.width / 10 * 6, canvas.height * 2 / 3, function () { return this.x - player.x + player.x_init; }, function () { return this.y - player.y + player.y_init; }, 32, 37, scale, 0, 
+const barril2 = new Cobject(canvas.width / 10 * 6, canvas.height * 2 / 3, 32, 37, scale, 0, 
 marg_barril1,  name= "barril1");
 barril2.animations.push(new Animation(barril1AnimationSheet, 0, 1));
 barril2.animation = barril2.animations[0];
@@ -127,7 +127,7 @@ CobjectManager.add(barril2);
 
  //genera i barrils aleatoriament de candy:
 for(let i=0; i<10; ++i) {
-    barril3 = new Cobject(canvas.width / 10 * 6, canvas.height * 3 / 3, function () { return this.x - player.x + player.x_init; }, function () { return this.y - player.y + player.y_init; }, 32, 37, scale, 0, 
+    barril3 = new Cobject(canvas.width / 10 * 6, canvas.height * 3 / 3, 32, 37, scale, 0, 
     marg_barril1,  name= ("barrillcandy"+i));
     barril3.animations.push(new Animation(barril1AnimationSheet, 0, 1));
     barril3.animation = barril3.animations[0];
@@ -139,7 +139,7 @@ for(let i=0; i<10; ++i) {
 
  //genera i barrils aleatoriament de vi:
 for(let i=0; i<10; ++i) {
-    barril3 = new Cobject(canvas.width / 10 * 6, canvas.height * 3 / 3, function () { return this.x - player.x + player.x_init; }, function () { return this.y - player.y + player.y_init; }, 32, 37, scale, 0, 
+    barril3 = new Cobject(canvas.width / 10 * 6, canvas.height * 3 / 3, 32, 37, scale, 0, 
     marg_barril1,  name= ("barrilwine"+i));
     barril3.animations.push(new Animation(barril2AnimationSheet, 0, 1));
     barril3.animation = barril3.animations[0];
@@ -150,7 +150,7 @@ for(let i=0; i<10; ++i) {
 }
 //palo de piruletas:
 for(let i=0; i<10; ++i) {
-    lollypal = new Cobject(canvas.width/10*6, canvas.height*3/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 
+    lollypal = new Cobject(canvas.width/10*6, canvas.height*3/3, 
         20, 47, scale, 0, 
     marg_lollypal,  name= ("lollypopbar"+i));
     lollypal.animations.push(new Animation(lollypalAnimationSheet, 0, 1));
@@ -163,7 +163,7 @@ for(let i=0; i<10; ++i) {
 
 //bol de chuches
 for(let i=0; i<10; ++i) {
-    candybowl = new Cobject(canvas.width/10*6, canvas.height*3/3,function() {return this.x - player.x + player.x_init;}, function() {return this.y - player.y + player.y_init;}, 
+    candybowl = new Cobject(canvas.width/10*6, canvas.height*3/3, 
         15, 20, scale, 0, 
     marg_candybowl,  name= ("candybowl"+i));
     candybowl.animations.push(new Animation(candybowlAnimationSheet, 0, 1));
@@ -174,19 +174,18 @@ for(let i=0; i<10; ++i) {
     CobjectManager.add(candybowl);
 }
 
-const bubble1 = new Cbubble(canvas.width/10*4, canvas.height/3, function() {return this.x; },function() {return this.y; },
-    18, 16, scale, 0,[2,0,2,0], "bubble1", host=monst2);
+const bubble1 = new Cbubble(canvas.width/10*4, canvas.height/3,
+    18, 16, scale, 0,[2,0,2,0], "bubble1", host=player);
 
 bubble1.animations.push(new Animation(bubble1AnimationSheet, 0, [5,5,5]));
 bubble1.animation = bubble1.animations[0];
 bubble1.animation.animating = true;
 bubble1.host = player;
-CobjectManager.add(bubble1);
+
 
 CentityManager.fillArray();
 CobjectManager.generateValidPoses();
 
-const background = new Cbackground(function() {return player.x_init - player.x;}, function() {return player.y_init - player.y;});
 //background.image.src = "images/fix, y, width, height, speed, margins = [0,0,0,0]
 const keys = [];
 window.addEventListener("keydown", function(e){
