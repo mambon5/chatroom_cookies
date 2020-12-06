@@ -14,7 +14,7 @@ class CobjectManager {
     static draw() {
         CobjectManager.sortfordraw();
         vobj.forEach(object => object.draw());
-        bubble1.draw();
+       
 
     }
 

@@ -9,13 +9,13 @@ class CcharacterManager {
     
     static update() {
         vchar.forEach(character => character.move());  //we should do an update function on character, to generalize, for now we call draw
-        bubble1.move();
+        
     }
     
     static draw() {
         CcharacterManager.sortfordraw();
         vchar.forEach(character => character.draw());
-        bubble1.draw();
+       
         
     }
     
