@@ -4,7 +4,7 @@ class Cobject extends Centity {
          this._pastdir = -1;
          this._clase = "obj";
     }
-
+get clase() {return this._clase;}
 
     move() {
 

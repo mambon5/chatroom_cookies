@@ -1,3 +1,6 @@
+
+var bubtake = Date.now();
+
 class Cbubble extends Cobject {
      constructor(x, y, width, height, scale, speed, margins, name, host) {
         super(x, y, width, height, scale, speed, margins, name);

@@ -33,7 +33,11 @@ class Cplayer extends Ccharacter {
         if(dir !== 0){
           let xoc = super.choque(dir);
           if(xoc === "null") super.apuramove(dir);
-          else if(this === bubble1.host && xoc.clase==="char") bubble1.host = xoc;
+          else if(this === bubble1.host && xoc.clase==="char") {
+              bubtake = Date.now();
+              bubble1.host = xoc;
+          
+          }
           
           this.animation.animating = true;
         } else{

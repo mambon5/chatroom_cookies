@@ -41,7 +41,7 @@ player.animation = player.animations[0];
 CcharacterManager.add(player);
 
 const monst1 = new Cmonster(canvas.width/10*0, canvas.height/3,
-                32, 48, scale, speed, marg_cpmerica, name="monst1");
+                32, 48, scale, speed, marg_cpmerica, name="captainamerica_shield");
 //monst1.image.src = "images/captainamerica_shield.png";
 for (var i = 0; i < 4; i ++){
   monst1.animations.push(new Animation(monster1AnimationSheet, i, [adt, adt, adt, adt]));
@@ -51,7 +51,7 @@ monst1.generateValidPos();
 CcharacterManager.add(monst1);
 
 const monst2 = new Cmonster(canvas.width/10*1, canvas.height/3,
-32, 32, scale, speed/2, marg_greebo2, name="monst2");
+32, 32, scale, speed/2, marg_greebo2, name="greebo2");
 //monst2.image.src = "images/greebo2.png";
 for (var i = 0; i < 4; i ++){
   monst2.animations.push(new Animation(monster2AnimationSheet, i, [adt, adt, adt, adt]));
@@ -61,7 +61,7 @@ monst2.generateValidPos();
 CcharacterManager.add(monst2);
 
 const monst3 = new Cmonster(canvas.width/10*2, canvas.height/3,
-32, 48, scale, speed/2, marg_prodroid2, name="monst3");
+32, 48, scale, speed/2, marg_prodroid2, name="protocoldroid2");
 //monst3.image.src = "images/protocoldroid2.png";
 for (var i = 0; i < 4; i ++){
   monst3.animations.push(new Animation(monster3AnimationSheet, i, [adt, adt, adt, adt]));
@@ -71,7 +71,7 @@ monst3.generateValidPos();
 CcharacterManager.add(monst3);
 
 const monst4 = new Cmonster(canvas.width/10*3, canvas.height/3,
-32, 48, scale, speed*1.1, marg_tiana2, name="monst4");
+32, 48, scale, speed*1.1, marg_tiana2, name="tiana2");
 //monst4.image.src = "images/tiana2.png";
 for (var i = 0; i < 4; i ++){
   monst4.animations.push(new Animation(monster4AnimationSheet, i, [adt, adt, adt, adt]));
@@ -81,7 +81,7 @@ monst4.generateValidPos();
 CcharacterManager.add(monst4);
 
 const monst5 = new Cmonster(canvas.width/10*4, canvas.height/3,
-32, 48, scale, speed*1.5, marg_rhodey, name="monst5");
+32, 48, scale, speed*1.5, marg_rhodey, name="rhodey");
 //monst5.image.src = "images/rhodey.png";
 for (var i = 0; i < 4; i ++){
   monst5.animations.push(new Animation(monster5AnimationSheet, i, [adt, adt, adt, adt]));
@@ -91,7 +91,7 @@ monst5.generateValidPos();
 CcharacterManager.add(monst5);
 
 const monst6 = new Cmonster(canvas.width/10*6, canvas.height/3,
-32, 48, scale, speed*1.1, marg_laila, name="monst6");
+32, 48, scale, speed*1.1, marg_laila, name="laila");
 for (var i = 0; i < 4; i ++){
   monst6.animations.push(new Animation(monster6AnimationSheet, i, [adt, adt, adt, adt]));
 }
@@ -100,7 +100,7 @@ monst6.generateValidPos();
 CcharacterManager.add(monst6);
 
 const monst7 = new Cmonster(canvas.width/10*6, canvas.height/3,
-32, 48, scale, speed*1, marg_laila, name="monst7");
+32, 48, scale, speed*1, marg_laila, name="officewoman");
 for (var i = 0; i < 4; i ++){
   monst7.animations.push(new Animation(monster7AnimationSheet, i, [adt, adt, adt, adt]));
 }
