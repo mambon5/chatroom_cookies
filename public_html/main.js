@@ -100,7 +100,7 @@ monst6.generateValidPos();
 CcharacterManager.add(monst6);
 
 const monst7 = new Cmonster(canvas.width/10*6, canvas.height/3,
-32, 48, scale, speed*1, marg_laila, name="officewoman");
+32, 48, scale, speed*1, marg_laila, name="officewoman05");
 for (var i = 0; i < 4; i ++){
   monst7.animations.push(new Animation(monster7AnimationSheet, i, [adt, adt, adt, adt]));
 }
