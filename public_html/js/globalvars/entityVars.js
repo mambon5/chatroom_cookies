@@ -10,3 +10,4 @@ var vobj = [];
 
 var ventities = [];
 
+var vfloor = [];

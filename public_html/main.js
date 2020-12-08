@@ -28,6 +28,8 @@ const candybowlAnimationSheet = new AnimationSheet("images/candybowl1.png", 62, 
 const bubble1AnimationSheet = new AnimationSheet("images/bubble1.png", 54, 16, 1, 3);
 const stove1AnimationSheet = new AnimationSheet("images/stoveonfire1.png", 329, 84, 1, 7);
 const stove2AnimationSheet = new AnimationSheet("images/stove1.png", 50, 84, 1, 1);
+const planta1AnimationSheet = new AnimationSheet("images/plantaterra1.png", 22,26, 1, 1);
+const stones1AnimationSheet = new AnimationSheet("images/pedres1.png", 62,34, 1, 1);
 
 
 
@@ -123,6 +125,24 @@ stove2.animations.push(new Animation(stove2AnimationSheet, 0, 1));
 stove2.animation = stove2.animations[0];
 CobjectManager.add(stove2);
 
+const planta = "Null";
+for(let i=0; i<10; ++i) {
+    planta1 = new Cobject(canvas.width / 10 * 6, canvas.height * 2 / 3, 22,26, scale, 0, 
+    [0,0,0,0],  name= ("plantafloor"+i), clase="flooritem");
+    planta1.animations.push(new Animation(planta1AnimationSheet, 0, 1));
+    planta1.animation = planta1.animations[0];
+    CfloorManager.add(planta1);
+}
+
+
+for(let i=0; i<5; ++i) {
+     const stones = new Cobject(canvas.width / 10 * 6, canvas.height * 2 / 3, 31*1.6, 17*1.5, scale, 0, 
+    [0,0,0,0],  name= ("piedrasfloor"+i), clase="flooritem");
+    stones.animations.push(new Animation(stones1AnimationSheet, 0, 1));
+    stones.animation = stones.animations[0];
+    CfloorManager.add(stones);
+}
+
 const barril1 = new Cobject(canvas.width/10*7, canvas.height/3, 32, 37, scale, 0, 
 marg_barril1,  name= "barril1", clase="mom");
 barril1.animations.push(new Animation(barril1AnimationSheet, 0, 1));
@@ -198,6 +218,7 @@ bubble1.host = player;
 
 
 CentityManager.fillArray();
+CfloorManager.generateValidPoses();
 CobjectManager.generateValidPoses();
 
 //background.image.src = "images/fix, y, width, height, speed, margins = [0,0,0,0]

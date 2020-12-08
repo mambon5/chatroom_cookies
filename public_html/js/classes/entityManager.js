@@ -15,7 +15,10 @@ class CentityManager {
 
     static draw() {
         CentityManager.sortfordraw();
+        planta1.draw();
+        CfloorManager.draw();
         ventities.forEach(entity => entity.draw());
+         
         bubble1.draw();
         var now = Date.now();
         aux1.innerHTML = "bubble host: <b>" + bubble1.host.name + "</b>"+ 

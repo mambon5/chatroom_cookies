@@ -13,6 +13,7 @@ class CobjectManager {
 
     static draw() {
         CobjectManager.sortfordraw();
+       
         vobj.forEach(object => object.draw());
        
 
