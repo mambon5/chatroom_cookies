@@ -9,7 +9,7 @@ canvas.height = 462;
 
 const scale = 1.6;
 const speed = 10;
-const adt = 3;
+const walkdt = 3;
 
 const map = new Cmap(3,5);
 
@@ -26,6 +26,7 @@ const barril2AnimationSheet = new AnimationSheet("images/barril2.png", 164, 178,
 const lollypalAnimationSheet = new AnimationSheet("images/lollypoppal.png", 100, 237, 1, 1);
 const candybowlAnimationSheet = new AnimationSheet("images/candybowl1.png", 62, 93, 1, 1);
 const bubble1AnimationSheet = new AnimationSheet("images/bubble1.png", 54, 16, 1, 3);
+const stove1AnimationSheet = new AnimationSheet("images/stoveonfire1.png", 330, 84, 1, 7);
 
 
 
@@ -35,7 +36,7 @@ player.generateValidPos();
 
 console.log("Player: " + player.x + " | " + player.y);
 for (var i = 0; i < 4; i ++){
-  player.animations.push(new Animation(playerAnimationSheet, i, [adt, adt, adt, adt]));
+  player.animations.push(new Animation(playerAnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
 }
 player.animation = player.animations[0];
 CcharacterManager.add(player);
@@ -44,7 +45,7 @@ const monst1 = new Cmonster(canvas.width/10*0, canvas.height/3,
                 32, 48, scale, speed, marg_cpmerica, name="captainamerica_shield");
 //monst1.image.src = "images/captainamerica_shield.png";
 for (var i = 0; i < 4; i ++){
-  monst1.animations.push(new Animation(monster1AnimationSheet, i, [adt, adt, adt, adt]));
+  monst1.animations.push(new Animation(monster1AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
 }
 monst1.animation = monst1.animations[0];
 monst1.generateValidPos();
@@ -54,7 +55,7 @@ const monst2 = new Cmonster(canvas.width/10*1, canvas.height/3,
 32, 32, scale, speed/2, marg_greebo2, name="greebo2");
 //monst2.image.src = "images/greebo2.png";
 for (var i = 0; i < 4; i ++){
-  monst2.animations.push(new Animation(monster2AnimationSheet, i, [adt, adt, adt, adt]));
+  monst2.animations.push(new Animation(monster2AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
 }
 monst2.animation = monst2.animations[0];
 monst2.generateValidPos();
@@ -64,7 +65,7 @@ const monst3 = new Cmonster(canvas.width/10*2, canvas.height/3,
 32, 48, scale, speed/2, marg_prodroid2, name="protocoldroid2");
 //monst3.image.src = "images/protocoldroid2.png";
 for (var i = 0; i < 4; i ++){
-  monst3.animations.push(new Animation(monster3AnimationSheet, i, [adt, adt, adt, adt]));
+  monst3.animations.push(new Animation(monster3AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
 }
 monst3.animation = monst3.animations[0];
 monst3.generateValidPos();
@@ -74,7 +75,7 @@ const monst4 = new Cmonster(canvas.width/10*3, canvas.height/3,
 32, 48, scale, speed*1.1, marg_tiana2, name="tiana2");
 //monst4.image.src = "images/tiana2.png";
 for (var i = 0; i < 4; i ++){
-  monst4.animations.push(new Animation(monster4AnimationSheet, i, [adt, adt, adt, adt]));
+  monst4.animations.push(new Animation(monster4AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
 }
 monst4.animation = monst4.animations[0];
 monst4.generateValidPos();
@@ -84,7 +85,7 @@ const monst5 = new Cmonster(canvas.width/10*4, canvas.height/3,
 32, 48, scale, speed*1.5, marg_rhodey, name="rhodey");
 //monst5.image.src = "images/rhodey.png";
 for (var i = 0; i < 4; i ++){
-  monst5.animations.push(new Animation(monster5AnimationSheet, i, [adt, adt, adt, adt]));
+  monst5.animations.push(new Animation(monster5AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
 }
 monst5.animation = monst5.animations[0];
 monst5.generateValidPos();
@@ -93,7 +94,7 @@ CcharacterManager.add(monst5);
 const monst6 = new Cmonster(canvas.width/10*6, canvas.height/3,
 32, 48, scale, speed*1.1, marg_laila, name="laila");
 for (var i = 0; i < 4; i ++){
-  monst6.animations.push(new Animation(monster6AnimationSheet, i, [adt, adt, adt, adt]));
+  monst6.animations.push(new Animation(monster6AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
 }
 monst6.animation = monst6.animations[0];
 monst6.generateValidPos();
@@ -102,12 +103,18 @@ CcharacterManager.add(monst6);
 const monst7 = new Cmonster(canvas.width/10*6, canvas.height/3,
 32, 48, scale, speed*1, marg_laila, name="officewoman05");
 for (var i = 0; i < 4; i ++){
-  monst7.animations.push(new Animation(monster7AnimationSheet, i, [adt, adt, adt, adt]));
+  monst7.animations.push(new Animation(monster7AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
 }
 monst7.animation = monst7.animations[0];
 monst7.generateValidPos();
 CcharacterManager.add(monst7);
 
+const stove1 = new Cobject(canvas.width / 10 * 6, canvas.height * 2 / 3, 34, 60, scale, 0, 
+marg_stove,  name= "stove11", clase="obj");
+stove1.animations.push(new Animation(stove1AnimationSheet, 0, [7,7,7,7,7,7,7]));
+stove1.animation = stove1.animations[0];
+stove1.animation.animating = true;
+CobjectManager.add(stove1);
 
 const barril1 = new Cobject(canvas.width/10*7, canvas.height/3, 32, 37, scale, 0, 
 marg_barril1,  name= "barril1", clase="mom");

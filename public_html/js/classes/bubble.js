@@ -16,7 +16,7 @@ class Cbubble extends Cobject {
    }
    
    draw() {
-        this.animation.animate();
+        
         super.draw();
     }
 }
