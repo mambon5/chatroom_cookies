@@ -16,5 +16,5 @@ var marg_laila = [8, 5, 6, 1]; marg_laila[1] += extrah;
 var marg_barril1 = [1, 1, 1, 1]; marg_barril1[1] += extrah*2/3;
 var marg_lollypal = [1, 1, 1, 1]; marg_lollypal[1] += extrah*1.3;
 var marg_candybowl = [2, 1, 1, 1]; marg_candybowl[1] += extrah/10;
-var marg_stove = [0,0,0,0]; marg_stove[1] += extrah*1.3;
+var marg_stove = [10, 6, 8, 8]; marg_stove[1] += extrah*1.3;
 
