@@ -110,13 +110,13 @@ CcharacterManager.add(monst7);
 
 
 const barril1 = new Cobject(canvas.width/10*7, canvas.height/3, 32, 37, scale, 0, 
-marg_barril1,  name= "barril1");
+marg_barril1,  name= "barril1", clase="mom");
 barril1.animations.push(new Animation(barril1AnimationSheet, 0, 1));
 barril1.animation = barril1.animations[0];
 CobjectManager.add(barril1);
 
 const barril2 = new Cobject(canvas.width / 10 * 6, canvas.height * 2 / 3, 32, 37, scale, 0, 
-marg_barril1,  name= "barril1");
+marg_barril1,  name= "barril1", clase="mom");
 barril2.animations.push(new Animation(barril1AnimationSheet, 0, 1));
 barril2.animation = barril2.animations[0];
 //init_pos = barril2.generateValidPos();
@@ -128,7 +128,7 @@ CobjectManager.add(barril2);
  //genera i barrils aleatoriament de candy:
 for(let i=0; i<10; ++i) {
     barril3 = new Cobject(canvas.width / 10 * 6, canvas.height * 3 / 3, 32, 37, scale, 0, 
-    marg_barril1,  name= ("barrillcandy"+i));
+    marg_barril1,  name= ("barrillcandy"+i), clase="mom");
     barril3.animations.push(new Animation(barril1AnimationSheet, 0, 1));
     barril3.animation = barril3.animations[0];
     //init_pos = barril3.generateValidPos();
@@ -140,7 +140,7 @@ for(let i=0; i<10; ++i) {
  //genera i barrils aleatoriament de vi:
 for(let i=0; i<10; ++i) {
     barril3 = new Cobject(canvas.width / 10 * 6, canvas.height * 3 / 3, 32, 37, scale, 0, 
-    marg_barril1,  name= ("barrilwine"+i));
+    marg_barril1,  name= ("barrilwine"+i), clase="mom");
     barril3.animations.push(new Animation(barril2AnimationSheet, 0, 1));
     barril3.animation = barril3.animations[0];
     //init_pos = barril3.generateValidPos();
@@ -152,7 +152,7 @@ for(let i=0; i<10; ++i) {
 for(let i=0; i<10; ++i) {
     lollypal = new Cobject(canvas.width/10*6, canvas.height*3/3, 
         20, 47, scale, 0, 
-    marg_lollypal,  name= ("lollypopbar"+i));
+    marg_lollypal,  name= ("lollypopbar"+i), clase="mom");
     lollypal.animations.push(new Animation(lollypalAnimationSheet, 0, 1));
     lollypal.animation = lollypal.animations[0];
     //init_pos = lollypal.generateValidPos();
@@ -165,7 +165,7 @@ for(let i=0; i<10; ++i) {
 for(let i=0; i<10; ++i) {
     candybowl = new Cobject(canvas.width/10*6, canvas.height*3/3, 
         15, 20, scale, 0, 
-    marg_candybowl,  name= ("candybowl"+i));
+    marg_candybowl,  name= ("candybowl"+i), clase="mom");
     candybowl.animations.push(new Animation(candybowlAnimationSheet, 0, 1));
     candybowl.animation = candybowl.animations[0];
     //init_pos = candybowl.generateValidPos();

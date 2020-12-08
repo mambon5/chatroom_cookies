@@ -1,8 +1,8 @@
 class Cobject extends Centity {
-     constructor(x, y, width, height, scale, speed, margins, name="") {
-        super(x, y, width*scale, height*scale, speed, margins, name);
+     constructor(x, y, width, height, scale, speed, margins, name="", clase = "obj") {
+        super(x, y, width*scale, height*scale, speed, margins, name, clase);
          this._pastdir = -1;
-         this._clase = "obj";
+         this._clase = clase;
     }
 
     move() {
