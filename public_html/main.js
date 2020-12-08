@@ -26,7 +26,7 @@ const barril2AnimationSheet = new AnimationSheet("images/barril2.png", 164, 178,
 const lollypalAnimationSheet = new AnimationSheet("images/lollypoppal.png", 100, 237, 1, 1);
 const candybowlAnimationSheet = new AnimationSheet("images/candybowl1.png", 62, 93, 1, 1);
 const bubble1AnimationSheet = new AnimationSheet("images/bubble1.png", 54, 16, 1, 3);
-const stove1AnimationSheet = new AnimationSheet("images/stoveonfire1.png", 330, 84, 1, 7);
+const stove1AnimationSheet = new AnimationSheet("images/stoveonfire1.png", 329, 84, 1, 7);
 
 
 
@@ -111,7 +111,7 @@ CcharacterManager.add(monst7);
 
 const stove1 = new Cobject(canvas.width / 10 * 6, canvas.height * 2 / 3, 34, 60, scale, 0, 
 marg_stove,  name= "stove11", clase="obj");
-stove1.animations.push(new Animation(stove1AnimationSheet, 0, [7,7,7,7,7,7,7]));
+stove1.animations.push(new Animation(stove1AnimationSheet, 0, [5,5,5,5,5,5,5]));
 stove1.animation = stove1.animations[0];
 stove1.animation.animating = true;
 CobjectManager.add(stove1);
