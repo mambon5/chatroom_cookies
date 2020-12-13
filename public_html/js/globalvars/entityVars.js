@@ -9,3 +9,5 @@ var vchar = [];
 var vobj = [];
 
 var ventities = [];
+
+var vfloor = [];

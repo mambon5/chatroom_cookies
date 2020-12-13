@@ -44,6 +44,7 @@ class Cmonster extends Ccharacter {
                 this.animation.animating = true;
             }
             else if(this === bubble1.host && xoc.clase==="char" ){
+               bubtake = Date.now();
                bubble1.host = xoc;
             }
             

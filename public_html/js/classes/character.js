@@ -9,7 +9,7 @@ class Ccharacter extends Centity {
         this._clase = clase;
     }
 
-    get clase() {return this._clase;}
+   
 
     //update() {
         //update position

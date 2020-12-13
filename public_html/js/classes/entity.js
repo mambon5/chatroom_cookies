@@ -25,6 +25,8 @@ class Centity extends Crectangle {
     get animations() { return this._animations; }
     get animation() { return this._animation; }
     get name() { return this._name; }
+    get clase() {return this._clase;}
+
     
     set speed(e) {this._speed = e;}
     set image(e) {this._image = e;}
@@ -75,7 +77,6 @@ class Centity extends Crectangle {
         let obj = "null";
         if (cind < index) index += 1;
         if (index > (-1)) obj = ventities[index];
-
         return obj;
     }
 
