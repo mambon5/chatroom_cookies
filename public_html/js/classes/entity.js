@@ -49,14 +49,14 @@ class Centity extends Crectangle {
             rspeed=Math.floor(this.speed/Math.sqrt(2));
         }
         else rspeed = this.speed;
-        if(dir===1)  this.y -= rspeed;
-        if(dir===2) {this.y -= rspeed; this.x += rspeed}
-        if(dir===3) {this.x += rspeed}
-        if(dir===4) {this.y += rspeed; this.x += rspeed}
-        if(dir===5) {this.y += rspeed}
-        if(dir===6) {this.y += rspeed; this.x -= rspeed}
-        if(dir===7) {this.x -= rspeed}
-        if(dir===8) {this.y -= rspeed; this.x -= rspeed}
+        if(dir===1) {this.y -= rspeed;}
+        if(dir===2) {this.y -= rspeed; this.x += rspeed;}
+        if(dir===3) {this.x += rspeed;}
+        if(dir===4) {this.y += rspeed; this.x += rspeed;}
+        if(dir===5) {this.y += rspeed;}
+        if(dir===6) {this.y += rspeed; this.x -= rspeed;}
+        if(dir===7) {this.x -= rspeed;}
+        if(dir===8) {this.y -= rspeed; this.x -= rspeed;}
     }
 
     choque(dir) {

@@ -57,7 +57,7 @@ function imgmargins(contxt, x=0, y=0, width = 10, height=10) {
     let mats =  getpixelmats(contxt, x, y, width, height);
     matR = mats[0];
     matG = mats[1];
-    matB = mats[1];
+    matB = mats[2];
     //find first nonwhite pixel on left:
     let w = -1;
     f = matR.length;
@@ -112,11 +112,6 @@ function imgmargins(contxt, x=0, y=0, width = 10, height=10) {
     return [margl, margt, margr, margb];
 }
 
-
-
-
-
-
 function outputpixels(contxt, width=20, height=20) {
     let imgData = contxt.getImageData(0,0,width,height);
             aux2.innerHTML = " <br> Reds <br> ";
@@ -156,4 +151,58 @@ function outputpixels(contxt, width=20, height=20) {
                 aux2.innerHTML += imgData.data[i+3] + " ";
                 if( (i+4) % (width*4) === 0) aux2.innerHTML += "<br>";
               }
+}
+
+function checkTransparency(contxt, x=0, y=0, width = 10, height=10) {
+    let mats =  getpixelmats(contxt, x, y, width, height);
+    matA = mats[3];
+    
+    let w = margl = margt = margr = margb = -1;
+    f = matA.length;
+    c = matA[0].length;
+    
+    for(let i=0; i<c; ++i) {
+        for(let j=0; j<f; ++j) {
+            if(matA[j][i] !== 0) {
+                w = i+1;
+                j=f; i = c;
+            }
+        }
+    }
+    margl = w;
+    
+    //margin top:
+     for(let i=0; i<f; ++i) {
+        for(let j=0; j<c; ++j) {
+            if(matA[i][j] !== 0) {
+                w = i+1;
+                j=c; i = f;
+            }
+        }
+    }
+    margt = w;
+    
+    //margin right:
+     for(let j=(c-1); j>(-1) ; --j) {
+        for(let i=(f-1); i>(-1) ; --i) {
+            if(matA[i][j] !== 0) {
+                w = c-1- j;
+                j=-1; i = -1;
+            }
+        }
+    }
+    margr = w;
+    
+    //margin bottom:
+     for(let j=(f-1); j>(-1) ; --j) {
+        for(let i=(c-1); i>(-1) ; --i) {
+            if(matA[j][i] !== 0) {
+                w = f-1- j;
+                j=-1; i = -1;
+            }
+        }
+    }
+    margb = w;
+    
+    return [margl, margt, margr, margb];
 }
