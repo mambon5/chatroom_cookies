@@ -18,6 +18,8 @@ class Cgame {
             this._then = this._now;
 
             ctx.clearRect(0,0,canvas.width,canvas.height);
+            
+            map.recalculateCenter();  // Quotient Space!!!
 
             CentityManager.update();
             map.drawmatrix();

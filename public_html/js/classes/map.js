@@ -2,6 +2,12 @@
  * Map class
  */
 
+function transpose(a) {
+    return Object.keys(a[0]).map(function(c) {
+        return a.map(function(r) { return r[c]; });
+    });
+}
+
 class Cmap {
     constructor(rows, cols) {
         this._map_matrix = [
@@ -79,4 +85,37 @@ class Cmap {
         return this._map_matrix[pos[0]][pos[1]];
     }
     
+    recalculateCenter() {
+        let pos = this.getmatpos(player.x, player.y); //returns A[i][j] => i fila (y), j columna (x) de la matriz
+        
+        let posCenter = [Math.trunc((this._rows-1)/2), Math.trunc((this._cols-1)/2)];  //Y, X
+        
+        let trans = [pos[0] - posCenter[0], pos[1] - posCenter[1]];
+        
+        var A = [];
+
+        for(var i = 0; i < this._rows; i++){
+            A.push(this._map_matrix[(i+trans[0]+this._rows)%this._rows]);
+        }
+        
+        var B = [];
+        A = transpose(A);
+
+        for(var j = 0; j < this._cols; j++){
+            B.push(A[(j+trans[1]+this._cols)%this._cols]);
+        }
+        
+        B = transpose(B);
+        
+        let totalWidth = this._cols*this._resh;
+        let totalHeight = this._rows*this._resv;
+        
+        ventities.forEach(entity => entity.x = (entity.x - trans[1]*this._resh + totalWidth)%totalWidth );
+        ventities.forEach(entity => entity.y = (entity.y - trans[0]*this._resv + totalHeight)%totalHeight );
+        
+        vfloor.forEach(elem => elem.x = (elem.x - trans[1]*this._resh + totalWidth)%totalWidth );
+        vfloor.forEach(elem => elem.y = (elem.y - trans[0]*this._resv + totalHeight)%totalHeight );
+        
+        this._map_matrix = B;
+    }
 }
