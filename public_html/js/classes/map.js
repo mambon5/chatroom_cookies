@@ -87,11 +87,11 @@ class Cmap {
     
     recalculateCenter() {
         let pos = this.getmatpos(player.x, player.y); //returns A[i][j] => i fila (y), j columna (x) de la matriz
-        
+        //above: player position on matrix
         let posCenter = [Math.trunc((this._rows-1)/2), Math.trunc((this._cols-1)/2)];  //Y, X
-        
+        //above: map center point
         let trans = [pos[0] - posCenter[0], pos[1] - posCenter[1]];
-        
+        //above: displacement of player position from matrix center
         var A = [];
 
         for(var i = 0; i < this._rows; i++){
