@@ -243,5 +243,17 @@ window.addEventListener("keyup", function(e){
  *
  * */
 
+// create a temporary canvas
+/*var tempCanvas = document.createElement("canvas");
+var tempCtx = tempCanvas.getContext("2d");
+
+// set the temp canvas size == the canvas size
+tempCanvas.width=canvas.width;
+tempCanvas.height=canvas.height;
+
+tempCtx.drawImage(player.animation.animationSheet.image, 0, 0, 150, 150, 0,0, 150, 150);
+var hey = checkTransparency(tempCtx, 0, 0, 150, 150);
+aux3.innerHTML = "left: " + hey[0] + "<br> top: " + hey[1] + "<br> right: " + hey[2] + "<br> bottom: " + hey[3];*/
+            
 const game = new Cgame(60);
 game.startGame();
