@@ -24,7 +24,7 @@ class Cmap {
             ];
         this._rows = this._map_matrix.length;
         this._cols = this._map_matrix[0].length;
-        this._v_rows = rows;
+        this._v_rows = rows;//visible rows and columns
         this._v_cols = cols;
         this._resh = canvas.width/this._v_cols;
         this._resv = canvas.height/this._v_rows;
