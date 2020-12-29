@@ -7,6 +7,7 @@ class AnimationSheet {
         this._animations = animations;
         this._framesPerAnimation = framesPerAnimation;
         this._image = new Image(width, height);
+        console.log(new FileReader(imageSource));
         this._image.src = imageSource;
         this._frameWidth = this._image.width / this._framesPerAnimation;
         this._frameHeight = this._image.height / this._animations;

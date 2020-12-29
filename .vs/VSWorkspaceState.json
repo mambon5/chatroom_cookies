@@ -2,12 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\public_html",
-    "\\public_html\\images",
     "\\public_html\\js",
     "\\public_html\\js\\classes",
     "\\public_html\\js\\functions",
     "\\public_html\\js\\globalvars"
   ],
-  "SelectedNode": "\\public_html\\js\\classes\\objectManager.js",
+  "SelectedNode": "\\public_html\\js\\classes\\map.js",
   "PreviewInSolutionExplorer": false
 }
