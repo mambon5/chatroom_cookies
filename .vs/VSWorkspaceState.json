@@ -2,11 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\public_html",
-    "\\public_html\\js",
-    "\\public_html\\js\\classes",
-    "\\public_html\\js\\functions",
-    "\\public_html\\js\\globalvars"
+    "\\public_html\\chatroomexample",
+    "\\public_html\\chatroomexample\\public",
+    "\\public_html\\chatroomexample\\views"
   ],
-  "SelectedNode": "\\public_html\\js\\classes\\map.js",
+  "SelectedNode": "\\public_html\\chatroomexample\\views\\room.ejs",
   "PreviewInSolutionExplorer": false
 }

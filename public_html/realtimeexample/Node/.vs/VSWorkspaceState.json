@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\static"
+    "\\public",
+    "\\views"
   ],
-  "SelectedNode": "\\static\\client.js",
+  "SelectedNode": "\\public\\client.js",
   "PreviewInSolutionExplorer": false
 }

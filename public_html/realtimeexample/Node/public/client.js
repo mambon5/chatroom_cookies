@@ -8,6 +8,7 @@ var client = {
     player: { x: 0, y: 0, last_sequence_number: 0 },
     start: function () {
         client.socket.on('state', (state) => {
+            console.log(state);
             state.timestamp = new Date();
             client.serverState = state;
             var buffer_state = {
@@ -25,7 +26,7 @@ var client = {
             client.buffer_positions.push(buffer_state);
             this.serverStateCount++;
         });
-        client.socket.emit('new player');
+        client.socket.emit('new player', roomName);
     },
     update: function () {
         client.player.x = client.serverState.players[client.socket.id].x;
@@ -51,11 +52,17 @@ var client = {
                 context.beginPath();
                 context.arc(player.x, player.y, 10, 0, 2 * Math.PI);
                 context.fill();
+                context.font = "20px Georgia";
+                context.textAlign = "center"
+                context.fillText("Not you", player.x, player.y - 15);
             }
         }
         context.beginPath();
         context.arc(client.player.x, client.player.y, 10, 0, 2 * Math.PI);
         context.fill();
+        context.font = "20px Georgia";
+        context.textAlign = "center"
+        context.fillText("You", client.player.x, client.player.y - 15);
     },
     serverReconciliation: function () {
         var j = 0;
@@ -75,7 +82,7 @@ var client = {
     processInputs: function () {
         client.movement.sequence_number++;
         // Send input to server
-        client.socket.emit('movement', client.movement);
+        client.socket.emit('movement', client.movement, roomName);
 
         // Do client-side prediction
         client.applyInput(client.movement);

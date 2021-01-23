@@ -9,11 +9,14 @@
         }
     </style>
     <script src="/socket.io/socket.io.js"></script>
+    <script defer src="client.js"></script>
+    <script defer src="mainloop.js"></script>
+    <script defer src="start.js"></script>
+    <script>
+        const roomName = "<%= roomName %>"
+    </script>
 </head>
 <body>
     <canvas id="canvas"></canvas>
 </body>
-<script src="/static/client.js"></script>
-<script src="/static/mainloop.js"></script>
-<script src="/static/start.js"></script>
 </html>
