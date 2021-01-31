@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>A Multiplayer Game</title>
+    <title>A Multiplayer room gamie game</title>
     <style>
       canvas {
         width: 800px;
@@ -9,15 +9,19 @@
       }
     </style>
     <script src="/socket.io/socket.io.js"></script>
+     <!--<script src="http://localhost:3001/socket.io/socket.io.js"></script>-->
+    <script src="../static/game.js"></script>
   </head>
   <body>
-  <div style="background-color:darkblue;color:pink"> <h1>CONSOLE</h1>
-  --------------------------------
-  <p id="messages" style="height:200px;">-no message</p>
-  --------------------------------
-  </div>
-    <canvas id="canvas"></canvas>
-	
+      <p>hellow?</p>
+      <div id="room-container">
+          <% Object.keys(rooms).forEach( function(room) {%>
+          <div> <%= room %></div>
+          <a href="/<% room %>">Join</a>
+          <%}) %>
+      </div>
+      
+      <canvas id="canvas"></canvas>
   </body>
-  <script src="/static/game.js"></script>
+  
 </html>

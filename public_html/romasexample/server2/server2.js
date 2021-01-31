@@ -9,7 +9,7 @@ var app = express();
 var server = http.Server(app);
 var io = socketIO(server);
 
-app.set('static', './static');
+app.set('views', './views');
 app.set('view engine', 'ejs');
 app.use(express.static('public')); //set the folder where our javascript for clientside is located
 //this allows our application to use URL encoded parameters inside of a body for a form
@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true})); //to accept URL parameters
 
 //in the beggining we want 0 rooms defined
 const rooms = {};
+// const rooms = {name: {}, name2: {} };
 
 //Routing, simple route:
 app.get('/', function(req, res) {
