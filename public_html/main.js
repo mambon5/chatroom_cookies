@@ -33,13 +33,13 @@ const stones1AnimationSheet = new AnimationSheet("images/pedres1.png", 62,34, 1,
 
 
 
-const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, speed, marg_henry, name="hjones");
+const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 32, scale, 10, marg_greebo2, name="hjones");
 //player.image.src = "images/asdf.png"; // 24.25, 45.5
 player.generateValidPos();
 
 console.log("Player: " + player.x + " | " + player.y);
 for (var i = 0; i < 4; i ++){
-  player.animations.push(new Animation(playerAnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
+  player.animations.push(new Animation(monster2AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
 }
 player.animation = player.animations[0];
 CcharacterManager.add(player);
@@ -160,7 +160,7 @@ console.log("Barril 2: " + barril2.x + " | " + barril2.y);
 CobjectManager.add(barril2);
 
  //genera i barrils aleatoriament de candy:
-for(let i=0; i<10; ++i) {
+for(let i=0; i<20; ++i) {
     barril3 = new Cobject(canvas.width / 10 * 6, canvas.height * 3 / 3, 32, 37, scale, 0, 
     marg_barril1,  name= ("barrillcandy"+i), clase="mom");
     barril3.animations.push(new Animation(barril1AnimationSheet, 0, 1));
@@ -172,7 +172,7 @@ for(let i=0; i<10; ++i) {
 }
 
  //genera i barrils aleatoriament de vi:
-for(let i=0; i<10; ++i) {
+for(let i=0; i<20; ++i) {
     barril3 = new Cobject(canvas.width / 10 * 6, canvas.height * 3 / 3, 32, 37, scale, 0, 
     marg_barril1,  name= ("barrilwine"+i), clase="mom");
     barril3.animations.push(new Animation(barril2AnimationSheet, 0, 1));
