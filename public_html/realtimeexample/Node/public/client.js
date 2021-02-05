@@ -5,7 +5,7 @@ var client = {
     pending_movements: new Array(),
     serverState: { players: new Array(), timestamp: 0 },
     buffer_positions: new Array(),
-    player: { x: 0, y: 0, last_sequence_number: 0 },
+    player: { name: "", x: 0, y: 0, last_sequence_number: 0 },
     start: function () {
         client.socket.on('state', (state) => {
             console.log(state);
@@ -26,9 +26,14 @@ var client = {
             client.buffer_positions.push(buffer_state);
             this.serverStateCount++;
         });
-        client.socket.emit('new player', roomName);
+        const canvas = document.getElementById('canvas');
+        if (canvas != null) {
+            const name = prompt('What is your name?');
+            client.socket.emit('new player', name, roomName);
+        }
     },
     update: function () {
+        client.player.name = client.serverState.players[client.socket.id].name;
         client.player.x = client.serverState.players[client.socket.id].x;
         client.player.y = client.serverState.players[client.socket.id].y;
         client.player.last_sequence_number = client.serverState.players[client.socket.id].last_sequence_number;
@@ -54,7 +59,7 @@ var client = {
                 context.fill();
                 context.font = "20px Georgia";
                 context.textAlign = "center"
-                context.fillText("Not you", player.x, player.y - 15);
+                context.fillText(player.name, player.x, player.y - 15);
             }
         }
         context.beginPath();
@@ -62,7 +67,7 @@ var client = {
         context.fill();
         context.font = "20px Georgia";
         context.textAlign = "center"
-        context.fillText("You", client.player.x, client.player.y - 15);
+        context.fillText(client.player.name, client.player.x, client.player.y - 15);
     },
     serverReconciliation: function () {
         var j = 0;
