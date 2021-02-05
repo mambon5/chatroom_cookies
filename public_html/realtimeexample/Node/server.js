@@ -51,10 +51,11 @@ server.listen(3000, () => {
 // Add the WebSocket handlers
 io.on('connection', (socket) => {
     console.log("New connection: Socket ID -> " + socket.id);
-    socket.on('new player', (room) => {
+    socket.on('new player', (name, room) => {
         socket.join(room);
         console.log("New player in room " + room);
         rooms[room].state.players[socket.id] = {
+            name: name,
             x: 300,
             y: 300,
             last_sequence_number: 0
