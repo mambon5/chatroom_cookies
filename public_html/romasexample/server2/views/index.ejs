@@ -14,11 +14,18 @@
   </head>
   <body>
       <p>hellow?</p>
-      <div id="room-container">
+      <div id="room-container"><!-- this is where the list with all our rooms is
+          gonna go -->
           <% Object.keys(rooms).forEach( function(room) {%>
           <div> <%= room %></div>
-          <a href="/<% room %>">Join</a>
+          <a href="/<%= room %>">Join</a>
           <%}) %>
+          <form action="/room" method="POST">
+              <input name="room" type="text" required>
+              <!-- required param makes this input necessary to submit 
+              the form-->
+              <button type="submit">New Room</button>
+          </form>
       </div>
       
       <canvas id="canvas"></canvas>

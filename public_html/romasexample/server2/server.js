@@ -1,6 +1,6 @@
 //Dependencies
 
-var express = require('express');
+var express = require('express'); //express is an application
 var http = require('http');
 var path = require('path');
 var socketIO = require('socket.io');
@@ -9,69 +9,66 @@ var app = express();
 var server = http.Server(app);
 var io = socketIO(server);
 
-app.set('port', 5000);
+app.set('views', './static');
+app.set('view engine', 'ejs');
+app.use(express.static('public')); //set the folder where our javascript for clientside is located
+//this allows our application to use URL encoded parameters inside of a body for a form
+app.use(express.urlencoded({ extended: true})); //to accept URL parameters
+
+//in the beggining we want 0 rooms defined
+const rooms = {name: {}};
+// const rooms = {name: {}, name2: {} }; name, name2 are the keys
+// of the object created
+
+//Routing, simple route:
+app.get('/', function(req, res) {
+    //rends our index page, and we pass all the rooms we have
+		res.render('index', {rooms:rooms});
+              
+});
+
+app.post("/room", function(req, res) {
+    if(rooms[req.body.room] != null) {
+         return res.redirect("/");
+    }
+    rooms[req.body.room] = {users: {}};
+    res.redirect(req.body.room);
+    // send message that new room was created towards socket
+});
+
+//another route, for getting a room. "room" will be a parameter that gets
+//passed to the url as you can see in the ":room" description below
+app.get('/:room', function(req, res) {
+    if(rooms[req.params.room]==null){
+        return res.redirect("/");
+    }
+//we wanna render another page, called room, and pass the roomname
+    res.render('room', {roomName: req.params.room});
+});
+//Starts the server 
+server.listen(3002, function() {
+    
+	console.log('Starting the server on port 3002');
+});
+
+app.set('port', 3002);
 app.use('/static', express.static(__dirname + '/static'));
 
-//Routing
-app.get('/', function(request, response) {
-	response.sendFile(path.join(__dirname, 'index.html'));
-});  
+const users = {};
 
-//Starts the server
-server.listen(5000, function() {
-	console.log('Starting the server on port 5000');
+
+io.on("connection", function(socket) {
+  socket.on("new-user", function(name){
+      socket.broadcast.emit("user-connected",name);
+  })  ;
+  socket.on("send-chat-message", function(message) {
+     socket.broadcast.emit("chat-message", {
+         message: message,
+         name: users[socket.id]
+     }) ;
+  });
+  socket.on("disconnect", function() {
+     socket.broadcast.emit("user-disconnected", users[socket.id]); 
+  });
+    
 });
-
-
-setInterval(function() {
-	io.sockets.emit('message', 'hi oh mama mia!');
-}, 1000);
-
-var nplayers = 0;
-var players = {};
-
-// Add the WebSocket handlers
-io.on('connection', function(socket) {
-	nplayers += 1;
-	socket.on('new player', function() {
-		players[socket.id] = {
-			x: 250,
-			y: 250
-		};
-		io.sockets.emit('messages', " player " + socket.id + " joined the game");	
-		io.sockets.emit('messages', " number of players: " + nplayers);	
-		console.log("player " + socket.id + "joined the game");		
-	});
-	socket.on('movement', function(data) {
-		var player = players[socket.id] || {};	
-		if( data.left) {
-			player.x -= 5;
-		}
-		if(data.up) {
-			player.y -= 5;
-		}
-		if(data.right) {
-			player.x += 5;
-		}
-		if(data.down) {
-			player.y += 5;
-		}
-	});
-	
-	socket.on('action', function(data) {
-		io.sockets.emit('messages', "player " + socket.id + " is doing "+data);	
-		console.log("player " + socket.id + " is doing "+data);
-	});
-	
-socket.on('disconnect', function(socket) { //connection es un evento por defecto, segun Fran
-	nplayers -= 1;
-	var msg = "a player has disconnected <br> number of players: " + nplayers;
-	io.sockets.emit('messages', msg );
-	
-});
-});
-
-setInterval(function() {
-  io.sockets.emit('state', players);
-}, 1000 / 60);
-

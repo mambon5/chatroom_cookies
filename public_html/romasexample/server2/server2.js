@@ -16,24 +16,38 @@ app.use(express.static('public')); //set the folder where our javascript for cli
 app.use(express.urlencoded({ extended: true})); //to accept URL parameters
 
 //in the beggining we want 0 rooms defined
-const rooms = {};
-// const rooms = {name: {}, name2: {} };
+const rooms = {name: {}, name2: {}};
+// const rooms = {name: {}, name2: {} }; name, name2 are the keys
+// of the object created
 
 //Routing, simple route:
 app.get('/', function(req, res) {
     //rends our index page, and we pass all the rooms we have
 		res.render('index', {rooms:rooms});
+              
+});
+
+app.post("/room", function(req, res) {
+    if(rooms[req.body.room] != null) {
+         return res.redirect("/");
+    }
+    rooms[req.body.room] = {users: {}};
+    res.redirect(req.body.room);
+    // send message that new room was created towards socket
 });
 
 //another route, for getting a room. "room" will be a parameter that gets
 //passed to the url as you can see in the ":room" description below
 app.get('/:room', function(req, res) {
+    if(rooms[req.params.room]==null){
+        return res.redirect("/");
+    }
 //we wanna render another page, called room, and pass the roomname
     res.render('room', {roomName: req.params.room});
 });
-
-//Starts the server
+//Starts the server 
 server.listen(3001, function() {
+    
 	console.log('Starting the server on port 3001');
 });
 

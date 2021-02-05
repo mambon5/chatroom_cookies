@@ -1,9 +1,52 @@
-var socket = io();
-socket.on('messages', function(data) {
+const socket = io();
+const messageContainer = document.getElementById("message-container");
+const messageForm = document.getElementById("send-container");
+const messageInput = document.getElementById("message-input");
+
+if(messageForm != null) {
+    const name = prompt("What is your name?");
+    appendMessage("You joined");
+    socket.emit("new-user",name);
+
+//    messageForm.addEventListener("submit", function(e){
+//       e.preventDefault(); 
+//       const message = messageInput.value
+//       appendMessage(`You: ${message}` );
+//       socket.emit("")
+//    });
+}
+
+
+
+socket.on('chat-message', function(data) {
 	//console.log(data);
-	var inhtm = document.getElementById('messages').innerHTML;
-	document.getElementById('messages').innerHTML =  data  + "<br>" + inhtm;
+        appendMessage(`${data.name}:${data.message}`);
+//	var inhtm = document.getElementById('messages').innerHTML;
+//	document.getElementById('messages').innerHTML =  data  + "<br>" + inhtm;
 });
+
+socket.on("user-connected", function(name) {
+   appendMessage(`${name} connected`); 
+    
+});
+
+socket.on("user-disconnected", function(name){
+   appendMessage(`${name} disconnected`); 
+});
+
+messageForm.addEventListener('submit', function(e){
+   e.preventDefault();
+   const message = messageInput.value;
+   appendMessage(`You: ${message}`);
+   socket.emit('send-chat-message', message);
+   messageInput.value = '';
+});
+
+function appendMessage(message) {
+    const messageElement = document.createElement('div');
+    messageElement.innerText = message;
+    messageContainer.append(messageElement);
+}
 
 var movement = {
 	up: false,
@@ -55,7 +98,7 @@ document.addEventListener('keyup', function(event) {
 });
 
 
-socket.emit('new player', "");
+socket.emit('new-user', "a");
 
 setInterval(function() {
   socket.emit('movement', movement);

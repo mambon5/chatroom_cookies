@@ -33,13 +33,13 @@ const stones1AnimationSheet = new AnimationSheet("images/pedres1.png", 62,34, 1,
 
 
 
-const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 32, scale, 10, marg_greebo2, name="hjones");
+const player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, 10, marg_cpmerica, name="hjones");
 //player.image.src = "images/asdf.png"; // 24.25, 45.5
 player.generateValidPos();
 
 console.log("Player: " + player.x + " | " + player.y);
 for (var i = 0; i < 4; i ++){
-  player.animations.push(new Animation(monster2AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
+  player.animations.push(new Animation(monster1AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
 }
 player.animation = player.animations[0];
 CcharacterManager.add(player);
