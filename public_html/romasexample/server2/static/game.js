@@ -25,7 +25,7 @@ if(messageForm !== null) {
 
 socket.on('chat-message', function(data) {
 	//console.log(data);
-        appendMessage(`${data.name}:${data.message}`);
+        appendMessage(`${data.name}: ${data.message}`);
 //	var inhtm = document.getElementById('messages').innerHTML;
 //	document.getElementById('messages').innerHTML =  data  + "<br>" + inhtm;
 });
