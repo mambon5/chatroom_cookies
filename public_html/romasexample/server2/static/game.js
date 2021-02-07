@@ -1,9 +1,12 @@
 const socket = io();
-const messageContainer = document.getElementById("message-container");
-const messageForm = document.getElementById("send-container");
-const messageInput = document.getElementById("message-input");
+var messageContainer = document.getElementById("message-container");
+var messageForm = document.getElementById("send-container");
+var messageInput = document.getElementById("message-input");
+var aux1 = document.getElementById("aux1");
 
-if(messageForm != null) {
+aux1.innerHTML = "hola mon";
+
+if(messageForm !== null) {
     const name = prompt("What is your name?");
     appendMessage("You joined");
     socket.emit("new-user",name);
@@ -14,6 +17,8 @@ if(messageForm != null) {
 //       appendMessage(`You: ${message}` );
 //       socket.emit("")
 //    });
+} else {
+    console.log("messageForm is null!");
 }
 
 
@@ -34,6 +39,12 @@ socket.on("user-disconnected", function(name){
    appendMessage(`${name} disconnected`); 
 });
 
+function appendMessage(message) {
+    const messageElement = document.createElement('div');
+    messageElement.innerText = message;
+    messageContainer.append(messageElement);
+}
+
 messageForm.addEventListener('submit', function(e){
    e.preventDefault();
    const message = messageInput.value;
@@ -42,11 +53,7 @@ messageForm.addEventListener('submit', function(e){
    messageInput.value = '';
 });
 
-function appendMessage(message) {
-    const messageElement = document.createElement('div');
-    messageElement.innerText = message;
-    messageContainer.append(messageElement);
-}
+
 
 var movement = {
 	up: false,
@@ -98,7 +105,7 @@ document.addEventListener('keyup', function(event) {
 });
 
 
-socket.emit('new-user', "a");
+
 
 setInterval(function() {
   socket.emit('movement', movement);

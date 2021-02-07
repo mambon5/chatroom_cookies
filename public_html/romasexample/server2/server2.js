@@ -58,17 +58,17 @@ const users = {};
 
 
 io.on("connection", function(socket) {
-  socket.on("new player", function(name){
-      socket.broadcast.emit("user connected",name);
+  socket.on("new-user", function(name){
+      socket.broadcast.emit("user-connected",name);
   })  ;
-  socket.on("send chat message", function(message) {
-     socket.broadcast.emit("chat message", {
+  socket.on("send-chat-message", function(message) {
+     socket.broadcast.emit("chat-message", {
          message: message,
          name: users[socket.id]
      }) ;
   });
   socket.on("disconnect", function() {
-     socket.broadcast.emit("user disconnected", users[socket.id]); 
+     socket.broadcast.emit("user-disconnected", users[socket.id]); 
   });
     
 });

@@ -10,10 +10,10 @@
     </style>
     <script src="/socket.io/socket.io.js"></script>
      <!--<script src="http://localhost:3001/socket.io/socket.io.js"></script>-->
-    <script src="../static/game.js"></script>
+    
   </head>
   <body>
-      
+      <div id="aux1"> aux1 </div>
         <div style="background-color:darkblue;color:pink"> <h1>CONSOLE</h1>
   --------------------------------
   <p id="messages" style="height:200px;">holi-no message</p>
@@ -22,12 +22,16 @@
     <p>hellow?</p>
        <div id="message-container">message container</div>
         <form id="send-container">
-            <input type="text" id="message-input">
+            <input type="text" id="message-input" required>
             <button type="submit" id="send-button">
                 Send
             </button>
             
-	
+        </form>
+       
+       
+       <script src="../static/game.js"></script>
   </body>
   
 </html>
+
