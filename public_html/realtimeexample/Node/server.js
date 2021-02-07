@@ -13,10 +13,10 @@ const update_rate = 10; // updates per second
 const rooms = {};
 
 app.set('port', 3000);
-app.set('views', './views')
-app.set('view engine', 'html')
-app.engine('html', ejs.renderFile)
-app.use(express.urlencoded({ extended: true }))
+app.set('views', './views');
+app.set('view engine', 'html');
+app.engine('html', ejs.renderFile);
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // Routing

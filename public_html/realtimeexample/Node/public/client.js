@@ -14,13 +14,13 @@ var client = {
             var buffer_state = {
                 players: new Array(),
                 timestamp: 0
-            }
+            };
             for (var i in state.players) {
                 buffer_state.players[i] = {
                     x: state.players[i].x,
                     y: state.players[i].y,
                     last_sequence_number: state.players[i].last_sequence_number
-                }
+                };
             }
             buffer_state.timestamp = state.timestamp;
             client.buffer_positions.push(buffer_state);
