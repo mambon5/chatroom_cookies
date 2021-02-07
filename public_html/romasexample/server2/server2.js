@@ -60,6 +60,7 @@ const users = {};
 io.on("connection", function(socket) {
   socket.on("new-user", function(name){
       socket.broadcast.emit("user-connected",name);
+      users[socket.id] = name;
   })  ;
   socket.on("send-chat-message", function(message) {
      socket.broadcast.emit("chat-message", {
