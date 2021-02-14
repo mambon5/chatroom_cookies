@@ -27,18 +27,23 @@ app.get('/', function(req, res) {
               
 });
 
-app.post("/room", function(req, res) {
+app.post("/room", function(req, res) { //creating a new room
     if(rooms[req.body.room] != null) {
-         return res.redirect("/");
+         return res.redirect("/"); //redirect to index if room already exists
     }
     rooms[req.body.room] = {users: {}};
     res.redirect(req.body.room);
     // send message that new room was created towards socket
+    io.sockets.emit("chat-message", {
+         message: "room created: " + req.body.room,
+         name: "someone"
+     });
+    io.emit("room-created",req.body.room);
 });
 
 //another route, for getting a room. "room" will be a parameter that gets
 //passed to the url as you can see in the ":room" description below
-app.get('/:room', function(req, res) {
+app.get('/:room', function(req, res) { //if the room doesnt exist redirect to index
     if(rooms[req.params.room]==null){
         return res.redirect("/");
     }

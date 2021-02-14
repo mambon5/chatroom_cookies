@@ -1,14 +1,19 @@
 const socket = io();
 var messageContainer = document.getElementById("message-container");
+var roomContainer = document.getElementById("room-container");
 var messageForm = document.getElementById("send-container");
 var messageInput = document.getElementById("message-input");
 var aux1 = document.getElementById("aux1");
 
-aux1.innerHTML = "hola mon";
+//aux1.innerHTML = "hola mon";
 
-if(messageForm !== null) {
+if(messageForm !== null) { //only ask the name if we have a nameform or message 
+                            //form
     const name = prompt("What is your name?");
-    appendMessage("You joined");
+    while(!name){
+        name=prompt('Reason for deletion?');
+    };
+    appendMessage("You joined","me");
     socket.emit("new-user",name);
 
 //    messageForm.addEventListener("submit", function(e){
@@ -21,11 +26,22 @@ if(messageForm !== null) {
     console.log("messageForm is null!");
 }
 
-
+socket.on("room-created", function(room) {
+//    <div> <%= room %></div>
+     //      <a href="/<%= room %>">Join</a>
+     aux1.innerHTML = "new room:" + room;
+    const roomElement = document.createElement("div");
+    roomElement.innerText = room;
+    const roomLink = document.createElement("a");
+    roomLink.href = `/${room}`;
+    roomLink.innerText = "Join";
+    roomContainer.append(roomElement);
+    roomContainer.append(roomLink);
+});
 
 socket.on('chat-message', function(data) {
 	//console.log(data);
-        appendMessage(`${data.name}: ${data.message}`);
+        appendMessage(`${data.name}: ${data.message}`,"them");
 //	var inhtm = document.getElementById('messages').innerHTML;
 //	document.getElementById('messages').innerHTML =  data  + "<br>" + inhtm;
 });
@@ -39,8 +55,13 @@ socket.on("user-disconnected", function(name){
    appendMessage(`${name} disconnected`); 
 });
 
-function appendMessage(message) {
+function appendMessage(message, who="them") {
     const messageElement = document.createElement('div');
+    if(who==="me") {
+        messageElement.style.backgroundColor = "pink";
+    } else {
+        messageElement.style.backgroundColor = "LightGray";
+    }
     messageElement.innerText = message;
     messageContainer.append(messageElement);
 }
@@ -48,7 +69,7 @@ function appendMessage(message) {
 messageForm.addEventListener('submit', function(e){
    e.preventDefault();
    const message = messageInput.value;
-   appendMessage(`You: ${message}`);
+   appendMessage(`You: ${message}`, who="me");
    socket.emit('send-chat-message', message);
    messageInput.value = '';
 });
