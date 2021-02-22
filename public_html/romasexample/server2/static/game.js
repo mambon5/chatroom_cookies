@@ -3,6 +3,8 @@ var messageContainer = document.getElementById("message-container");
 var roomContainer = document.getElementById("room-container");
 var messageForm = document.getElementById("send-container");
 var messageInput = document.getElementById("message-input");
+
+
 var aux1 = document.getElementById("aux1");
 
 //aux1.innerHTML = "hola mon";
@@ -14,14 +16,20 @@ if(messageForm !== null) { //only ask the name if we have a nameform or message
         name=prompt('Reason for deletion?');
     };
     appendMessage("You joined","me");
-    socket.emit("new-user",name);
+    socket.emit("new-user", roomName, name);
+    
+    aux1.innerHTML = name;
+    
 
-//    messageForm.addEventListener("submit", function(e){
-//       e.preventDefault(); 
-//       const message = messageInput.value
-//       appendMessage(`You: ${message}` );
-//       socket.emit("")
-//    });
+   console.log("messageForm not null");
+
+    messageForm.addEventListener('submit', function(e){
+       e.preventDefault();
+       const message = messageInput.value;
+       appendMessage(`You: ${message}`, who="me");
+       socket.emit('send-chat-message', roomName, message);
+       messageInput.value = '';
+    });
 } else {
     console.log("messageForm is null!");
 }
@@ -29,7 +37,7 @@ if(messageForm !== null) { //only ask the name if we have a nameform or message
 socket.on("room-created", function(room) {
 //    <div> <%= room %></div>
      //      <a href="/<%= room %>">Join</a>
-     aux1.innerHTML = "new room:" + room;
+    
     const roomElement = document.createElement("div");
     roomElement.innerText = room;
     const roomLink = document.createElement("a");
@@ -48,31 +56,30 @@ socket.on('chat-message', function(data) {
 
 socket.on("user-connected", function(name) {
    appendMessage(`${name} connected`); 
-    
 });
 
 socket.on("user-disconnected", function(name){
+if(name != null) {
    appendMessage(`${name} disconnected`); 
+   }
 });
 
 function appendMessage(message, who="them") {
     const messageElement = document.createElement('div');
     if(who==="me") {
-        messageElement.style.backgroundColor = "pink";
+       
+        messageElement.className = "me";
     } else {
-        messageElement.style.backgroundColor = "LightGray";
+        
+        messageElement.className = "them";
     }
+    
     messageElement.innerText = message;
     messageContainer.append(messageElement);
 }
 
-messageForm.addEventListener('submit', function(e){
-   e.preventDefault();
-   const message = messageInput.value;
-   appendMessage(`You: ${message}`, who="me");
-   socket.emit('send-chat-message', message);
-   messageInput.value = '';
-});
+
+
 
 
 

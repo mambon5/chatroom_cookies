@@ -16,7 +16,7 @@ app.use(express.static('public')); //set the folder where our javascript for cli
 app.use(express.urlencoded({ extended: true})); //to accept URL parameters
 
 //in the beggining we want 0 rooms defined
-const rooms = {name: {}, name2: {}};
+const rooms = { };
 // const rooms = {name: {}, name2: {} }; name, name2 are the keys
 // of the object created
 
@@ -35,10 +35,11 @@ app.post("/room", function(req, res) { //creating a new room
     res.redirect(req.body.room);
     // send message that new room was created towards socket
     io.sockets.emit("chat-message", {
-         message: "room created: " + req.body.room,
-         name: "someone"
+         message:  req.body.room +" room created " ,
+         name: "news"
      });
     io.emit("room-created",req.body.room);
+    
 });
 
 //another route, for getting a room. "room" will be a parameter that gets
@@ -58,23 +59,35 @@ server.listen(3001, function() {
 
 app.set('port', 3001);
 app.use('/static', express.static(__dirname + '/static'));
-
-const users = {};
+//const users = {};
 
 
 io.on("connection", function(socket) {
-  socket.on("new-user", function(name){
-      socket.broadcast.emit("user-connected",name);
-      users[socket.id] = name;
+  socket.on("new-user", function(room, name){
+      socket.join(room);
+      rooms[room].users[socket.id] = name;
+      socket.to(room).broadcast.emit("user-connected",name);
   })  ;
-  socket.on("send-chat-message", function(message) {
-     socket.broadcast.emit("chat-message", {
+  socket.on("send-chat-message", function(room, message) {
+     socket.to(room).broadcast.emit("chat-message", {
          message: message,
-         name: users[socket.id]
+         name: rooms[room].users[socket.id]
      }) ;
   });
   socket.on("disconnect", function() {
-     socket.broadcast.emit("user-disconnected", users[socket.id]); 
+      getUserRooms(socket).forEach( function(room) {
+            socket.broadcast.emit("user-disconnected", 
+                        rooms[room].users[socket.id]); 
+            delete rooms[room].users[socket.id];//this deletes the user from the 
+                                                //variable room as well
+      });    
   });
     
 });
+
+function getUserRooms(socket) { //what the hell does reduce() do?
+    return Object.entries(rooms).reduce( function(names, [name, room]){
+        if(room.users[socket.id] !== null) names.push(name);
+        return names;
+    }, []);
+}

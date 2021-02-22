@@ -10,10 +10,36 @@
       div {
        background-color: lightgray;
       }
+      #aux1{
+          font-family: Verdana;
+          font-size: 24px;
+          border-radius: 15px;
+          text-align: center;
+
+      }
+      #chat-header{
+          font-family: Verdana;
+          font-size: 18px;
+          border-radius: 15px;
+          text-align: center;
+      }
+      .me{
+          background-color: lightblue;
+          color:white;
+          font-family: Calibri;
+          text-align: left;
+      }
+      .them{
+          background-color: pink;
+          font-family: Calibri;
+          text-align: right;
+      }
     </style>
     <script src="/socket.io/socket.io.js"></script>
      <!--<script src="http://localhost:3001/socket.io/socket.io.js"></script>-->
-    
+     <script>
+         const roomName = "<%= roomName %>";
+     </script>
   </head>
   <body>
       <div id="aux1"> aux1 </div>
@@ -22,8 +48,8 @@
   <p id="messages" ></p>
   --------------------------------
   </div>
-    
-       <div id="message-container">message container</div>
+       <div id="chat-header"> <%= roomName %></div>
+       <div id="message-container">__________</div>
         <form id="send-container">
             <input type="text" id="message-input" required>
             <button type="submit" id="send-button">
