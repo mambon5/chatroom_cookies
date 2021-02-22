@@ -49,7 +49,7 @@ socket.on("room-created", function(room) {
 
 socket.on('chat-message', function(data) {
 	//console.log(data);
-        appendMessage(`${data.name}: ${data.message}`,"them");
+        appendMessage(data.message, data.name);
 //	var inhtm = document.getElementById('messages').innerHTML;
 //	document.getElementById('messages').innerHTML =  data  + "<br>" + inhtm;
 });
@@ -70,11 +70,13 @@ function appendMessage(message, who="them") {
        
         messageElement.className = "me";
     } else {
-        
+        if(who != "them") {
+            message = "<i>"+who+"</i>: " + message;
+        }
         messageElement.className = "them";
     }
     
-    messageElement.innerText = message;
+    messageElement.innerHTML =  message;
     messageContainer.append(messageElement);
 }
 
