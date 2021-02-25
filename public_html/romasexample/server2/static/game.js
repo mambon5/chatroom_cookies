@@ -26,7 +26,7 @@ if(messageForm !== null) { //only ask the name if we have a nameform or message
     messageForm.addEventListener('submit', function(e){
        e.preventDefault();
        const message = messageInput.value;
-       appendMessage(`You: ${message}`, who="me");
+       appendMessage(`<i>You</i>: ${message}`, who="me");
        socket.emit('send-chat-message', roomName, message);
        messageInput.value = '';
     });
