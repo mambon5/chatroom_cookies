@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <link rel="stylesheet" href="/style/style.css">
+  <script>
+    const roomName = "<%= roomName %>"
+  </script>
+  <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+  <script defer src="script.js"></script>
+</head>
+
+<body>
+
+<div id="bgimage"></div>
+<div id="bggradient"></div>
+<canvas id="my_canvas_background"></canvas>
+<canvas id="my_canvas"></canvas>
+<div id="aux" class="aux">hola</div>
+<div id="aux2" class="aux">aux2</div>
+<div id="aux3" class="aux">aux3</div>
+
+<img src="images/floor-tile3_light.jpg" id="floor" width="32" height="32">
+<img src="images/wood_big1.png" id="wall" width="32" height="32">
+<img src="images/grass1.png" id="grass" width="32" height="32">
+<img src="images/tileset2.png" id="tiles1" width="32" height="32">
+
+<script src="js/globalvars/entityVars.js"></script>
+<script src="js/globalvars/img_margins.js"></script>
+
+<script src="js/functions/underscore.js"></script>
+
+<script src="js/functions/drawobj.js"></script>
+<script src="js/functions/aritmetic.js"></script>
+<script src="js/functions/getblankspaces.js"></script>
+<script src="js/functions/xocs.js"></script>
+
+<script src="js/classes/map.js"></script>
+<script src="js/classes/rectangle.js"></script>
+<script src="js/classes/animation.js"></script>
+<script src="js/classes/animationSheet.js"></script>
+<script src="js/classes/entity.js"></script>
+<script src="js/classes/character.js"></script>
+<script src="js/classes/object.js"></script>
+<script src="js/classes/characterManager.js"></script>
+
+<script src="js/classes/player.js"></script>
+<script src="js/classes/monster.js"></script>
+<script src="js/classes/background.js"></script>
+<script src="js/classes/game.js"></script>
+<script src="js/classes/bubble.js"></script>
+<script src="js/classes/objectManager.js"></script>
+<script src="js/classes/floorManager.js"></script>
+<script src="js/classes/entityManager.js"></script>
+
+<script src="js/main.js"></script>
+
+
+  <div id="message-container"></div>
+  <form id="send-container">
+    <input type="text" id="message-input">
+    <button type="submit" id="send-button">Send</button>
+  </form>
+</body>
+</html>
