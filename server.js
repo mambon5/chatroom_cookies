@@ -35,7 +35,7 @@ app.get('/:room', (req, res) => {
   res.render('room', { roomName: req.params.room })
 })
 
-server.listen(3000, function () {console.log('connected');})
+server.listen(5000, function () {console.log('connected');})
 
 io.on('connection', socket => {
   socket.on('new-user', (room, name) => {
