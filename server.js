@@ -10,9 +10,9 @@ app.use("/style",express.static(__dirname + "/style"));
 app.use("/images",express.static(__dirname + "/images"));
 app.use("/js",express.static(__dirname + "/js"));
 
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }));
 
-const rooms = { }
+const rooms = { };
 
 app.get('/', (req, res) => {
   res.render('index', { rooms: rooms })
@@ -35,7 +35,7 @@ app.get('/:room', (req, res) => {
   res.render('room', { roomName: req.params.room })
 })
 
-server.listen(5000, function () {console.log('connected');})
+server.listen(5000, function () {console.log('connected');});
 
 io.on('connection', socket => {
   socket.on('new-user', (room, name) => {
