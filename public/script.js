@@ -1,23 +1,23 @@
 //client
 
-const socket = io('http://localhost:5000');
-const messageContainer = document.getElementById('message-container')
-const roomContainer = document.getElementById('room-container')
-const messageForm = document.getElementById('send-container')
-const messageInput = document.getElementById('message-input')
+const socket = io();
+const messageContainer = document.getElementById('message-container');
+const roomContainer = document.getElementById('room-container');
+const messageForm = document.getElementById('send-container');
+const messageInput = document.getElementById('message-input');
 
 if (messageForm != null) {
-  const name = prompt('What is your name?')
-  appendMessage('You joined')
-  socket.emit('new-user', roomName, name)
+  const name = prompt('What is your name?');
+  appendMessage('You joined');
+  socket.emit('new-user', roomName, name);
 
   messageForm.addEventListener('submit', e => {
     e.preventDefault()
     const message = messageInput.value
     appendMessage(`You: ${message}`)
-    socket.emit('send-chat-message', roomName, message)
-    messageInput.value = ''
-  })
+    socket.emit('send-chat-message', roomName, message);
+    messageInput.value = '';
+  });
 }
 
 socket.on('room-created', room => {
@@ -31,15 +31,17 @@ socket.on('room-created', room => {
 })
 
 socket.on('chat-message', data => {
-  appendMessage(`${data.name}: ${data.message}`)
+  appendMessage(`${data.name}: ${data.message}`);
 })
 
 socket.on('user-connected', name => {
-  appendMessage(`${name} connected`)
+  appendMessage(`${name} connected`);
+  // crear un player2
+  
 })
 
 socket.on('user-disconnected', name => {
-  appendMessage(`${name} disconnected`)
+  appendMessage(`${name} disconnected`);
 })
 
 function appendMessage(message) {

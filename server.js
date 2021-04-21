@@ -39,9 +39,14 @@ server.listen(5000, function () {console.log('connected');});
 
 io.on('connection', socket => {
   socket.on('new-user', (room, name) => {
-    socket.join(room)
-    rooms[room].users[socket.id] = name
-    socket.to(room).broadcast.emit('user-connected', name)
+    socket.join(room);
+    rooms[room].users[socket.id] = {
+            name: name,
+            x: 300,
+            y: 300
+            //last_sequence_number: 0
+        };
+    socket.to(room).broadcast.emit('user-connected', name);
   })
   socket.on('send-chat-message', (room, message) => {
     socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id] })

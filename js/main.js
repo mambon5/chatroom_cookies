@@ -52,7 +52,7 @@ for (var i = 0; i < 4; i ++){
 }
 monst1.animation = monst1.animations[0];
 monst1.generateValidPos();
-CcharacterManager.add(monst1);
+//CcharacterManager.add(monst1);
 
 const monst2 = new Cmonster(canvas.width/10*1, canvas.height/3,
 32, 32, scale, speed/2, marg_greebo2, name="greebo2");
@@ -62,7 +62,7 @@ for (var i = 0; i < 4; i ++){
 }
 monst2.animation = monst2.animations[0];
 monst2.generateValidPos();
-CcharacterManager.add(monst2);
+//CcharacterManager.add(monst2);
 
 const monst3 = new Cmonster(canvas.width/10*2, canvas.height/3,
 32, 48, scale, speed/2, marg_prodroid2, name="protocoldroid2");
@@ -72,7 +72,7 @@ for (var i = 0; i < 4; i ++){
 }
 monst3.animation = monst3.animations[0];
 monst3.generateValidPos();
-CcharacterManager.add(monst3);
+//CcharacterManager.add(monst3);
 
 const monst4 = new Cmonster(canvas.width/10*3, canvas.height/3,
 32, 48, scale, speed*1.1, marg_tiana2, name="tiana2");
@@ -82,7 +82,7 @@ for (var i = 0; i < 4; i ++){
 }
 monst4.animation = monst4.animations[0];
 monst4.generateValidPos();
-CcharacterManager.add(monst4);
+//CcharacterManager.add(monst4);
 
 const monst5 = new Cmonster(canvas.width/10*4, canvas.height/3,
 32, 48, scale, speed*1.5, marg_rhodey, name="rhodey");
@@ -92,7 +92,7 @@ for (var i = 0; i < 4; i ++){
 }
 monst5.animation = monst5.animations[0];
 monst5.generateValidPos();
-CcharacterManager.add(monst5);
+//CcharacterManager.add(monst5);
 
 const monst6 = new Cmonster(canvas.width/10*6, canvas.height/3,
 32, 48, scale, speed*1.1, marg_laila, name="laila");
@@ -101,7 +101,7 @@ for (var i = 0; i < 4; i ++){
 }
 monst6.animation = monst6.animations[0];
 monst6.generateValidPos();
-CcharacterManager.add(monst6);
+//CcharacterManager.add(monst6);
 
 const monst7 = new Cmonster(canvas.width/10*6, canvas.height/3,
 32, 48, scale, speed*1, marg_laila, name="officewoman05");
@@ -110,14 +110,14 @@ for (var i = 0; i < 4; i ++){
 }
 monst7.animation = monst7.animations[0];
 monst7.generateValidPos();
-CcharacterManager.add(monst7);
+//CcharacterManager.add(monst7);
 
 const stove1 = new Cobject(canvas.width / 10 * 6, canvas.height * 2 / 3, 34, 60, scale, 0, 
 marg_stove,  name= "stove11", clase="obj");
 stove1.animations.push(new Animation(stove1AnimationSheet, 0, [5,5,5,5,5,5,5]));
 stove1.animation = stove1.animations[0];
 stove1.animation.animating = true;
-CobjectManager.add(stove1);
+//CobjectManager.add(stove1);
 
 const stove2 = new Cobject(canvas.width / 10 * 6, canvas.height * 2 / 3, 34, 60, scale, 0, 
 marg_stove,  name= "stove2", clase="obj");
@@ -168,7 +168,7 @@ for(let i=0; i<20; ++i) {
     //init_pos = barril3.generateValidPos();
     //barril3.x = init_pos[0];
     //barril3.y = init_pos[1];
-    CobjectManager.add(barril3);
+   // CobjectManager.add(barril3);
 }
 
  //genera i barrils aleatoriament de vi:
@@ -180,7 +180,7 @@ for(let i=0; i<20; ++i) {
     //init_pos = barril3.generateValidPos();
     //barril3.x = init_pos[0];
     //barril3.y = init_pos[1];
-    CobjectManager.add(barril3);
+   // CobjectManager.add(barril3);
 }
 //palo de piruletas:
 for(let i=0; i<10; ++i) {
@@ -192,7 +192,7 @@ for(let i=0; i<10; ++i) {
     //init_pos = lollypal.generateValidPos();
 //    lollypal.x = init_pos[0];
 //    lollypal.y = init_pos[1];
-    CobjectManager.add(lollypal);
+    //CobjectManager.add(lollypal);
 }
 
 //bol de chuches
@@ -205,7 +205,7 @@ for(let i=0; i<10; ++i) {
     //init_pos = candybowl.generateValidPos();
 //    lollypal.x = init_pos[0];
 //    lollypal.y = init_pos[1];
-    CobjectManager.add(candybowl);
+   // CobjectManager.add(candybowl);
 }
 
 const bubble1 = new Cbubble(canvas.width/10*4, canvas.height/3,
