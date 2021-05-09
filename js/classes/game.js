@@ -3,6 +3,8 @@
  */
 
 class Cgame {
+    
+    
     constructor(fps) { //filas, columnas
         this._fps = fps;
         this._now;

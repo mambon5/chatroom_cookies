@@ -33,7 +33,7 @@ app.get('/:room', (req, res) => {
     return res.redirect('/')
   }
   res.render('room', { roomName: req.params.room })
-})
+});
 
 server.listen(5000, function () {console.log('connected');});
 
@@ -46,15 +46,15 @@ io.on('connection', socket => {
             y: 300
             //last_sequence_number: 0
         };
-    socket.to(room).broadcast.emit('user-connected', name);
+    socket.to(room).broadcast.emit('user-connected', rooms[room].users[socket.id]);
   })
   socket.on('send-chat-message', (room, message) => {
-    socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id] })
+    socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id].name })
   })
   socket.on('disconnect', () => {
     getUserRooms(socket).forEach(room => {
-      socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
-      delete rooms[room].users[socket.id]
+      socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id] )
+      delete rooms[room].users[socket.id];
     })
   })
 })

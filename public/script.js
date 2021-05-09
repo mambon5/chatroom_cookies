@@ -13,7 +13,8 @@ if (messageForm != null) {
 
   messageForm.addEventListener('submit', e => {
     e.preventDefault()
-    const message = messageInput.value
+    const message = messageInput.value + `player x: ${Math.round(player.x) + 
+            ", y: " +Math.round(player.y)}`;w
     appendMessage(`You: ${message}`)
     socket.emit('send-chat-message', roomName, message);
     messageInput.value = '';
@@ -34,14 +35,14 @@ socket.on('chat-message', data => {
   appendMessage(`${data.name}: ${data.message}`);
 })
 
-socket.on('user-connected', name => {
-  appendMessage(`${name} connected`);
+socket.on('user-connected', user => {
+  appendMessage(`${user.name} connected, x: ${user.x}, y: ${user.y}`);
   // crear un player2
-  
 })
 
-socket.on('user-disconnected', name => {
-  appendMessage(`${name} disconnected`);
+socket.on('user-disconnected', user => {
+  appendMessage(`${user.name} disconnected`);
+  //delete player if we have to.
 })
 
 function appendMessage(message) {
@@ -49,3 +50,6 @@ function appendMessage(message) {
   messageElement.innerText = message
   messageContainer.append(messageElement)
 }
+
+
+       
