@@ -14,10 +14,11 @@ if (messageForm != null) {
   messageForm.addEventListener('submit', e => {
     e.preventDefault()
     const message = messageInput.value + `player x: ${Math.round(player.x) + 
-            ", y: " +Math.round(player.y)}`;w
+            ", y: " +Math.round(player.y)}`;
     appendMessage(`You: ${message}`)
     socket.emit('send-chat-message', roomName, message);
     messageInput.value = '';
+    messageInput.blur();
   });
 }
 
@@ -50,6 +51,10 @@ function appendMessage(message) {
   messageElement.innerText = message
   messageContainer.append(messageElement)
 }
-
-
        
+window.addEventListener("keyup", function(e){
+    if(e.keyCode==9) {
+        messageInput.focus();
+    }
+    console.log(e.keyCode);
+});
