@@ -42,8 +42,8 @@ io.on('connection', socket => {
     socket.join(room);
     rooms[room].users[socket.id] = {
             name: name,
-            x: 300,
-            y: 300
+            x: 900,
+            y: 700
             //last_sequence_number: 0
         };
     socket.to(room).broadcast.emit('user-connected', rooms[room].users[socket.id]);

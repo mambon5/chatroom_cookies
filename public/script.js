@@ -39,6 +39,9 @@ socket.on('chat-message', data => {
 socket.on('user-connected', user => {
   appendMessage(`${user.name} connected, x: ${user.x}, y: ${user.y}`);
   // crear un player2
+monst5.generateValidPos();
+CcharacterManager.add(monst5);
+
 })
 
 socket.on('user-disconnected', user => {
@@ -56,5 +59,5 @@ window.addEventListener("keyup", function(e){
     if(e.keyCode==9) {
         messageInput.focus();
     }
-    console.log(e.keyCode);
+    
 });

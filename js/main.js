@@ -113,7 +113,7 @@ for (var i = 0; i < 4; i ++){
 }
 monst7.animation = monst7.animations[0];
 monst7.generateValidPos();
-//CcharacterManager.add(monst7);
+CcharacterManager.add(monst7);
 
 const stove1 = new Cobject(canvas.width / 10 * 6, canvas.height * 2 / 3, 34, 60, scale, 0, 
 marg_stove,  name= "stove11", clase="obj");
