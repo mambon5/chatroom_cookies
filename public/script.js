@@ -49,7 +49,7 @@ socket.on('user-disconnected', user => {
 function appendMessage(message) {
   const messageElement = document.createElement('div')
   messageElement.innerText = message
-  messageContainer.append(messageElement)
+  messageContainer.prepend(messageElement)
 }
        
 window.addEventListener("keyup", function(e){
