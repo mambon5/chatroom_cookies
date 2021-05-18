@@ -22,3 +22,6 @@ class Crectangle {
 };
 
 
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = Crectangle;
+}

@@ -15,3 +15,8 @@ class Cbackground {
     
     set image(e) {this._image = e;}
 };
+
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = Cbackground;
+}

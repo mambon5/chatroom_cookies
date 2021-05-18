@@ -1,16 +1,22 @@
-const express = require('express')
-const app = express()
-const server = require('http').Server(app)
-const io = require('socket.io')(server)
+const express = require('express');
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+const classes = require('./hatman_modules/classess');
 
-app.set('views', './views')
-app.set('view engine', 'ejs')
-app.use(express.static('public'))
+
+app.set('views', './views');
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
 app.use("/style",express.static(__dirname + "/style"));
 app.use("/images",express.static(__dirname + "/images"));
 app.use("/js",express.static(__dirname + "/js"));
 
 app.use(express.urlencoded({ extended: true }));
+
+recti = new classes.Crectangle(10,4,3,2);
+
+console.log("rect x :"+ recti.x);
 
 const rooms = { };
 
@@ -22,7 +28,9 @@ app.post('/room', (req, res) => {
   if (rooms[req.body.room] != null) {
     return res.redirect('/')
   }
-  rooms[req.body.room] = { users: {} }
+  rooms[req.body.room] = { 
+      name: req.params.room,
+      users: {} }
   res.redirect(req.body.room)
   // Send message that new room was created
   io.emit('room-created', req.body.room)
@@ -40,6 +48,8 @@ server.listen(5000, function () {console.log('connected');});
 io.on('connection', socket => {
   socket.on('new-user', (room, name) => {
     socket.join(room);
+    //fer un generateValid pos que usi tots els usuaris de lhabitació, 
+    //rooms[room].users
     rooms[room].users[socket.id] = {
             name: name,
             x: 900,
@@ -48,6 +58,19 @@ io.on('connection', socket => {
         };
     socket.to(room).broadcast.emit('user-connected', rooms[room].users[socket.id]);
   })
+  
+//  socket.on("movement", function(player, room) {
+//      rooms[room].users[socket.id].x = player.x
+//      rooms[room].users[socket.id].y = player.y
+//      console.log("rooms length " + rooms.length);
+//});
+
+
+//setInterval(function() {
+//    Object.entries(rooms)
+//    socket.emit('movement', player, roomName );
+//}, 1000 / 60);
+  
   socket.on('send-chat-message', (room, message) => {
     socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id].name })
   })

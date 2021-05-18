@@ -33,3 +33,8 @@ class CobjectManager {
         console.log(item.name);
     }
 }
+
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = CobjectManager;
+}

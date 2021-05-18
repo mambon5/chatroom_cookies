@@ -33,3 +33,7 @@ class CfloorManager {
         console.log(item.name);
     }
 }
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports =CfloorManager;
+}

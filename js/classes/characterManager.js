@@ -23,3 +23,7 @@ class CcharacterManager {
         vchar.sort(function(a,b){return a.y+a.height-b.y-b.height;});        
     }
 }
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = CcharacterManager;
+}

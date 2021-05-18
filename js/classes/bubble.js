@@ -23,4 +23,7 @@ class Cbubble extends Cobject {
    
 
 
-
+if (typeof module !== "undefined" && module.exports) {
+    module.exports.bubtake = bubtake;
+    module.exports.Cbubble = Cbubble;
+}

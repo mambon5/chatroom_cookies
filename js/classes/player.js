@@ -52,3 +52,8 @@ class Cplayer extends Ccharacter {
         ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, this.x_init, this.y_init, this.width, this.height);
     }
 };
+
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = Cplayer;
+}

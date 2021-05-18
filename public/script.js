@@ -36,13 +36,31 @@ socket.on('chat-message', data => {
   appendMessage(`${data.name}: ${data.message}`);
 })
 
+var players = []
+//use socket.id instead of username
 socket.on('user-connected', user => {
-  appendMessage(`${user.name} connected, x: ${user.x}, y: ${user.y}`);
   // crear un player2
-monst5.generateValidPos();
-CcharacterManager.add(monst5);
+players[user.name] = monst5 //we create ab array of players "players"
+players[user.name].generateValidPos();
+CcharacterManager.add(players[user.name]);
+CentityManager.fillArray();
 
+user.x = players[user.name].x;
+user.y = players[user.name].y;
+appendMessage(`${user.name} connected, x: ${Math.round(user.x)}, y: ${Math.round(user.y)}`);
 })
+
+setInterval(function() {
+    if(typeof player != 'undefined') socket.emit('movement', player, roomName );
+}, 1000 / 60);
+
+socket.on('state', function(users) {
+  users.foreEach(user  => {
+      players[user.name].x = user.x
+      players[user.name].y = user.y
+  })
+});
+
 
 socket.on('user-disconnected', user => {
   appendMessage(`${user.name} disconnected`);

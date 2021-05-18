@@ -119,3 +119,12 @@ class Cmap {
         this._map_matrix = B;
     }
 }
+
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports.Cmap = Cmap;
+    module.exports.transpose = transpose;
+}
+
+
+

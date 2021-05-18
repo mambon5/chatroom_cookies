@@ -25,3 +25,8 @@ class AnimationSheet {
     set frameWidth(e) {this._frameWidth = e;}
     set frameHeight(e) {this._frameHeight = e;}
 };
+
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = AnimationSheet;
+}

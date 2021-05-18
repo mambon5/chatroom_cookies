@@ -10,7 +10,10 @@ class Cgame {
         this._now;
         this._then;
         this._elapsed;
+        this._started = false;
     }
+    
+    get started() {return this._started;}
 
     loop() {
         this._now = Date.now();
@@ -21,11 +24,12 @@ class Cgame {
 
             ctx.clearRect(0,0,canvas.width,canvas.height);
             
-            map.recalculateCenter();  // Quotient Space!!!
+            //map.recalculateCenter();  // Quotient Space!!!
 
             CentityManager.update();
             map.drawmatrix();
             CentityManager.draw();
+            aux2.innerHTML = "x: " + Math.round(player.x) + ", y: " + Math.round(player.y);
             //imgmargins(ctx, canvas.width/2, canvas.height/2, player.width, player.height);
             /*tempCtx.drawImage(player.animation.animationSheet.image, 0, 0, 150, 150, 0,0, 150, 150);
             let hey = checkTransparency(tempCtx, 0, 0, 150, 150);
@@ -35,7 +39,13 @@ class Cgame {
     }
 
     startGame() {
+        this._started = true;
         this._then = Date.now();
         this.loop();
     }
+}
+
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports = Cgame;
 }
