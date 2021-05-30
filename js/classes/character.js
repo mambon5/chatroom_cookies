@@ -2,6 +2,10 @@
  * Character class
  */
 
+if (typeof module !== "undefined" && module.exports) {
+    Centity = require("./entity");
+}
+
 class Ccharacter extends Centity {
     constructor(x, y, width, height, scale, speed, margins, name, clase="null") {
         super(x, y, width*scale, height*scale, speed,

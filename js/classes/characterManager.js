@@ -5,6 +5,7 @@
 class CcharacterManager {
     static add(obj) {
         vchar.push(obj);
+        console.log("push made to character vector")
     }
     
     static update() {

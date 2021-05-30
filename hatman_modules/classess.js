@@ -8,14 +8,14 @@
 //var map = require('../js/classes/map');
 //var transpose = map.transpose
 //var Cmap = map.Cmap
-var Crectangle = require('../js/classes/rectangle');
+const Crectangle = require('../js/classes/rectangle');
 //var Animation = require('../js/classes/Animation');
 //var AnimationSheet = require('../js/classes/AnimationSheet');
-//var Centity = require('../js/classes/entity');
-//var Ccharacter = require('../js/classes/character');
-//var Cobject = require('../js/classes/object');
-//var CcharacterManager = require('../js/classes/characterManager');
-//var Cplayer = require('../js/classes/player');
+var Centity = require('../js/classes/entity');
+var Ccharacter = require('../js/classes/character');
+var Cobject = require('../js/classes/object');
+var CcharacterManager = require('../js/classes/characterManager');
+var Cplayer = require('../js/classes/player');
 //var Cmonster = require('../js/classes/monster');
 //var Cbackground = require('../js/classes/background');
 //var Cgame = require('../js/classes/game');
@@ -33,20 +33,20 @@ var Crectangle = require('../js/classes/rectangle');
 //module.exports.Cbackground = Cbackground
 //module.exports.Cbubble = Cbubble
 //module.exports.bubtake = bubtake
-//module.exports.Ccharacter = Ccharacter
-//module.exports.CcharacterManager = CcharacterManager
+module.exports.Ccharacter = Ccharacter
+module.exports.CcharacterManager = CcharacterManager
 //module.exports.Cclient = Cclient
-//module.exports.Centity = Centity
+module.exports.Centity = Centity
 //module.exports.CentityManager = CentityManager
 //module.exports.CfloorManager = CfloorManager
 //module.exports.Cgame = Cgame
 //module.exports.transpose = transpose
 //module.exports.Cmap = Cmap
 //module.exports.Cmonster = Cmonster
-//module.exports.Cobject = Cobject
+module.exports.Cobject = Cobject
 //module.exports.CobjectManager = CobjectManager
-//module.exports.Cplayer = Cplayer
+module.exports.Cplayer = Cplayer
 module.exports.Crectangle = Crectangle
-//
+////
 
 

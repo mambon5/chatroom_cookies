@@ -1,3 +1,8 @@
+
+if (typeof module !== "undefined" && module.exports) {
+    Centity = require("./entity");
+}
+
 class Cobject extends Centity {
      constructor(x, y, width, height, scale, speed, margins, name="", clase = "obj") {
         super(x, y, width*scale, height*scale, speed, margins, name, clase);

@@ -2,6 +2,10 @@
  * Player class
  */
 
+if (typeof module !== "undefined" && module.exports) {
+    Ccharacter = require("./character");
+}
+
 class Cplayer extends Ccharacter {
     constructor(x, y, width, height, scale, speed, margins, name="hero", clase="char") {
         super(x, y, width, height, scale, speed, margins, name, clase);

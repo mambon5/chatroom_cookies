@@ -14,9 +14,15 @@ app.use("/js",express.static(__dirname + "/js"));
 
 app.use(express.urlencoded({ extended: true }));
 
-recti = new classes.Crectangle(10,4,3,2);
+//recti = new classes.Centity(10,4,3,2, 2, margins = [1,1,1,1], name="michelangelo");
 
-console.log("rect x :"+ recti.x);
+vchar = [];
+
+recti = new classes.Cplayer(2, 4, 2, 12, 2, 1, margins=[5,4,3,5], name="hero", clase="char");
+
+classes.CcharacterManager.add(recti);
+
+console.log("rect x :"+ recti.x + ", name: " + recti.name);
 
 const rooms = { };
 

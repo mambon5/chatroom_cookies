@@ -2,13 +2,23 @@
  * Entity class, a being with independent existence
  */
 
+if (typeof module !== "undefined" && module.exports) {
+    Crectangle = require("./rectangle");
+}
+
+
 class Centity extends Crectangle {
     constructor(x, y, width, height, speed, margins = [0,0,0,0], name) {
         super(x, y, width, height);
         this._x_init = x;
         this._y_init = y;
         this._speed = speed;
-        this._image = new Image();
+        
+        if ( !(typeof module !== "undefined" && module.exports) ) {
+            // the js function Image() is apparently not defined in Node.js
+                this._image = new Image();
+            }
+            
         this._margins = margins;
         this._moving = false;
         this._animation = null;
@@ -176,5 +186,5 @@ class Centity extends Crectangle {
 
 
 if (typeof module !== "undefined" && module.exports) {
-    module.exports =Centity;
+    module.exports = Centity;
 }
