@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 vchar = [];
 
-recti = new classes.Cplayer(2, 4, 2, 12, 2, 1, margins=[5,4,3,5], name="hero", clase="char");
+recti = new classes.Cmonster(2, 4, 2, 12, 2, 1, margins=[5,4,3,5], name="hero", clase="char");
 
 classes.CcharacterManager.add(recti);
 

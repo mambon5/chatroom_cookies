@@ -1,6 +1,10 @@
 
 var bubtake = Date.now();
 
+if (typeof module !== "undefined" && module.exports) {
+    Cobject = require("./object");
+}
+
 class Cbubble extends Cobject {
      constructor(x, y, width, height, scale, speed, margins, name, host) {
         super(x, y, width, height, scale, speed, margins, name);

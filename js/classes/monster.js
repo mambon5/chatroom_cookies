@@ -1,7 +1,9 @@
 /*
  * Monster class
  */
-
+if (typeof module !== "undefined" && module.exports) {
+    Ccharacter = require("./character");
+}
 
 class Cmonster extends Ccharacter {
     constructor(x, y, width, height, scale=1, speed, margins, name="", clase="char") {
