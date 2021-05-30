@@ -2,6 +2,9 @@
  * Game class
  */
 
+//copy the classes Cgame and CcharacterManagers as classes of the server. TO 
+//have them twice.
+
 class Cgame {
     
     

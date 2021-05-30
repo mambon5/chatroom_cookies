@@ -43,6 +43,8 @@ app.post('/room', (req, res) => {
 })
 
 app.get('/:room', (req, res) => {
+    //when a room is created, a Cmap and objects, or a full game should be created.
+    //Cgame should start
   if (rooms[req.params.room] == null) {
     return res.redirect('/')
   }
