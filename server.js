@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
-const classes = require('./hatman_modules/classess');
-
+classes = require('./hatman_modules/server_classess');
+global = require('./hatman_modules/globalVars/entityVars');
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -16,13 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 
 //recti = new classes.Centity(10,4,3,2, 2, margins = [1,1,1,1], name="michelangelo");
 
-vchar = [];
 
-recti = new classes.Cmonster(2, 4, 2, 12, 2, 1, margins=[5,4,3,5], name="hero", clase="char");
-
-classes.CcharacterManager.add(recti);
-
-console.log("rect x :"+ recti.x + ", name: " + recti.name);
+//we create the main server loop and start it
+game = new classes.Cgame(60);
+game.startGame();
 
 const rooms = { };
 
@@ -39,7 +36,8 @@ app.post('/room', (req, res) => {
       users: {} }
   res.redirect(req.body.room)
   // Send message that new room was created
-  io.emit('room-created', req.body.room)
+  io.emit('room-created', req.body.room);
+  
 })
 
 app.get('/:room', (req, res) => {

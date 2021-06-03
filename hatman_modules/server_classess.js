@@ -5,26 +5,26 @@
  */
 //
 //
-var map = require('../js/classes/map');
+var map = require('./classes/map');
 var transpose = map.transpose
 var Cmap = map.Cmap
-const Crectangle = require('../js/classes/rectangle');
+const Crectangle = require('./classes/rectangle');
 //var Animation = require('../js/classes/Animation');
 //var AnimationSheet = require('../js/classes/AnimationSheet');
-var Centity = require('../js/classes/entity');
-var Ccharacter = require('../js/classes/character');
-var Cobject = require('../js/classes/object');
-var CcharacterManager = require('../js/classes/characterManager');
-var Cplayer = require('../js/classes/player');
-var Cmonster = require('../js/classes/monster');
+var Centity = require('./classes/entity');
+var Ccharacter = require('./classes/character');
+var Cobject = require('./classes/object');
+var CcharacterManager = require('./classes/characterManager');
+var Cplayer = require('./classes/player');
+var Cmonster = require('./classes/monster');
 //var Cbackground = require('../js/classes/background');
-var Cgame = require('../js/classes/game');
-var bubble = require('../js/classes/bubble');
+var Cgame = require('./classes/game');
+var bubble = require('./classes/bubble');
 var Cbubble = bubble.Cbubble
 var bubtake = bubble.bubtake
-var CobjectManager = require('../js/classes/objectManager');
-var CfloorManager = require('../js/classes/floorManager');
-var CentityManager = require('../js/classes/entityManager');
+var CobjectManager = require('./classes/objectManager');
+var CfloorManager = require('./classes/floorManager');
+var CentityManager = require('./classes/entityManager');
 //var Cclient = require('../js/classes/client_trial');
 //
 //
@@ -47,6 +47,6 @@ module.exports.Cobject = Cobject
 module.exports.CobjectManager = CobjectManager
 module.exports.Cplayer = Cplayer
 module.exports.Crectangle = Crectangle
-////
+
 
 
