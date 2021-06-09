@@ -28,6 +28,8 @@ class Cgame {
             //ctx.clearRect(0,0,canvas.width,canvas.height);
             
             //map.recalculateCenter();  // Quotient Space!!!
+           //retreive player positiosn
+           
            
             classes.CentityManager.update();
 //            map.drawmatrix();

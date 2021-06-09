@@ -4,6 +4,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 classes = require('./hatman_modules/server_classess');
 global = require('./hatman_modules/globalVars/entityVars');
+margins = require('./hatman_modules/globalVars/img_margins');
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -56,12 +57,16 @@ io.on('connection', socket => {
     socket.join(room);
     //fer un generateValid pos que usi tots els usuaris de lhabitació, 
     //rooms[room].users
+    monst = new classes.Cmonster(900, 700,
+                32, 48, scale=1, speed=2, margins.marg_cpmerica, name="captainamerica_shield");
+    classes.CcharacterManager.add(monst);
     rooms[room].users[socket.id] = {
             name: name,
             x: 900,
             y: 700
             //last_sequence_number: 0
         };
+    
     socket.to(room).broadcast.emit('user-connected', rooms[room].users[socket.id]);
   })
   
