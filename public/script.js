@@ -52,7 +52,7 @@ appendMessage(`${user.name} connected, x: ${Math.round(user.x)}, y: ${Math.round
 
 setInterval(function() {
     if(typeof player != 'undefined') socket.emit('movement', player, roomName );
-}, 1000 / 60);
+}, 1000 / 1);
 
 socket.on('state', function(users) {
   users.foreEach(user  => {

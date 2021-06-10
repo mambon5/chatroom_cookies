@@ -70,11 +70,18 @@ io.on('connection', socket => {
     socket.to(room).broadcast.emit('user-connected', rooms[room].users[socket.id]);
   })
   
-//  socket.on("movement", function(player, room) {
+  socket.on("movement", function(player, room) {
+      plyr = JSON.parse(JSON.stringify(player));//we must parse a bit the JSON object
+      console.log(room+", player "+plyr._name+" x:"+plyr._x+", y:"+plyr._y)
+      console.log(plyr._x+" "+plyr._y+" "+ plyr._width+" "+ plyr._height+" "+ 
+      plyr._scale+" "+ plyr._speed+" "+ plyr._margins+" "+ plyr._name+" "+ plyr._clase)
+      player1 = new classes.Cplayer(plyr._x, plyr._y, plyr._width, plyr._height, 
+      plyr._scale, plyr._speed, plyr._margins, plyr._name, plyr._clase);
+      
 //      rooms[room].users[socket.id].x = player.x
 //      rooms[room].users[socket.id].y = player.y
 //      console.log("rooms length " + rooms.length);
-//});
+});
 
 
 //setInterval(function() {
