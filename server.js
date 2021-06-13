@@ -6,6 +6,12 @@ classes = require('./hatman_modules/server_classess');
 global = require('./hatman_modules/globalVars/entityVars');
 margins = require('./hatman_modules/globalVars/img_margins');
 
+//vchar = [];
+//vobj = [];
+//ventities = [];
+//vfloor = [];
+
+
 app.set('views', './views');
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
@@ -34,7 +40,7 @@ app.post('/room', (req, res) => {
   }
   rooms[req.body.room] = { 
       name: req.params.room,
-      users: {} }
+      users: {} };
   res.redirect(req.body.room)
   // Send message that new room was created
   io.emit('room-created', req.body.room);
@@ -47,27 +53,35 @@ app.get('/:room', (req, res) => {
   if (rooms[req.params.room] == null) {
     return res.redirect('/')
   }
-  res.render('room', { roomName: req.params.room })
+  res.render('room', { roomName: req.params.room });
 });
 
 server.listen(5000, function () {console.log('connected');});
 
 io.on('connection', socket => {
-  socket.on('new-user', (room, name) => {
+  socket.on('new-user', (room, player) => {
     socket.join(room);
     //fer un generateValid pos que usi tots els usuaris de lhabitació, 
     //rooms[room].users
-    monst = new classes.Cmonster(900, 700,
-                32, 48, scale=1, speed=2, margins.marg_cpmerica, name="captainamerica_shield");
-    classes.CcharacterManager.add(monst);
+     plyr = JSON.parse(JSON.stringify(player));//we parse the JSON string(the object
+     //structure is completely lost when transfering objects from Client/server
+    //now we add this player to the character vector
+    player = new classes.Cplayer(plyr._x,plyr._y, plyr._width, plyr._height, plyr._scale,
+    plyr._speed, plyr._margins, plyr._name, plyr._clase);
+    classes.CcharacterManager.add(player);
+    classes.CentityManager.fillArray();
+    
     rooms[room].users[socket.id] = {
-            name: name,
-            x: 900,
-            y: 700
+            name: player.name,
+            x: player.x,
+            y: player.y
             //last_sequence_number: 0
         };
     
-    socket.to(room).broadcast.emit('user-connected', rooms[room].users[socket.id]);
+    console.log("rooM: "+ rooms[room].users[socket.id].name);
+    socket.to(room).broadcast.emit('user-connected', player, rooms[room].users[socket.id]);
+console.log("new player detected");
+//socket.to(room).broadcast.emit('user-connected', player, "whatever");
   })
   
   socket.on("movement", function(player, room) {

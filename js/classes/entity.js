@@ -44,6 +44,7 @@ class Centity extends Crectangle {
     set moving(e) { this._moving = e; }
     set animations(e) { this._animations = e; }
     set animation(e) { this._animation = e; }
+    set name(e) { this._name = e; }
 
     cut_rect() {
         return new Centity(
