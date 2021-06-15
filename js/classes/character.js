@@ -13,13 +13,13 @@ class Ccharacter extends Centity {
         this._clase = clase;
     }
 
-   
-
     //update() {
         //update position
         //move
     //}
 
+    
+   
    move() {
 
     }

@@ -64,6 +64,7 @@ io.on('connection', socket => {
     //fer un generateValid pos que usi tots els usuaris de lhabitació, 
     //rooms[room].users
      plyr = JSON.parse(JSON.stringify(player));//we parse the JSON string(the object
+     console.log(plyr)
      //structure is completely lost when transfering objects from Client/server
     //now we add this player to the character vector
     player = new classes.Cplayer(plyr._x,plyr._y, plyr._width, plyr._height, plyr._scale,

@@ -46,9 +46,11 @@ socket.on('user-connected', (player, user) => {
     plyr = JSON.parse(JSON.stringify(player));
     console.log("scale: "+scale);
     var w = parseInt(plyr._width)*scale
+    
     newpl = new Cmonster(plyr._x,plyr._y, 32*scale, 
     48*scale, plyr._scale,
     plyr._speed, plyr._margins, plyr._name, plyr._clase);
+    
     for (var i = 0; i < 4; i ++){
     newpl.animations.push(new Animation(monster3AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
     }
