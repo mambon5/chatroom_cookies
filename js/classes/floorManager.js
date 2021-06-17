@@ -24,7 +24,7 @@ class CfloorManager {
     }
 
     static generateValidPoses() {
-        vfloor.forEach(CfloorManager.generateValidPos);
+        vfloor.forEach(object => object.generateValidPos);
     }
 
     static generateValidPos(item, index) {

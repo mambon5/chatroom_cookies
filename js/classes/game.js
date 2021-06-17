@@ -23,6 +23,15 @@ class Cgame {
         this._elapsed = this._now - this._then;
         //aux1.innerHTML = "now: " + now + "<br> then: " + then;
         if(this._elapsed > 1000/this._fps) {
+            
+            let cutrect = player.cut_rect();
+            
+            console.log("player: " + player.name + " xywhs:" + player.x + " " + player.y +
+                     " " + player.width + " " + player.height + " " + player.scale)
+             console.log("cutrect:  xywhs:" + cutrect.x + " " + cutrect.y +
+                     " " + cutrect.width + " " + cutrect.height + " " + cutrect.scale)
+           console.log(player.margins)
+            
             this._then = this._now;
 
             ctx.clearRect(0,0,canvas.width,canvas.height);

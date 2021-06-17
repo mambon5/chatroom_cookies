@@ -60,6 +60,12 @@ server.listen(5000, function () {console.log('connected');});
 
 io.on('connection', socket => {
   socket.on('new-user', (room, player) => {
+      
+      //first we send the current players to the new user (without the new user)
+      //then we add the new user to the server character array
+      socket.emit("current users",vchar);
+      
+      
     socket.join(room);
     //fer un generateValid pos que usi tots els usuaris de lhabitació, 
     //rooms[room].users
@@ -71,7 +77,7 @@ io.on('connection', socket => {
     plyr._speed, plyr._margins, plyr._name, plyr._clase);
     classes.CcharacterManager.add(player);
     classes.CentityManager.fillArray();
-    
+
     rooms[room].users[socket.id] = {
             name: player.name,
             x: player.x,

@@ -39,7 +39,7 @@ const stones1AnimationSheet = new AnimationSheet("images/pedres1.png", 62,34, 1,
  player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, 10, marg_cpmerica, name="hjones");
 //player.image.src = "images/asdf.png"; // 24.25, 45.5
 player.generateValidPos();
-
+console.log("captai america margins:" + player.margins)
 console.log("Player: " + player.x + " | " + player.y);
 for (var i = 0; i < 4; i ++){
   player.animations.push(new Animation(monster1AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));

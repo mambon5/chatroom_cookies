@@ -31,11 +31,30 @@ socket.on('room-created', room => {
   roomLink.innerText = 'join'
   roomContainer.append(roomElement)
   roomContainer.append(roomLink)
-})
+});
 
 socket.on('chat-message', data => {
   appendMessage(`${data.name}: ${data.message}`);
-})
+});
+
+socket.on("current users", charvec => {
+    
+    charvec.forEach(user  => {
+        monst = getcharacter(user, type="monster");
+        for (var i = 0; i < 4; i ++){
+            monst.animations.push(new Animation(monster3AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
+         }
+         monst.animation = monst.animations[0];
+        CcharacterManager.add(monst);        
+    });
+    CentityManager.fillArray();
+    
+    console.log("here come the current users connected");
+    
+    
+    console.log(charvec);
+    console.log(charvec.length);
+});
 
 //var players = []
 //use socket.id instead of username
@@ -43,13 +62,14 @@ socket.on('user-connected', (player, user) => {
   // crear un player2
     console.log("new player detected");
     //adding a new player to the client
-    plyr = JSON.parse(JSON.stringify(player));
-    console.log("scale: "+scale);
-    var w = parseInt(plyr._width)*scale
+    newpl =  getcharacter(player, type="monster");
     
-    newpl = new Cmonster(plyr._x,plyr._y, 32*scale, 
-    48*scale, plyr._scale,
-    plyr._speed, plyr._margins, plyr._name, plyr._clase);
+    
+    
+    
+//    newpl = new Cmonster(plyr._x,plyr._y, 32*scale, 
+//    48*scale, plyr._scale,
+//    plyr._speed, plyr._margins, plyr._name, plyr._clase);
     
     for (var i = 0; i < 4; i ++){
     newpl.animations.push(new Animation(monster3AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
@@ -59,7 +79,7 @@ socket.on('user-connected', (player, user) => {
     
     CcharacterManager.add(newpl);
     console.log(newpl.x+" "+newpl.y+" "+ newpl.width+" "+ newpl.height+" "+ 
-    scale+" "+ newpl.speed+" "+ newpl.margins+" "+ newpl.name+" "+ newpl.clase);
+    newpl.scale+" "+ newpl.speed+" "+ newpl.margins+" "+ newpl.name+" "+ newpl.clase);
     CentityManager.fillArray();
 
 appendMessage(`${newpl.name} connected, x: ${Math.round(newpl.x)}, y: ${Math.round(newpl.y)}`);
@@ -94,3 +114,31 @@ window.addEventListener("keyup", function(e){
     }
     
 });
+
+function getcharacter(chari, type="monster") {
+    
+    chari = JSON.parse(JSON.stringify(chari));
+    //parsing JSON object as string 
+    
+    x = chari._x;
+    y = chari._y;
+    width = chari._width;
+    height = chari._height;
+    scale = chari._scale;
+    spd = chari._speed;
+    margi = chari._margins
+    name = chari._name
+    clase = chari._clase
+    
+    
+    if(type == "monster") { 
+        res = new Cmonster(x,y,width, height, scale, spd, margi, name, clase);
+        return  res;
+    } else {
+        if(type=="player") {
+            res = new Cplayer(x,y,width, height, scale, speed, margi, name, clase);
+            return  res;
+        }
+    }
+    return "not a player nor a monster";
+}

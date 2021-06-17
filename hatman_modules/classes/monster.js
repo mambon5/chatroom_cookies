@@ -11,8 +11,6 @@ class Cmonster extends Ccharacter {
         this._pastdir = -1;
     }
 
-   
-
     move() {
         this.randmove();
         this.animation.animate();

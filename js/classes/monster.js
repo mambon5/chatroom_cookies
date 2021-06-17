@@ -58,8 +58,8 @@ class Cmonster extends Ccharacter {
     draw() {
         let x  = this.x - player.x + player.x_init;
         let y  = this.y - player.y + player.y_init;
-        ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, x, y, this.width, this.height);
-        ctx.font = "30px Verdana";
+        ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, x, y, this.width*this.scale, this.height*this.scale);
+        ctx.font = "20px Verdana";
         var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
         gradient.addColorStop("0"," magenta");
         gradient.addColorStop("0.5", "blue");
@@ -67,7 +67,7 @@ class Cmonster extends Ccharacter {
         // Fill with gradient
         ctx.fillStyle = gradient;
         var wt = ctx.measureText(this._name);//text width  
-        console.log(wt.width)
+        
         ctx.fillText(this._name ,x - wt.width/2 + this._width/2,y);
     }
 };
