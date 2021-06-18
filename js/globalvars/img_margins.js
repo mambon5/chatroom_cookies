@@ -5,7 +5,7 @@
  */
 
 // left, top, right, bottom
-let extrah =18;
+let extrah =20;
 var marg_henry = [6, 2, 4, 2]; marg_henry[1] += extrah;
 var marg_tiana2 = [6, 5, 4, 2]; marg_tiana2[1] += extrah;
 var marg_cpmerica = [2, 2, 1, 1]; marg_cpmerica[1] += extrah;

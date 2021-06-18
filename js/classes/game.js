@@ -26,11 +26,11 @@ class Cgame {
             
             let cutrect = player.cut_rect();
             
-            console.log("player: " + player.name + " xywhs:" + player.x + " " + player.y +
-                     " " + player.width + " " + player.height + " " + player.scale)
-             console.log("cutrect:  xywhs:" + cutrect.x + " " + cutrect.y +
-                     " " + cutrect.width + " " + cutrect.height + " " + cutrect.scale)
-           console.log(player.margins)
+//            console.log("player: " + player.name + " xywhs:" + player.x + " " + player.y +
+//                     " " + player.width + " " + player.height + " " + player.scale)
+//             console.log("cutrect:  xywhs:" + cutrect.x + " " + cutrect.y +
+//                     " " + cutrect.width + " " + cutrect.height + " " + cutrect.scale)
+//           console.log(player.margins)
             
             this._then = this._now;
 
