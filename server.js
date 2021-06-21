@@ -85,8 +85,9 @@ io.on('connection', socket => {
             //last_sequence_number: 0
         };
     
-    console.log("rooM: "+ rooms[room].users[socket.id].name);
-    socket.to(room).broadcast.emit('user-connected', player, rooms[room].users[socket.id]);
+    console.log("user: "+ rooms[room].users[socket.id].name);
+    console.log("rooma name: " + room);
+    socket.to(room).emit('user-connected', player, rooms[room].users[socket.id]);
 console.log("new player detected");
 //socket.to(room).broadcast.emit('user-connected', player, "whatever");
   })
@@ -111,11 +112,11 @@ console.log("new player detected");
 //}, 1000 / 60);
   
   socket.on('send-chat-message', (room, message) => {
-    socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id].name })
+    socket.to(room).emit('chat-message', { message: message, name: rooms[room].users[socket.id].name })
   })
   socket.on('disconnect', () => {
     getUserRooms(socket).forEach(room => {
-      socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id] )
+      socket.to(room).emit('user-disconnected', rooms[room].users[socket.id] )
       delete rooms[room].users[socket.id];
     })
   })

@@ -26,6 +26,7 @@ class Cgame {
             
           
             
+
             
             this._then = this._now;
 
