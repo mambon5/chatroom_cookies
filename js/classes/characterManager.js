@@ -36,6 +36,9 @@ class CcharacterManager {
         
     }
     
+        static sortfordraw() {//sort for printing on screen, lowest y first to print
+        vchar.sort(function(a,b){return a.y+a.height-b.y-b.height;});        
+    }
     
 }
 
