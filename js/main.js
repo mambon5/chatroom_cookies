@@ -45,7 +45,7 @@ for (var i = 0; i < 4; i ++){
   player.animations.push(new Animation(monster1AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
 }
 player.animation = player.animations[0];
-CcharacterManager.add(player);
+CcharacterManager.add(player, vchar.push);
 
 const monst1 = new Cmonster(canvas.width/10*0, canvas.height/3,
                 32, 48, scale, speed, marg_cpmerica, name="captainamerica_shield");

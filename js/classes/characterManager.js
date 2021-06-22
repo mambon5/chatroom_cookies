@@ -3,21 +3,37 @@
  */
 
 class CcharacterManager {
-    static add(obj) {
+    static add(obj, callback) {
+        console.log("new player detected");
+        console.log("vchar vector before adding player:");
+        console.log(vchar);
         vchar.push(obj);
-        console.log("push made to character vector of element: " + obj.name)
+        console.log("push made to character vector of element: " + obj.name);
+        console.log("vchar vector after addition:");
+        console.log(vchar);
+    
     }
     
     static delete(obj) {
         var index = vchar.findIndex(char => char.name === obj.name);
-        console.log("player to delete: " + obj.name)
+        console.log("player to delete: " + obj.name);
         if (index > -1) {
             console.log("vector de caracteres: ")
             console.log(vchar);
             console.log("character a eliminar:")
-            console.log(vchar[index])
+            console.log(vchar[index]);
             console.log("character deletion index: " + index)
-            vchar = vchar.splice(index, 1);
+            var n = vchar.length;
+            var aux = [];
+            vchar.forEach(char => {
+                if(char.name == obj.name ) {
+                    
+                } 
+                else {
+                        aux.push(char);
+                    }
+            });
+            vchar = aux;
             
             console.log(vchar);
         }

@@ -11,7 +11,7 @@ if (messageForm != null) {
   player.name = name;
   appendMessage('You joined');
   socket.emit('new-user', roomName, player);
-console.log("you joined")
+    console.log("you joined")
   messageForm.addEventListener('submit', e => {
     e.preventDefault();
     const message = messageInput.value + `player x: ${Math.round(player.x) + 
@@ -60,9 +60,7 @@ socket.on("current users", charvec => {
 //use socket.id instead of username
 socket.on('user-connected', (player, user) => {
   // crear un player2
-    console.log("new player detected");
-    console.log("vchar vector before adding player:")
-    console.log(vchar)
+    
     //adding a new player to the client
     chari = JSON.parse(JSON.stringify(player));
     
@@ -88,13 +86,11 @@ socket.on('user-connected', (player, user) => {
     }
     newpl.animation = newpl.animations[0];
     
-    
     CcharacterManager.add(newpl);
     console.log(newpl.x+" "+newpl.y+" "+ newpl.width+" "+ newpl.height+" "+ 
     newpl.scale+" "+ newpl.speed+" "+ newpl.margins+" "+ newpl.name+" "+ newpl.clase);
     CentityManager.fillArray();
-    console.log("vchar vector:")
-    console.log(vchar)
+    
 
 appendMessage(`${newpl.name} connected, x: ${Math.round(newpl.x)}, y: ${Math.round(newpl.y)}`);
 })
