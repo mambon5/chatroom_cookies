@@ -78,12 +78,14 @@ io.on('connection', socket => {
     classes.CcharacterManager.add(player);
     classes.CentityManager.fillArray();
 
-    rooms[room].users[socket.id] = {
-            name: player.name,
-            x: player.x,
-            y: player.y
-            //last_sequence_number: 0
-        };
+    rooms[room].users[socket.id] = player;
+
+//    rooms[room].users[socket.id] = {
+//            name: player.name,
+//            x: player.x,
+//            y: player.y
+//            //last_sequence_number: 0
+//        };
     
     console.log("user: "+ rooms[room].users[socket.id].name);
     console.log("rooma name: " + room);
@@ -120,6 +122,18 @@ console.log("new player detected");
       delete rooms[room].users[socket.id];
     })
   })
+  
+  
+        socket.on("player movement", (room, dir) => {
+        console.log("movement from player requested: " + dir );
+        plyr = rooms[room].users[socket.id];
+        console.log("user: "+ plyr.name);
+                
+         
+
+        });
+  
+  
 })
 
 function getUserRooms(socket) {

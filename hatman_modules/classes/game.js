@@ -31,7 +31,7 @@ class Cgame {
            //retreive player positiosn
            
            
-//            classes.CentityManager.update();
+            classes.CentityManager.update();
 //            map.drawmatrix();
 //            CentityManager.draw();
 //            aux2.innerHTML = "x: " + Math.round(player.x) + ", y: " + Math.round(player.y);
