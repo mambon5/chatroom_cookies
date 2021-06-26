@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 
+canvasw = 930;
+canvash = 462;
+
 vchar = [];
 
 vobj = [];

@@ -4,6 +4,10 @@
 
 if (typeof module !== "undefined" && module.exports) {
     Crectangle = require("./rectangle");
+    xocs = require("../../js/functions/xocs");
+    var map = require('./classes/map');
+    var transpose = map.transpose
+    var Cmap = map.Cmap
 }
 
 
@@ -84,7 +88,7 @@ class Centity extends Crectangle {
         cutrect.dirmove(dir); //this moves the cut rectangle in order to foresee where the 
         //ninotet will be after the move
 
-        let index = arrayxoc(cutrect, arrxoc);
+        let index = xocs.arrayxoc(cutrect, arrxoc);
         let obj = "null";
         if (cind < index) index += 1;
         if (index > (-1)) obj = ventities[index];
@@ -108,8 +112,8 @@ class Centity extends Crectangle {
 
         let marg = this.margins;//margins are left, top, right, bottom
 
-        let canvW = canvas.width;
-        let canvH = canvas.height;
+        let canvW = canvasw;
+        let canvH = canvash;
         let resol = map.getresol(); // get resolution of each cell
 
         let cutrect = this.cut_rect(); //cuts rectangl according to margins

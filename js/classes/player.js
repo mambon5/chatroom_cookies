@@ -9,7 +9,10 @@ if (typeof module !== "undefined" && module.exports) {
 class Cplayer extends Ccharacter {
     constructor(x, y, width, height, scale, speed, margins, name="hero", clase="char") {
         super(x, y, width, height, scale, speed, margins, name, clase);
+        
     }
+    
+    
 
     move() {
         let dir = 0;
@@ -40,8 +43,7 @@ class Cplayer extends Ccharacter {
           if(xoc === "null" && !this.moving) {
               //suggest move to server.
               socket.emit("player movement", roomName, dir);
-              console.log("moving? " +this.moving)
-              console.log("dir: " + dir);
+             
               this.moving = true;
 //              super.apuramove(dir);
           }
@@ -55,8 +57,6 @@ class Cplayer extends Ccharacter {
          else aux2.innerHTML = xoc.clase;
           this.animation.animating = true;
         } else{
-            console.log("moving2? " +this.moving)
-        console.log("dir2: " + dir);
             this.moving = false;
           this.animation.animating = false;
         }

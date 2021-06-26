@@ -92,3 +92,14 @@ function sortfunction1(a,b) { //sorts points from smallest to biggest x, and sma
     if(a[0] === b[0]) return a[1] - b[1];
     return a[0] - b[0];
 }
+
+
+if (typeof module !== "undefined" && module.exports) {
+    module.exports.sortfunction1 = sortfunction1;
+    module.exports.sortfunctiony = sortfunctiony;
+    module.exports.xocrotatedrect = xocrotatedrect;
+    module.exports.xocarray = xocarray;
+    module.exports.paboveline = paboveline;
+    module.exports.checkxoc = checkxoc;
+    module.exports.arrayxoc = arrayxoc;
+}

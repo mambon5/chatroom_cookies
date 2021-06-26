@@ -4,6 +4,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 classes = require('./hatman_modules/server_classess');
 global = require('./hatman_modules/globalVars/entityVars');
+functions = require('./js/functions/xocs');
 margins = require('./hatman_modules/globalVars/img_margins');
 
 //vchar = [];
@@ -125,9 +126,10 @@ console.log("new player detected");
   
   
         socket.on("player movement", (room, dir) => {
-        console.log("movement from player requested: " + dir );
+       
+        rooms[room].users[socket.id].dir = dir;
         plyr = rooms[room].users[socket.id];
-        console.log("user: "+ plyr.name);
+        console.log("user: "+ plyr.name + ", requests to move: " + plyr.dir);
                 
          
 
