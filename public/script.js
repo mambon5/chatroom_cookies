@@ -105,6 +105,14 @@ socket.on('current states', function(users) {
       var name = user._name
       var x = user._x
       var y = user._y
+      vchar.forEach(plyr => {
+          if(plyr.name == name) {
+              plyr.x = x;
+              plyr.y = y;
+          }
+      })
+      
+      
   })
 });
 
