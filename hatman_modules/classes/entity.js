@@ -4,6 +4,11 @@
 
 if (typeof module !== "undefined" && module.exports) {
     Crectangle = require("./rectangle");
+    
+    
+    xocs = require("../../js/functions/xocs");
+    arrayxoc = xocs.arrayxoc
+    
 }
 
 
@@ -108,8 +113,8 @@ class Centity extends Crectangle {
 
         let marg = this.margins;//margins are left, top, right, bottom
 
-        let canvW = canvas.width;
-        let canvH = canvas.height;
+        let canvW = canvasw;
+        let canvH = canvash;
         let resol = map.getresol(); // get resolution of each cell
 
         let cutrect = this.cut_rect(); //cuts rectangl according to margins

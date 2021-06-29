@@ -1,10 +1,15 @@
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io')(server);
+io = require('socket.io')(server);
 classes = require('./hatman_modules/server_classess');
 global = require('./hatman_modules/globalVars/entityVars');
 margins = require('./hatman_modules/globalVars/img_margins');
+
+canvasw = 930;
+canvash = 462;
+
+map = new classes.Cmap(3,5);
 
 //vchar = [];
 //vobj = [];
@@ -94,6 +99,12 @@ console.log("new player detected");
 //socket.to(room).broadcast.emit('user-connected', player, "whatever");
   })
   
+  socket.on("current state", function() {
+      
+  });
+  
+  
+  
   socket.on("movement", function(player, room) {
       plyr = JSON.parse(JSON.stringify(player));//we must parse a bit the JSON object
       console.log(room+", player "+plyr._name+" x:"+plyr._x+", y:"+plyr._y)
@@ -127,7 +138,9 @@ console.log("new player detected");
         socket.on("player movement", (room, dir) => {
         console.log("movement from player requested: " + dir );
         plyr = rooms[room].users[socket.id];
+        plyr.dir = dir;
         console.log("user: "+ plyr.name);
+         console.log("user pos x: "+ plyr.x + ", y:"+ plyr.y);
                 
          
 

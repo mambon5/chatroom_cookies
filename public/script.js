@@ -99,10 +99,12 @@ appendMessage(`${newpl.name} connected, x: ${Math.round(newpl.x)}, y: ${Math.rou
 //    if(typeof player != 'undefined') socket.emit('movement', player, roomName );
 //}, 1000 / 1);
 
-socket.on('state', function(users) {
-  users.foreEach(user  => {
-//      players[user.name].x = user.x
-//      players[user.name].y = user.y
+socket.on('current states', function(users) {
+    console.log("amount of players : " + users.length)
+  users.forEach(user  => {
+      var name = user._name
+      var x = user._x
+      var y = user._y
   })
 });
 

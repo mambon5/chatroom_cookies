@@ -38,6 +38,7 @@ class Cgame {
             map.drawmatrix();
             CentityManager.draw();
             aux2.innerHTML = "x: " + Math.round(player.x) + ", y: " + Math.round(player.y);
+            socket.emit("current state")
             //imgmargins(ctx, canvas.width/2, canvas.height/2, player.width, player.height);
             /*tempCtx.drawImage(player.animation.animationSheet.image, 0, 0, 150, 150, 0,0, 150, 150);
             let hey = checkTransparency(tempCtx, 0, 0, 150, 150);

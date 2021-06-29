@@ -32,6 +32,9 @@ class Cgame {
            
            
             classes.CentityManager.update();
+            if(vchar.length > 0) {
+                io.emit("current states", vchar);
+        }
 //            map.drawmatrix();
 //            CentityManager.draw();
 //            aux2.innerHTML = "x: " + Math.round(player.x) + ", y: " + Math.round(player.y);
@@ -50,6 +53,7 @@ class Cgame {
         this._started = true;
         this._then = Date.now();
         this.loop();
+        
     }
 }
 
