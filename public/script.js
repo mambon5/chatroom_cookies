@@ -66,11 +66,12 @@ socket.on('user-connected', (player, user) => {
     
     newpl = new Cmonster(x = chari._x, y = chari._y, width = chari._width,
     height = chari._height,
-    scale = chari._scale,
+    scale = scale,
     chari._speed,
     margins = chari._margins,
     name = chari._name,
-    clase = chari._clase)
+    clase = chari._clase,
+    dir = chari._dir);
     
     //getcharacter(player, type="monster");
     
@@ -88,7 +89,8 @@ socket.on('user-connected', (player, user) => {
     
     CcharacterManager.add(newpl);
     console.log(newpl.x+" "+newpl.y+" "+ newpl.width+" "+ newpl.height+" "+ 
-    newpl.scale+" "+ newpl.speed+" "+ newpl.margins+" "+ newpl.name+" "+ newpl.clase);
+    newpl.scale+" "+ newpl.speed+" "+ newpl.margins+" "+ newpl.name+" "+ newpl.clase +
+    " " + newpl.dir);
     CentityManager.fillArray();
     
 
@@ -99,24 +101,35 @@ appendMessage(`${newpl.name} connected, x: ${Math.round(newpl.x)}, y: ${Math.rou
 //    if(typeof player != 'undefined') socket.emit('movement', player, roomName );
 //}, 1000 / 1);
 
-socket.on('state', function(users) {
-  users.foreEach(user  => {
-//      players[user.name].x = user.x
-//      players[user.name].y = user.y
+socket.on('current states', function(users) {
+    
+  users.forEach(user  => {
+      var name = user._name
+      var x = user._x
+      var y = user._y
+      var dir = user._dir;
+
+      
+      vchar.forEach(plyr => {
+          if(plyr.name == name) {
+              plyr.x = x;
+              plyr.y = y;
+              plyr.dir  = dir;
+          }
+      })
+      
+      
   })
 });
 
 
 socket.on('user-disconnected', user => {
   appendMessage(`${user.name} disconnected`);
-  console.log("deleting user...");
-  console.log(user);
-  console.log("vchar vec before delete")
-  console.log(vchar)
-  CcharacterManager.delete(user);
+  
+  var usr = getcharacter(user);
+  CcharacterManager.delete(usr);
   CentityManager.fillArray();
-  console.log("vchar vec after delete")
-  console.log(vchar)
+ 
   //delete player if we have to.
 })
 
@@ -147,14 +160,15 @@ function getcharacter(chari, type="monster") {
     margi = chari._margins
     name = chari._name
     clase = chari._clase
+    dir = chari._dir;
     
     
     if(type == "monster") { 
-        res = new Cmonster(x,y,width, height, scale, spd, margi, name, clase);
+        res = new Cmonster(x,y,width, height, scale, spd, margi, name, clase, dir);
         return  res;
     } else {
         if(type=="player") {
-            res = new Cplayer(x,y,width, height, scale, speed, margi, name, clase);
+            res = new Cplayer(x,y,width, height, scale, speed, margi, name, clase, dir);
             return  res;
         }
     }

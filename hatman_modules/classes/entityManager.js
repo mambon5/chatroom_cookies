@@ -13,6 +13,20 @@ class CentityManager {
          //bubble1.move();
     }
 
+    static emit() {
+        if(vchar.length > 0) {
+                io.emit("current states", vchar);
+            }
+    }
+    
+    static resetdirs() {
+        if(vchar.length > 0) {
+               vchar.forEach(char => {
+                   char.dir = 0;
+               });
+            }
+    }
+    
     static draw() {
         CentityManager.sortfordraw();
         planta1.draw();

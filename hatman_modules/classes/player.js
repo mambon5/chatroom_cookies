@@ -7,7 +7,9 @@ if (typeof module !== "undefined" && module.exports) {
 }
 
 class Cplayer extends Ccharacter {
-    constructor(x, y, width, height, scale, speed, margins, name="hero", clase="char", dir=0) {
+
+    constructor(x, y, width, height, scale, speed, margins, name="hero", clase="char", dir = 0) {
+
         super(x, y, width, height, scale, speed, margins, name, clase);
         this._dir = dir;
     }
@@ -17,7 +19,9 @@ class Cplayer extends Ccharacter {
     set dir(e) {this._dir = e;}
 
     move() {
+
        var dir = this._dir;
+
         this.moving = false;
 //        if( (keys[38] || keys[87])  ){//up
 //            this.animation = this.animations[3];
@@ -50,7 +54,7 @@ class Cplayer extends Ccharacter {
           }
          else aux2.innerHTML = xoc.clase;
 //          this.animation.animating = true;
-console.log("moving player " + this.name + ", inside the server.");
+        
         } else{
 //          this.animation.animating = false;
         }

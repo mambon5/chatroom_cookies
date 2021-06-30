@@ -4,10 +4,11 @@
 
 if (typeof module !== "undefined" && module.exports) {
     Crectangle = require("./rectangle");
+   
     xocs = require("../../js/functions/xocs");
-    var map = require('./classes/map');
-    var transpose = map.transpose
-    var Cmap = map.Cmap
+    arrayxoc = xocs.arrayxoc;
+    
+
 }
 
 

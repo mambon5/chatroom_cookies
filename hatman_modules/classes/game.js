@@ -5,6 +5,14 @@
 //copy the classes Cgame and CcharacterManagers as classes of the server. TO 
 //have them twice.
 
+if (typeof module !== "undefined" && module.exports) {
+   
+    var map = require('./map');
+    var transpose = map.transpose;
+    var Cmap = map.Cmap;     
+
+}
+
 class Cgame {
     
     
@@ -32,6 +40,10 @@ class Cgame {
            
            
             classes.CentityManager.update();
+            classes.CentityManager.emit();
+            classes.CentityManager.resetdirs();
+            
+            
 //            map.drawmatrix();
 //            CentityManager.draw();
 //            aux2.innerHTML = "x: " + Math.round(player.x) + ", y: " + Math.round(player.y);
@@ -49,7 +61,11 @@ class Cgame {
     startGame() {
         this._started = true;
         this._then = Date.now();
+        
+       
+        
         this.loop();
+        
     }
 }
 

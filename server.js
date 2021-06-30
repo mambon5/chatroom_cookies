@@ -1,11 +1,17 @@
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
-const io = require('socket.io')(server);
+io = require('socket.io')(server);
 classes = require('./hatman_modules/server_classess');
 global = require('./hatman_modules/globalVars/entityVars');
 functions = require('./js/functions/xocs');
 margins = require('./hatman_modules/globalVars/img_margins');
+
+canvasw = 930;
+canvash = 462;
+scale = 1.6;
+
+map = new classes.Cmap(3,5);
 
 //vchar = [];
 //vobj = [];
@@ -74,12 +80,14 @@ io.on('connection', socket => {
      console.log(plyr)
      //structure is completely lost when transfering objects from Client/server
     //now we add this player to the character vector
-    player = new classes.Cplayer(plyr._x,plyr._y, plyr._width, plyr._height, plyr._scale,
+    player = new classes.Cplayer(plyr._x,plyr._y, plyr._width, plyr._height, scale,
     plyr._speed, plyr._margins, plyr._name, plyr._clase);
-    classes.CcharacterManager.add(player);
-    classes.CentityManager.fillArray();
+    
 
-    rooms[room].users[socket.id] = player;
+     rooms[room].users[socket.id] = player;
+    
+    classes.CcharacterManager.add(rooms[room].users[socket.id]);
+    classes.CentityManager.fillArray();
 
 //    rooms[room].users[socket.id] = {
 //            name: player.name,
@@ -95,18 +103,13 @@ console.log("new player detected");
 //socket.to(room).broadcast.emit('user-connected', player, "whatever");
   })
   
-  socket.on("movement", function(player, room) {
-      plyr = JSON.parse(JSON.stringify(player));//we must parse a bit the JSON object
-      console.log(room+", player "+plyr._name+" x:"+plyr._x+", y:"+plyr._y)
-      console.log(plyr._x+" "+plyr._y+" "+ plyr._width+" "+ plyr._height+" "+ 
-      plyr._scale+" "+ plyr._speed+" "+ plyr._margins+" "+ plyr._name+" "+ plyr._clase)
-      player1 = new classes.Cplayer(plyr._x, plyr._y, plyr._width, plyr._height, 
-      plyr._scale, plyr._speed, plyr._margins, plyr._name, plyr._clase);
+  socket.on("current state", function() {
       
-//      rooms[room].users[socket.id].x = player.x
-//      rooms[room].users[socket.id].y = player.y
-//      console.log("rooms length " + rooms.length);
-});
+  });
+  
+  
+  
+
 
 
 //setInterval(function() {
@@ -129,7 +132,11 @@ console.log("new player detected");
        
         rooms[room].users[socket.id].dir = dir;
         plyr = rooms[room].users[socket.id];
-        console.log("user: "+ plyr.name + ", requests to move: " + plyr.dir);
+
+        plyr.dir = dir;
+        console.log("user: "+ plyr.name);
+        console.log("user pos x: "+ plyr.x + ", y:"+ plyr.y + ", dir:" + plyr.dir);
+
                 
          
 

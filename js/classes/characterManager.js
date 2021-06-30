@@ -16,13 +16,9 @@ class CcharacterManager {
     
     static delete(obj) {
         var index = vchar.findIndex(char => char.name === obj.name);
-        console.log("player to delete: " + obj.name);
+        
         if (index > -1) {
-            console.log("vector de caracteres: ")
-            console.log(vchar);
-            console.log("character a eliminar:")
-            console.log(vchar[index]);
-            console.log("character deletion index: " + index)
+            
             var n = vchar.length;
             var aux = [];
             vchar.forEach(char => {
@@ -35,7 +31,7 @@ class CcharacterManager {
             });
             vchar = aux;
             
-            console.log(vchar);
+           
         }
         
     }

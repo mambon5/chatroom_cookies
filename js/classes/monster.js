@@ -6,11 +6,15 @@ if (typeof module !== "undefined" && module.exports) {
 }
 
 class Cmonster extends Ccharacter {
-    constructor(x, y, width, height, scale=1, speed, margins, name="", clase="char") {
+    constructor(x, y, width, height, scale=1, speed, margins, name="", clase="char", dir=0) {
         super(x, y, width, height, scale, speed, margins, name, clase);
         this._pastdir = -1;
+        this._dir = dir;
     }
+    
+    get dir() {return this._dir;}
 
+    set dir(e) {this._dir = e;}
    
 
     move() {
@@ -20,12 +24,14 @@ class Cmonster extends Ccharacter {
 
     randmove() {
         this._moving = false;
-        let num = Math.floor(Math.random()*20);
+//        let num = Math.floor(Math.random()*20);
+        let num = this._dir;
+      
         if(this._pastdir === -1 || num > 18) {
             let num = Math.floor(Math.random()*10);
             this._pastdir = num;
         } else {
-            num = this._pastdir;
+//            num = this._pastdir;
         }
         if( num===1 || num === 2 ){
             this.animation = this.animations[3];
@@ -58,6 +64,7 @@ class Cmonster extends Ccharacter {
     draw() {
         let x  = this.x - player.x + player.x_init;
         let y  = this.y - player.y + player.y_init;
+        console.log("monster: " + this.name + " scale: " + this.scale);
         ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, x, y, this.width*this.scale, this.height*this.scale);
         ctx.font = "20px Verdana";
         var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);
