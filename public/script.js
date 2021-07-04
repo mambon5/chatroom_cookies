@@ -49,11 +49,11 @@ socket.on("current users", charvec => {
     });
     CentityManager.fillArray();
     
-    console.log("here come the current users connected");
-    
-    
-    console.log(charvec);
-    console.log(charvec.length);
+//    console.log("here come the current users connected");
+//    
+//    
+//    console.log(charvec);
+//    console.log(charvec.length);
 });
 
 //var players = []
@@ -88,9 +88,9 @@ socket.on('user-connected', (player, user) => {
     newpl.animation = newpl.animations[0];
     
     CcharacterManager.add(newpl);
-    console.log(newpl.x+" "+newpl.y+" "+ newpl.width+" "+ newpl.height+" "+ 
-    newpl.scale+" "+ newpl.speed+" "+ newpl.margins+" "+ newpl.name+" "+ newpl.clase +
-    " " + newpl.dir);
+//    console.log(newpl.x+" "+newpl.y+" "+ newpl.width+" "+ newpl.height+" "+ 
+//    newpl.scale+" "+ newpl.speed+" "+ newpl.margins+" "+ newpl.name+" "+ newpl.clase +
+//    " " + newpl.dir);
     CentityManager.fillArray();
     
 

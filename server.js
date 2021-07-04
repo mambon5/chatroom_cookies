@@ -5,7 +5,7 @@ io = require('socket.io')(server);
 classes = require('./hatman_modules/server_classess');
 global = require('./hatman_modules/globalVars/entityVars');
 functions = require('./js/functions/xocs');
-margins = require('./hatman_modules/globalVars/img_margins');
+margins = require('./js/globalVars/img_margins');
 
 canvasw = 930;
 canvash = 462;

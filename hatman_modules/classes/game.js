@@ -24,6 +24,13 @@ class Cgame {
         this._started = false;
     }
     
+    generate_objs() {
+        const stove1 = new Cobject(canvasw / 10 * 6, canvash * 2 / 3, 34, 60, scale, 0, 
+margins.marg_stove, "stove11", "obj");
+        classes.CobjectManager.add(stove1);
+        classes.CentityManager.fillArray();
+    }
+    
     get started() {return this._started;}
 
     loop() {
@@ -61,8 +68,8 @@ class Cgame {
     startGame() {
         this._started = true;
         this._then = Date.now();
-        
-       
+        this.generate_objs();
+        classes.CobjectManager.generateValidPoses();       
         
         this.loop();
         

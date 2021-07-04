@@ -99,7 +99,7 @@ class Centity extends Crectangle {
     generateValidPos() {
         let x = -1;
         let y = -1;
-        while (this.choque(0) !== "null" || !map.validcorners(x, y, this.width, this.height, canvas.width, canvas.height)) {
+        while (this.choque(0) !== "null" || !map.validcorners(x, y, this.width, this.height, canvasw, canvash)) {
             x = Math.random() * map._resh * map._cols;
             y = Math.random() * map._resv * map._rows;
             this.x = x;
