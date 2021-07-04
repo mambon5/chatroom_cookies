@@ -4,13 +4,13 @@
 
 class CcharacterManager {
     static add(obj, callback) {
-        console.log("new player detected");
-        console.log("vchar vector before adding player:");
-        console.log(vchar);
+//        console.log("new player detected");
+//        console.log("vchar vector before adding player:");
+//        console.log(vchar);
         vchar.push(obj);
-        console.log("push made to character vector of element: " + obj.name);
-        console.log("vchar vector after addition:");
-        console.log(vchar);
+//        console.log("push made to character vector of element: " + obj.name);
+//        console.log("vchar vector after addition:");
+//        console.log(vchar);
     
     }
     

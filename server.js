@@ -70,7 +70,7 @@ io.on('connection', socket => {
       
       //first we send the current players to the new user (without the new user)
       //then we add the new user to the server character array
-      socket.emit("current users",vchar);
+      socket.emit("current users",vchar, vobj);
       
       
     socket.join(room);

@@ -25,9 +25,25 @@ class Cgame {
     }
     
     generate_objs() {
-        const stove1 = new Cobject(canvasw / 10 * 6, canvash * 2 / 3, 34, 60, scale, 0, 
-margins.marg_stove, "stove11", "obj");
+        //fire stove
+        const stove1 = new classes.Cobject(canvasw / 10 * 6, canvash * 2 / 3, 34, 60, scale, 0, 
+margins.marg_stove, "stove1", "obj");
         classes.CobjectManager.add(stove1);
+        
+        //empty stove
+        const stove2 = new classes.Cobject(canvasw / 10 * 6, canvash * 2 / 3, 34, 60, scale, 0, 
+margins.marg_stove, "stove2", "obj");
+        classes.CobjectManager.add(stove2);
+        
+        //barrils de candy aleatoriament
+        for(let i=0; i<5; ++i) {
+            const barril3 = new  classes.Cobject(canvasw / 10 * 6, canvash * 3 / 3, 32, 37, scale, 0, 
+            margins.marg_barril1,  "barrillcandy"+i, "barril candy");
+//            barril3.animations.push(new Animation(barril1AnimationSheet, 0, 1));
+//            barril3.animation = barril3.animations[0];
+         classes.CobjectManager.add(barril3);
+        }
+        
         classes.CentityManager.fillArray();
     }
     
@@ -69,7 +85,8 @@ margins.marg_stove, "stove11", "obj");
         this._started = true;
         this._then = Date.now();
         this.generate_objs();
-        classes.CobjectManager.generateValidPoses();       
+        classes.CobjectManager.generateValidPoses();  
+       
         
         this.loop();
         

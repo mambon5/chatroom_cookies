@@ -11,6 +11,12 @@ class CobjectManager {
         vobj.forEach(object => object.move());  //we should do an update function on object, to generalize, for now we call draw
     }
 
+    static emit() {
+        if(vobj.length > 0) {
+                io.emit("initial objects", vobj);
+            }
+    }
+
     static draw() {
         CobjectManager.sortfordraw();
        
@@ -30,7 +36,7 @@ class CobjectManager {
     static generateValidPos(item, index) {
        item.generateValidPos();
         
-        console.log(item.name);
+        console.log(item.name + " has x:" + item.x + ", y: " + item.y );
     }
 }
 

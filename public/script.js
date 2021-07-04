@@ -37,7 +37,15 @@ socket.on('chat-message', data => {
   appendMessage(`${data.name}: ${data.message}`);
 });
 
-socket.on("current users", charvec => {
+socket.on("current users", (charvec, objvec) => {
+    
+    
+    objvec.forEach(obj  => {
+      obj = find_item(obj);
+      CobjectManager.add(obj);
+      CentityManager.fillArray();
+    })
+    
     
     charvec.forEach(user  => {
         monst = getcharacter(user, type="monster");
@@ -101,7 +109,11 @@ appendMessage(`${newpl.name} connected, x: ${Math.round(newpl.x)}, y: ${Math.rou
 //    if(typeof player != 'undefined') socket.emit('movement', player, roomName );
 //}, 1000 / 1);
 
+
+
 socket.on('current states', function(users) {
+    
+  
     
   users.forEach(user  => {
       var name = user._name
@@ -173,4 +185,39 @@ function getcharacter(chari, type="monster") {
         }
     }
     return "not a player nor a monster";
+}
+
+
+
+function find_item(obj) {
+     obji = JSON.parse(JSON.stringify(obj));
+    //parsing JSON object as string 
+    
+    x = obji._x;
+    y = obji._y;
+    width = obji._width;
+    height = obji._height;
+    scale = obji._scale;
+    spd = obji._speed;
+    margi = obji._margins
+    name = obji._name
+    clase = obji._clase
+    
+    
+    const obja = new Cobject(x,y, width, height, scale, spd, margi, name, clase);
+   
+    
+    if(name == "stove1") { 
+        obja.animations.push(new Animation(stove1AnimationSheet, 0, [5,5,5,5,5,5,5]));
+        obja.animation = stove1.animations[0];
+        obja.animation.animating = true;
+    } else if(name == "stove2") {
+        obja.animations.push(new Animation(stove2AnimationSheet, 0, 1));
+        obja.animation = stove2.animations[0];
+    
+    } else if(clase == "barril candy") {
+        obja.animations.push(new Animation(barril1AnimationSheet, 0, 1));
+        obja.animation = barril2.animations[0];
+    } 
+    return(obja);
 }

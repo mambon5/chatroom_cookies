@@ -126,7 +126,7 @@ const stove2 = new Cobject(canvas.width / 10 * 6, canvas.height * 2 / 3, 34, 60,
 marg_stove,  name= "stove2", clase="obj");
 stove2.animations.push(new Animation(stove2AnimationSheet, 0, 1));
 stove2.animation = stove2.animations[0];
-CobjectManager.add(stove2);
+//CobjectManager.add(stove2);
 
 const planta = "Null";
 for(let i=0; i<10; ++i) {
@@ -150,7 +150,7 @@ const barril1 = new Cobject(canvas.width/10*7, canvas.height/3, 32, 37, scale, 0
 marg_barril1,  name= "barril1", clase="mom");
 barril1.animations.push(new Animation(barril1AnimationSheet, 0, 1));
 barril1.animation = barril1.animations[0];
-CobjectManager.add(barril1);
+//CobjectManager.add(barril1);
 
 const barril2 = new Cobject(canvas.width / 10 * 6, canvas.height * 2 / 3, 32, 37, scale, 0, 
 marg_barril1,  name= "barril1", clase="mom");
@@ -160,7 +160,7 @@ barril2.animation = barril2.animations[0];
 //barril2.x = init_pos[0];
 //barril2.y = init_pos[1];
 console.log("Barril 2: " + barril2.x + " | " + barril2.y);
-CobjectManager.add(barril2);
+//CobjectManager.add(barril2);
 
  //genera i barrils aleatoriament de candy:
 for(let i=0; i<20; ++i) {
