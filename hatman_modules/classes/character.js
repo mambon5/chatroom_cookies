@@ -8,16 +8,14 @@ if (typeof module !== "undefined" && module.exports) {
 
 class Ccharacter extends Centity {
     constructor(x, y, width, height, scale, speed, margins, name, clase="null") {
-        super(x, y, width*scale, height*scale, speed,
+        super(x, y, width, height, scale, speed,
         margins.map(function(x) {return Math.floor(x*scale); } ), name);
         this._clase = clase;
-        this._scale = scale;
+       
     }
 
    
-    get scale() {return this._scale;}
     
-    set scale(e) {this._scale = e;}
     //update() {
         //update position
         //move

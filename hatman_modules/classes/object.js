@@ -5,15 +5,13 @@ if (typeof module !== "undefined" && module.exports) {
 
 class Cobject extends Centity {
      constructor(x, y, width, height, scale, speed, margins, name="", clase = "obj") {
-        super(x, y, width*scale, height*scale, speed, margins, name, clase);
+        super(x, y, width, height, scale, speed, margins, name, clase);
          this._pastdir = -1;
          this._clase = clase;
-         this._scale = scale;
+         
     }
 
-    get scale() {return this._scale;}
-    
-    set scale(e) {this._scale = e;}
+   
     
     move() {
 

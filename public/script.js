@@ -10,6 +10,8 @@ if (messageForm != null) {
   const name = prompt('What is your name?');
   player.name = name;
   appendMessage('You joined');
+  console.log("4: player: " + player.name + ", width: " + player.width + 
+        ", height: " + player.height);
   socket.emit('new-user', roomName, player);
     console.log("you joined")
   messageForm.addEventListener('submit', e => {
@@ -35,6 +37,14 @@ socket.on('room-created', room => {
 
 socket.on('chat-message', data => {
   appendMessage(`${data.name}: ${data.message}`);
+});
+
+socket.on("bubble state", bubhostname => {
+   vchar.forEach(char => {
+       if(char.name == bubhostname) bubble1.host = char
+   });
+   
+   
 });
 
 socket.on("current users", (charvec, objvec) => {
@@ -167,7 +177,7 @@ function getcharacter(chari, type="monster") {
     y = chari._y;
     width = chari._width;
     height = chari._height;
-    scale = chari._scale;
+    var scal = chari._scale;
     spd = chari._speed;
     margi = chari._margins
     name = chari._name
@@ -176,11 +186,11 @@ function getcharacter(chari, type="monster") {
     
     
     if(type == "monster") { 
-        res = new Cmonster(x,y,width, height, scale, spd, margi, name, clase, dir);
+        res = new Cmonster(x,y,width, height, scal, spd, margi, name, clase, dir);
         return  res;
     } else {
         if(type=="player") {
-            res = new Cplayer(x,y,width, height, scale, speed, margi, name, clase, dir);
+            res = new Cplayer(x,y,width, height, scal, speed, margi, name, clase, dir);
             return  res;
         }
     }

@@ -12,7 +12,8 @@ canvash = 462;
 scale = 1.6;
 
 map = new classes.Cmap(3,5);
-
+bubble1 = new classes.Cbubble(canvasw/10*4, canvash/3,
+        18, 16, scale, 0,[2,0,2,0], "bubble1", "empty");
 //vchar = [];
 //vobj = [];
 //ventities = [];
@@ -82,9 +83,10 @@ io.on('connection', socket => {
     //now we add this player to the character vector
     player = new classes.Cplayer(plyr._x,plyr._y, plyr._width, plyr._height, scale,
     plyr._speed, plyr._margins, plyr._name, plyr._clase);
-    
+    console.log("player "+ player.name + " added, with scale: " + player.scale + ", width: " + player.width +
+             " and height: " + player.height)
 
-     rooms[room].users[socket.id] = player;
+    rooms[room].users[socket.id] = player;
     
     classes.CcharacterManager.add(rooms[room].users[socket.id]);
     classes.CentityManager.fillArray();
@@ -134,8 +136,7 @@ console.log("new player detected");
         plyr = rooms[room].users[socket.id];
 
         plyr.dir = dir;
-        console.log("user: "+ plyr.name);
-        console.log("user pos x: "+ plyr.x + ", y:"+ plyr.y + ", dir:" + plyr.dir);
+        
 
                 
          

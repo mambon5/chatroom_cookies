@@ -64,7 +64,7 @@ class Cmonster extends Ccharacter {
     draw() {
         let x  = this.x - player.x + player.x_init;
         let y  = this.y - player.y + player.y_init;
-        console.log("monster: " + this.name + " scale: " + this.scale);
+//        console.log("monster: " + this.name + " scale: " + this.scale);
         ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, x, y, this.width*this.scale, this.height*this.scale);
         ctx.font = "20px Verdana";
         var gradient = ctx.createLinearGradient(0, 0, canvas.width, 0);

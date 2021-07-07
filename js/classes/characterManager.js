@@ -43,7 +43,10 @@ class CcharacterManager {
     
     static draw() {
         CcharacterManager.sortfordraw();
-        vchar.forEach(character => character.draw());
+        vchar.forEach(character => {
+            character.draw();
+           
+        });
        
         
     }

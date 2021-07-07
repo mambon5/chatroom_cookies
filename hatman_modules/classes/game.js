@@ -43,6 +43,15 @@ margins.marg_stove, "stove2", "obj");
 //            barril3.animation = barril3.animations[0];
          classes.CobjectManager.add(barril3);
         }
+        //adding the bubble
+       
+
+//        bubble1.animations.push(new Animation(bubble1AnimationSheet, 0, [5,5,5]));
+//        bubble1.animation = bubble1.animations[0];
+//        bubble1.animation.animating = true;
+       
+        
+        
         
         classes.CentityManager.fillArray();
     }
@@ -60,7 +69,11 @@ margins.marg_stove, "stove2", "obj");
             
             //map.recalculateCenter();  // Quotient Space!!!
            //retreive player positiosn
-           
+            if(vchar.length > 0 && bubble1.host =="empty") {
+                var rnd = Math.floor(Math.random()*vchar.length);
+                bubble1.host = vchar[rnd];
+                console.log("random host: " + rnd);
+            }
            
             classes.CentityManager.update();
             classes.CentityManager.emit();

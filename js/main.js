@@ -36,11 +36,12 @@ const stones1AnimationSheet = new AnimationSheet("images/pedres1.png", 62,34, 1,
 
 
 
- player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, 10, marg_cpmerica, name="hjones");
+player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, 10, marg_cpmerica, name="hjones");
 //player.image.src = "images/asdf.png"; // 24.25, 45.5
 player.generateValidPos();
 console.log("captai america margins:" + player.margins)
-console.log("Player: " + player.x + " | " + player.y);
+console.log("Player: " + player.x + " | " + player.y + " width: " + player.width + ", height: " + 
+        player.height);
 for (var i = 0; i < 4; i ++){
   player.animations.push(new Animation(monster1AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
 }
@@ -161,7 +162,8 @@ barril2.animation = barril2.animations[0];
 //barril2.y = init_pos[1];
 console.log("Barril 2: " + barril2.x + " | " + barril2.y);
 //CobjectManager.add(barril2);
-
+console.log("1: player: " + player.name + ", width: " + player.width + 
+        ", height: " + player.height);
  //genera i barrils aleatoriament de candy:
 for(let i=0; i<20; ++i) {
     barril3 = new Cobject(canvas.width / 10 * 6, canvas.height * 3 / 3, 32, 37, scale, 0, 
@@ -219,10 +221,13 @@ bubble1.animation = bubble1.animations[0];
 bubble1.animation.animating = true;
 bubble1.host = player;
 
-
+console.log("2: player: " + player.name + ", width: " + player.width + 
+        ", height: " + player.height);
 CentityManager.fillArray();
 CfloorManager.generateValidPoses();
 CobjectManager.generateValidPoses();
+console.log("3: player: " + player.name + ", width: " + player.width + 
+        ", height: " + player.height);
 
 //background.image.src = "images/fix, y, width, height, speed, margins = [0,0,0,0]
 const keys = [];

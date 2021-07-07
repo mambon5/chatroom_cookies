@@ -49,9 +49,9 @@ class Cplayer extends Ccharacter {
           }
           else if(this === bubble1.host && xoc.clase==="char") {
               //give away bubble, also send this info to server.
-              bubtake = Date.now();              
-              bubble1.host = xoc;
-              aux3.innerHTML = xoc.clase;
+//              bubtake = Date.now();              
+//              bubble1.host = xoc;
+//              aux3.innerHTML = xoc.clase;
           
           }
          else aux2.innerHTML = xoc.clase;

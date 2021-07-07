@@ -18,7 +18,10 @@ class CentityManager {
         CentityManager.sortfordraw();
         planta1.draw();
         CfloorManager.draw();
-        ventities.forEach(entity => entity.draw());
+        ventities.forEach(entity => {
+            entity.draw();
+            
+        });
          
         bubble1.draw();
         var now = Date.now();

@@ -1,4 +1,3 @@
-
 var bubtake = Date.now();
 
 if (typeof module !== "undefined" && module.exports) {
@@ -15,13 +14,16 @@ class Cbubble extends Cobject {
     set host(e){this._host = e; }
 
     move() {
-        this.x = this._host.x  + this._host.width*this._host.scale/2 - this.width*this.scale/2 ;
-        this.y = this._host.y  - this.height*this.scale  ;
+       if(this._host != "empty") {
+            this.x =  this._host.x  + this._host.width*this._host.scale/2 - this.width/2;
+            this.y = this._host.y  - this.width;
+        }
    }
    
    draw() {
-        
-        super.draw();
+        if(this._host != "empty") {
+            super.draw();
+        }
     }
 }
    
