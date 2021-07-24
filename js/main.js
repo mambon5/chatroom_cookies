@@ -12,7 +12,7 @@ canvas.height = 462;
 
 scale = 1.6;
 const speed = 10;
-const walkdt = 3;
+walkdt = 3;
 
 const map = new Cmap(3,5);
 
@@ -162,8 +162,7 @@ barril2.animation = barril2.animations[0];
 //barril2.y = init_pos[1];
 console.log("Barril 2: " + barril2.x + " | " + barril2.y);
 //CobjectManager.add(barril2);
-console.log("1: player: " + player.name + ", width: " + player.width + 
-        ", height: " + player.height);
+
  //genera i barrils aleatoriament de candy:
 for(let i=0; i<20; ++i) {
     barril3 = new Cobject(canvas.width / 10 * 6, canvas.height * 3 / 3, 32, 37, scale, 0, 
@@ -221,13 +220,11 @@ bubble1.animation = bubble1.animations[0];
 bubble1.animation.animating = true;
 bubble1.host = player;
 
-console.log("2: player: " + player.name + ", width: " + player.width + 
-        ", height: " + player.height);
+
 CentityManager.fillArray();
 CfloorManager.generateValidPoses();
 CobjectManager.generateValidPoses();
-console.log("3: player: " + player.name + ", width: " + player.width + 
-        ", height: " + player.height);
+
 
 //background.image.src = "images/fix, y, width, height, speed, margins = [0,0,0,0]
 const keys = [];

@@ -13,7 +13,7 @@ if (messageForm != null) {
   console.log("4: player: " + player.name + ", width: " + player.width + 
         ", height: " + player.height);
   socket.emit('new-user', roomName, player);
-    console.log("you joined")
+    console.log("you joined");
   messageForm.addEventListener('submit', e => {
     e.preventDefault();
     const message = messageInput.value + `player x: ${Math.round(player.x) + 

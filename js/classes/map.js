@@ -39,7 +39,7 @@ class Cmap {
         var img3 = document.getElementById("grass");
         var img4 = document.getElementById("tiles1");
         
-        let x = player.x_init - player.x;
+        let x = player.x_init - player.x ;
         let y = player.y_init - player.y;
 
         for(let i = 0; i < this._cols; i++) {

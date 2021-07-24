@@ -134,7 +134,6 @@ console.log("new player detected");
        
         rooms[room].users[socket.id].dir = dir;
         plyr = rooms[room].users[socket.id];
-
         plyr.dir = dir;
         
 

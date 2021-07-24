@@ -45,15 +45,15 @@ class Cmonster extends Ccharacter {
         if( num===7 || num === 8 ){
             this.animation = this.animations[1];
         }
-        let xoc = super.choque(num);
+        //let xoc = super.choque(num);
         if(num < 9 && num > 0 ){
-            if( xoc === "null") {
-                super.apuramove(num);
+           // if( xoc === "null") {
+                //super.apuramove(num);
                 this.animation.animating = true;
-            }
-            else if(this === bubble1.host && xoc.clase==="char" ){
-               bubtake = Date.now();
-               bubble1.host = xoc;
+            //}
+            if(this === bubble1.host && xoc.clase==="char" ){
+               //bubtake = Date.now();
+              // bubble1.host = xoc;
             }
             
         } else {
