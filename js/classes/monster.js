@@ -25,14 +25,14 @@ class Cmonster extends Ccharacter {
     randmove() {
         this._moving = false;
 //        let num = Math.floor(Math.random()*20);
-        let num = this._dir;
+        let num = this._dir;//can be from 0 to 8
       
-        if(this._pastdir === -1 || num > 18) {
-            let num = Math.floor(Math.random()*10);
-            this._pastdir = num;
-        } else {
-//            num = this._pastdir;
-        }
+//        if(this._pastdir === -1 || num > 18) {
+//            let num = Math.floor(Math.random()*10);
+//            this._pastdir = num;
+//        } else {
+////            num = this._pastdir;
+//        }
         if( num===1 || num === 2 ){
             this.animation = this.animations[3];
         }
@@ -50,6 +50,7 @@ class Cmonster extends Ccharacter {
            // if( xoc === "null") {
                 //super.apuramove(num);
                 this.animation.animating = true;
+                this.moving = true;
             //}
             if(this === bubble1.host && xoc.clase==="char" ){
                //bubtake = Date.now();
@@ -57,6 +58,7 @@ class Cmonster extends Ccharacter {
             }
             
         } else {
+          this.moving = false;
           this.animation.animating = false;
         }
     }

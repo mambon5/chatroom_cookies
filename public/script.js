@@ -47,9 +47,7 @@ socket.on("bubble state", bubhostname => {
    
 });
 
-socket.on("current users", (charvec, objvec) => {
-    
-    
+socket.on("current users", (charvec, objvec) => {   
     objvec.forEach(obj  => {
       obj = find_item(obj);
       CobjectManager.add(obj);
@@ -156,7 +154,7 @@ socket.on('user-disconnected', user => {
 })
 
 function appendMessage(message) {
-  const messageElement = document.createElement('div')
+  const messageElement = document.createElement('div');
   messageElement.innerText = message
   messageContainer.prepend(messageElement)
 }

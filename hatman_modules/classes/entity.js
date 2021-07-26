@@ -55,9 +55,6 @@ class Centity extends Crectangle {
     set scale(e) { this._scale = e; }
 
     cut_rect() {
-        console.log(this.name+" cut width " + this.width + " " + this.margins[0] + " " + this.margins[2] + 
-                ", pos x: " + this.x + " y: "+this.y);
-        console.log(this.name + " cut height: " +  this.height +" "+ this.margins[1] +" "+ this.margins[3]);
         return new Centity(
                         this.x + this.margins[0], 
                         this.y + this.margins[1],
@@ -124,7 +121,6 @@ class Centity extends Crectangle {
         let resol = map.getresol(); // get resolution of each cell
 
         let cutrect = this.cut_rect(); //cuts rectangl according to margins
-        console.log("cutrect scale: " + cutrect.scale + ", width: " + cutrect.width);
         
 
         

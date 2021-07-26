@@ -11,8 +11,8 @@ canvas.height = 462;
 
 
 scale = 1.6;
-const speed = 10;
-walkdt = 3;
+const speed = 6;
+walkdt = 5;
 
 const map = new Cmap(3,5);
 
@@ -36,7 +36,7 @@ const stones1AnimationSheet = new AnimationSheet("images/pedres1.png", 62,34, 1,
 
 
 
-player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, 10, marg_cpmerica, name="hjones");
+player = new Cplayer(canvas.width/2, canvas.height/2, 32, 48, scale, speed, marg_cpmerica, name="hjones");
 //player.image.src = "images/asdf.png"; // 24.25, 45.5
 player.generateValidPos();
 console.log("captai america margins:" + player.margins)

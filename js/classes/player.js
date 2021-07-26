@@ -41,12 +41,8 @@ class Cplayer extends Ccharacter {
         if(dir !== 0){
           let xoc = super.choque(dir);
           if(xoc === "null" && !this.moving) {
-              console.log("valid corners: " + map.validcorners(this.x,this.y,this.width,this.height))
-                console.log(this.name+" cut width " + this.width + " " + this.margins[0] + " " + this.margins[2] + 
-                    ", pos x: " + this.x + " y: "+this.y);
-                console.log(this.name + " cut height: " +  this.height +" "+ this.margins[1] +" "+ this.margins[3]);
+             
               //suggest move to server.
-              socket.emit("player movement", roomName, dir);
               this.moving = true;
 //              super.apuramove(dir);
           }
@@ -63,7 +59,7 @@ class Cplayer extends Ccharacter {
             this.moving = false;
           this.animation.animating = false;
         }
-
+        socket.emit("player movement", roomName, dir);
         this.animation.animate();
     }
 

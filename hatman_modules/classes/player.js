@@ -49,10 +49,10 @@ class Cplayer extends Ccharacter {
           else if(this === bubble1.host && xoc.clase==="char") {
               bubtake = Date.now();              
               bubble1.host = xoc;
-              aux3.innerHTML = xoc.clase;
+             console.log("xoc tipus: " + xoc.clase);
           
           }
-         else aux2.innerHTML = xoc.clase;
+         else  console.log("xoc2 tipus: " + xoc.clase);
 //          this.animation.animating = true;
         
         } else{

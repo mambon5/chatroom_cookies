@@ -77,7 +77,6 @@ margins.marg_stove, "stove2", "obj");
            
             classes.CentityManager.update();
             classes.CentityManager.emit();
-            classes.CentityManager.resetdirs();
             
             
 //            map.drawmatrix();

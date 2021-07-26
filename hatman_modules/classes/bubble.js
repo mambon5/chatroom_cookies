@@ -1,5 +1,5 @@
 
-var bubtake = Date.now();
+bubtake = Date.now();
 
 if (typeof module !== "undefined" && module.exports) {
     Cobject = require("./object");

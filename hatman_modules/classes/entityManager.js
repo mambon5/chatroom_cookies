@@ -20,13 +20,7 @@ class CentityManager {
             }
     }
     
-    static resetdirs() {
-        if(vchar.length > 0) {
-               vchar.forEach(char => {
-                   char.dir = 0;
-               });
-            }
-    }
+
     
     static draw() {
         CentityManager.sortfordraw();
