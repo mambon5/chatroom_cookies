@@ -55,12 +55,14 @@ class Centity extends Crectangle {
     set scale(e) { this._scale = e; }
 
     cut_rect() {
+        console.log(this.name + " marg: " + this.margins[0] + ", "+ this.margins[1] + ", "+ this.margins[2] + ", "+ this.margins[3] )
         return new Centity(
-                        this.x + this.margins[0], 
-                        this.y + this.margins[1],
-                        this.width - this.margins[0] + this.margins[2],
-                        this.height - this.margins[1] + this.margins[3],
+                        this.x + this.margins[0]*this.scale, 
+                        this.y + this.margins[1]*this.scale,
+                        this.width - this.margins[0] - this.margins[2],
+                        this.height - this.margins[1] - this.margins[3],
                         this.scale, this.speed, this.margins, this.name);
+                        
     }
     
     dirmove(dir) {
@@ -114,7 +116,6 @@ class Centity extends Crectangle {
 
     apuramove(dir) {    //dir is 1-top 2-right 3-down 4-left
 
-        let marg = this.margins;//margins are left, top, right, bottom
 
         let canvW = canvasw;
         let canvH = canvash;

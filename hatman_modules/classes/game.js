@@ -28,6 +28,7 @@ class Cgame {
         //fire stove
         const stove1 = new classes.Cobject(canvasw / 10 * 6, canvash * 2 / 3, 34, 60, scale, 0, 
 margins.marg_stove, "stove1", "obj");
+console.log(stove1.name + " margins: " + margins.marg_stove);
         classes.CobjectManager.add(stove1);
         
         //empty stove
