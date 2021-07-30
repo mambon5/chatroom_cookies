@@ -22,17 +22,18 @@ if (messageForm != null) {
     socket.emit('send-chat-message', roomName, message);
     messageInput.value = '';
     messageInput.blur();
+    
   });
 }
 
 socket.on('room-created', room => {
-  const roomElement = document.createElement('div')
-  roomElement.innerText = room
-  const roomLink = document.createElement('a')
-  roomLink.href = `/${room}`
-  roomLink.innerText = 'join'
-  roomContainer.append(roomElement)
-  roomContainer.append(roomLink)
+  const roomElement = document.createElement('div');
+  roomElement.innerText = room;
+  const roomLink = document.createElement('a');
+  roomLink.href = `/${room}`;
+  roomLink.innerText = 'join';
+  roomContainer.append(roomElement);
+  roomContainer.append(roomLink);
 });
 
 socket.on('chat-message', data => {
