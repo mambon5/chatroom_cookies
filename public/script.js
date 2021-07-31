@@ -99,6 +99,8 @@ socket.on('user-connected', (player, user) => {
 //    48*scale, plyr._scale,
 //    plyr._speed, plyr._margins, plyr._name, plyr._clase);
     if(newpl.name.toLowerCase()=="trump") {
+        newpl.width=newpl.width*1.4
+        newpl.height=newpl.height*1.4
         var anims = [0,3,1,2];//trumps animations are sorted vertically in another order
         for (var i = 0; i < 4; i ++){
             newpl.animations.push(new Animation(trumpSheet, anims[i], [walkdt, walkdt, walkdt, walkdt]));

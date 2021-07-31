@@ -83,8 +83,8 @@ io.on('connection', socket => {
     //now we add this player to the character vector
     player = new classes.Cplayer(plyr._x,plyr._y, plyr._width, plyr._height, scale,
     plyr._speed, plyr._margins, plyr._name, plyr._clase);
-    console.log("player "+ player.name + " added, with scale: " + player.scale + ", width: " + player.width +
-             " and height: " + player.height);
+//    console.log("player "+ player.name + " added, with scale: " + player.scale + ", width: " + player.width +
+//             " and height: " + player.height);
 
     rooms[room].users[socket.id] = player;
     
@@ -98,8 +98,8 @@ io.on('connection', socket => {
 //            //last_sequence_number: 0
 //        };
     
-    console.log("user: "+ rooms[room].users[socket.id].name);
-    console.log("rooma name: " + room);
+//    console.log("user: "+ rooms[room].users[socket.id].name);
+//    console.log("rooma name: " + room);
     socket.to(room).emit('user-connected', player, rooms[room].users[socket.id]);
 console.log("new player detected");
 //socket.to(room).broadcast.emit('user-connected', player, "whatever");
