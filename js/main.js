@@ -33,6 +33,7 @@ const stove1AnimationSheet = new AnimationSheet("images/stoveonfire1.png", 329, 
 const stove2AnimationSheet = new AnimationSheet("images/stove1.png", 50, 84, 1, 1);
 const planta1AnimationSheet = new AnimationSheet("images/plantaterra1.png", 22,26, 1, 1);
 const stones1AnimationSheet = new AnimationSheet("images/pedres1.png", 62,34, 1, 1);
+const trumpSheet = new AnimationSheet("images/trump_run.png", 600,400, 4, 6);
 
 
 

@@ -26,7 +26,3 @@ class AnimationSheet {
     set frameHeight(e) {this._frameHeight = e;}
 };
 
-
-if (typeof module !== "undefined" && module.exports) {
-    module.exports = AnimationSheet;
-}

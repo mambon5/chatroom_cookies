@@ -84,7 +84,7 @@ io.on('connection', socket => {
     player = new classes.Cplayer(plyr._x,plyr._y, plyr._width, plyr._height, scale,
     plyr._speed, plyr._margins, plyr._name, plyr._clase);
     console.log("player "+ player.name + " added, with scale: " + player.scale + ", width: " + player.width +
-             " and height: " + player.height)
+             " and height: " + player.height);
 
     rooms[room].users[socket.id] = player;
     

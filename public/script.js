@@ -98,9 +98,15 @@ socket.on('user-connected', (player, user) => {
 //    newpl = new Cmonster(plyr._x,plyr._y, 32*scale, 
 //    48*scale, plyr._scale,
 //    plyr._speed, plyr._margins, plyr._name, plyr._clase);
-    
-    for (var i = 0; i < 4; i ++){
-    newpl.animations.push(new Animation(monster3AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
+    if(newpl.name.toLowerCase()=="trump") {
+        var anims = [0,3,1,2];//trumps animations are sorted vertically in another order
+        for (var i = 0; i < 4; i ++){
+            newpl.animations.push(new Animation(trumpSheet, anims[i], [walkdt, walkdt, walkdt, walkdt]));
+        } 
+    }else {
+        for (var i = 0; i < 4; i ++){
+            newpl.animations.push(new Animation(monster3AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
+        }
     }
     newpl.animation = newpl.animations[0];
     
