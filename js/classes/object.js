@@ -8,6 +8,8 @@ class Cobject extends Centity {
         super(x, y, width, height, scale, speed, margins, name, clase);
          this._pastdir = -1;
          this._clase = clase;
+         
+         
         
     }
 
@@ -23,6 +25,9 @@ class Cobject extends Centity {
         let y  = this.y - player.y + player.y_init;
         ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, x, y, this.width*this.scale, this.height*this.scale);
     }
+    
+   
+    
 }
 
 if (typeof module !== "undefined" && module.exports) {

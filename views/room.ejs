@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/style/style.css">
   <script>
     const roomName = "<%= roomName %>"
+
   </script>
   <script defer src="/socket.io/socket.io.js"></script>
   
@@ -18,7 +19,7 @@
 <div id="bgimage"></div>
 <div id="bggradient"></div>
 <canvas id="my_canvas_background"></canvas>
-<canvas id="my_canvas"></canvas>
+<canvas id="my_canvas" onmousemove="mouseCoords(event)"></canvas>
 <div id="aux" class="aux">hola</div>
 <div id="aux2" class="aux">aux2</div>
 <div id="aux3" class="aux">aux3</div>

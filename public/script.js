@@ -55,7 +55,6 @@ socket.on("current users", (charvec, objvec) => {
       CentityManager.fillArray();
     })
     
-    
     charvec.forEach(user  => {
         monst = getcharacter(user, type="monster");
         for (var i = 0; i < 4; i ++){

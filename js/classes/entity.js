@@ -9,11 +9,11 @@ if (typeof module !== "undefined" && module.exports) {
 
 class Centity extends Crectangle {
     constructor(x, y, width, height, scale, speed, margins = [0,0,0,0], name) {
-        super(x, y, width, height);
+        super(x, y, width, height,scale);
         this._x_init = x;
         this._y_init = y;
         this._speed = speed;
-        this._scale = scale;
+        
         
         if ( !(typeof module !== "undefined" && module.exports) ) {
             // the js function Image() is apparently not defined in Node.js
@@ -37,7 +37,7 @@ class Centity extends Crectangle {
     get animation() { return this._animation; }
     get name() { return this._name; }
     get clase() {return this._clase;}
-    get scale() {return this._scale;}
+   
 
     
     set speed(e) {this._speed = e;}
@@ -47,7 +47,6 @@ class Centity extends Crectangle {
     set animations(e) { this._animations = e; }
     set animation(e) { this._animation = e; }
     set name(e) { this._name = e; }
-    set scale(e) { this._scale = e; }
 
     cut_rect() {
         return new Centity(

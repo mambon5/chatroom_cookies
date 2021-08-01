@@ -1,7 +1,7 @@
 /* 
  * Object Manager class
  */
-
+outputed=false
 class CobjectManager {
     static add(obj) {
         vobj.push(obj);
@@ -32,6 +32,8 @@ class CobjectManager {
         
         console.log(item.name);
     }
+    
+   
 }
 
 

@@ -4,15 +4,28 @@ let aux3 =  document.getElementById('aux3');
 
 const canvas = document.getElementById('my_canvas');
 const ctx = canvas.getContext('2d');
+
 canvas.width = 930;
 canvas.height = 462;
-
-
-
 
 scale = 1.6;
 const speed = 6;
 walkdt = 5;
+
+
+mouse = new Crectangle(0,0,1,1,scale);
+
+function mouseCoords(event) { //computing mouse coordinates when hovering on canvas
+    
+    var canvRect = canvas.getBoundingClientRect(), // abs. size of element
+    scaleX = canvas.width / canvRect.width,    // relationship bitmap vs. element for X
+    scaleY = canvas.height / canvRect.height;  // relationship bitmap vs. element for Y
+    
+    mouse.x =  (event.clientX - canvRect.left) * scaleX - canvas.width/2 + player.x;   // scale mouse coordinates after they have
+    mouse.y =  (event.clientY - canvRect.top) * scaleY - canvas.height/2 + player.y;    //we want mouse position relative to moving canvas
+   
+   
+     }
 
 const map = new Cmap(3,5);
 
@@ -29,6 +42,7 @@ const barril2AnimationSheet = new AnimationSheet("images/barril2.png", 164, 178,
 const lollypalAnimationSheet = new AnimationSheet("images/lollypoppal.png", 100, 237, 1, 1);
 const candybowlAnimationSheet = new AnimationSheet("images/candybowl1.png", 62, 93, 1, 1);
 const bubble1AnimationSheet = new AnimationSheet("images/bubble1.png", 54, 16, 1, 3);
+const selectobjAnimationSheet = new AnimationSheet("images/select_obj.png", 54, 19, 1, 3);
 const stove1AnimationSheet = new AnimationSheet("images/stoveonfire1.png", 329, 84, 1, 7);
 const stove2AnimationSheet = new AnimationSheet("images/stove1.png", 50, 84, 1, 1);
 const planta1AnimationSheet = new AnimationSheet("images/plantaterra1.png", 22,26, 1, 1);
@@ -214,17 +228,26 @@ for(let i=0; i<10; ++i) {
 }
 
 const bubble1 = new Cbubble(canvas.width/10*4, canvas.height/3,
-    18, 16, scale, 0,[2,0,2,0], "bubble1", host=player);
+    18, 16, scale, 0,[2,0,2,0], "bubble1", host=player, pos="top");
 
 bubble1.animations.push(new Animation(bubble1AnimationSheet, 0, [5,5,5]));
 bubble1.animation = bubble1.animations[0];
 bubble1.animation.animating = true;
-bubble1.host = player;
+
+console.log("bubble pos " + bubble1.pos)
+
+const selobj = new Cbubble(canvas.width/10*4, canvas.height/3, 
+    18, 16, scale, 0,[2,0,2,0], "selectobj", host="empty", pos="around");//element for marking object selected
+
+selobj.animations.push(new Animation(selectobjAnimationSheet, 0, [5,5,5]));
+selobj.animation = selobj.animations[0];
+selobj.animation.animating = true;
 
 
 CentityManager.fillArray();
 CfloorManager.generateValidPoses();
 CobjectManager.generateValidPoses();
+
 
 
 //background.image.src = "images/fix, y, width, height, speed, margins = [0,0,0,0]
