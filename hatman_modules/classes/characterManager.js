@@ -26,6 +26,16 @@ class CcharacterManager {
     static sortfordraw() {//sort for printing on screen, lowest y first to print
         vchar.sort(function(a,b){return a.y+a.height-b.y-b.height;});        
     }
+    
+     static generateValidPoses() {
+        vchar.forEach(CcharacterManager.generateValidPos);
+    }
+
+    static generateValidPos(item, index) {
+       item.generateValidPos();
+        
+        console.log(item.name + " has x:" + item.x + ", y: " + item.y );
+    }
 }
 
 if (typeof module !== "undefined" && module.exports) {

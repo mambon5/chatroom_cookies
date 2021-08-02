@@ -24,13 +24,12 @@ class CfloorManager {
     }
 
     static generateValidPoses() {
-        vfloor.forEach(object => object.generateValidPos);
+        vfloor.forEach(CfloorManager.generateValidPos);
     }
 
-    static generateValidPos(item, index) {
-       item.generateValidPos();
-        
-        console.log(item.name);
+    static generateValidPos(item, index) {        
+       item.generateValidPos();        
+        console.log("floor item generated: " +item.name);
     }
 }
 

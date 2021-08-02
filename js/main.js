@@ -48,6 +48,9 @@ const stove2AnimationSheet = new AnimationSheet("images/stove1.png", 50, 84, 1, 
 const planta1AnimationSheet = new AnimationSheet("images/plantaterra1.png", 22,26, 1, 1);
 const stones1AnimationSheet = new AnimationSheet("images/pedres1.png", 62,34, 1, 1);
 const trumpSheet = new AnimationSheet("images/trump_run.png", 600,400, 4, 6);
+const sheepDogSheet = new AnimationSheet("images/sprites_char/DogSheepdog01.png", 264,240, 5, 4);
+const beagleDogSheet = new AnimationSheet("images/sprites_char/DogBeagle01.png", 160,240, 6, 4);
+const rivKittySheet = new AnimationSheet("images/sprites_char/riverKitty01.png", 128,128, 4, 4);
 
 
 
@@ -155,7 +158,7 @@ for(let i=0; i<10; ++i) {
 
 
 for(let i=0; i<5; ++i) {
-     const stones = new Cobject(canvas.width / 10 * 6, canvas.height * 2 / 3, 31*1.6, 17*1.5, scale, 0, 
+     const stones = new Cobject(canvas.width / 10 * 4, canvas.height * 2 / 3, 31*1.6, 17*1.5, scale, 0, 
     [0,0,0,0],  name= ("piedrasfloor"+i), clase="flooritem");
     stones.animations.push(new Animation(stones1AnimationSheet, 0, 1));
     stones.animation = stones.animations[0];

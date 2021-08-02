@@ -21,18 +21,18 @@ class CentityManager {
     }
     
 
-    
-    static draw() {
-        CentityManager.sortfordraw();
-        planta1.draw();
-        CfloorManager.draw();
-        ventities.forEach(entity => entity.draw());
-         
-        bubble1.draw();
-        var now = Date.now();
-        aux1.innerHTML = "bubble host: <b>" + bubble1.host.name + "</b>"+ 
-                "<br> time bubbling: " + (Math.floor((now - bubtake)/100)/10).toFixed(1) + " sec";
-    }
+//    
+//    static draw() {
+//        CentityManager.sortfordraw();
+//        planta1.draw();
+//        CfloorManager.draw();
+//        ventities.forEach(entity => entity.draw());
+//         
+//        bubble1.draw();
+//        var now = Date.now();
+//        aux1.innerHTML = "bubble host: <b>" + bubble1.host.name + "</b>"+ 
+//                "<br> time bubbling: " + (Math.floor((now - bubtake)/100)/10).toFixed(1) + " sec";
+//    }
     static sortfordraw() {//sort for printing on screen, lowest y first to print
         ventities.sort(function (a, b) { return a.y + a.height - b.y - b.height; });
     }

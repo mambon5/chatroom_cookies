@@ -24,6 +24,20 @@ class Cgame {
         this._started = false;
     }
     
+     generate_monsts() {
+        const doggo1 = new classes.Cmonster(canvasw/10*1, canvash/3,
+                        32, 32, scale, speed/2, margins.marg_greebo2, "sheepDog");
+        classes.CcharacterManager.add(doggo1);
+        const doggo2 = new classes.Cmonster(canvasw/10*1, canvash/3,
+                        32, 32, scale, speed/2, margins.marg_greebo2, "beagleDog");
+        classes.CcharacterManager.add(doggo2);
+        const cat1 = new classes.Cmonster(canvasw/10*1, canvash/3,
+                        32, 32, scale, speed/2, margins.marg_greebo2, "riverKitty");
+        classes.CcharacterManager.add(cat1);
+    
+        classes.CentityManager.fillArray();
+     }
+    
     generate_objs() {
         //fire stove
         const stove1 = new classes.Cobject(canvasw / 10 * 6, canvash * 2 / 3, 34, 60, scale, 0, 
@@ -98,6 +112,8 @@ margins.marg_stove, "stove2", "obj");
         this._started = true;
         this._then = Date.now();
         this.generate_objs();
+        this.generate_monsts();
+        classes.CcharacterManager.generateValidPoses();  
         classes.CobjectManager.generateValidPoses();  
        
         

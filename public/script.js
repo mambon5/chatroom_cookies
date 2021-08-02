@@ -57,9 +57,25 @@ socket.on("current users", (charvec, objvec) => {
     
     charvec.forEach(user  => {
         monst = getcharacter(user, type="monster");
-        for (var i = 0; i < 4; i ++){
+        if(monst.name=="sheepDog") {//dog
+            console.log("doggo found")
+            for (var i = 0; i < 5; i ++){
+            monst.animations.push(new Animation(sheepDogSheet, i, [walkdt/2, walkdt/2, walkdt/2, walkdt/2]));
+         }
+        } else if (monst.name=="beagleDog") {            
+            for (var i = 0; i < 6; i ++){
+            monst.animations.push(new Animation(beagleDogSheet, i, [walkdt/2, walkdt/2, walkdt/2, walkdt/2]));
+         }
+        } else if (monst.name=="riverKitty") {            
+            for (var i = 0; i < 4; i ++){
+            monst.animations.push(new Animation(rivKittySheet, i, [walkdt/2, walkdt/2, walkdt/2, walkdt/2]));
+         }
+        } else {//other monsters
+             for (var i = 0; i < 4; i ++){
             monst.animations.push(new Animation(monster3AnimationSheet, i, [walkdt, walkdt, walkdt, walkdt]));
          }
+         }
+        
          monst.animation = monst.animations[0];
         CcharacterManager.add(monst);        
     });

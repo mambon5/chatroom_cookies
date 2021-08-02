@@ -18,7 +18,7 @@ class CentityManager {
 
     static draw() {
         CentityManager.sortfordraw();
-        planta1.draw();
+//        planta1.draw();
         CfloorManager.draw();
         ventities.forEach(entity => {
             entity.draw();

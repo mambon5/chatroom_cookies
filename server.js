@@ -10,6 +10,7 @@ margins = require('./js/globalVars/img_margins');
 canvasw = 930;
 canvash = 462;
 scale = 1.6;
+speed=10;
 
 map = new classes.Cmap(3,5);
 bubble1 = new classes.Cbubble(canvasw/10*4, canvash/3,

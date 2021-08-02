@@ -57,6 +57,10 @@ class Cmonster extends Ccharacter {
               // bubble1.host = xoc;
             }
             
+        } else if (this.name == "beagleDog" || this.name == "sheepDog") {
+             this.animation = this.animations[4];
+             this.animation.animating = true;
+                this.moving = true;
         } else {
           this.moving = false;
           this.animation.animating = false;
@@ -77,7 +81,7 @@ class Cmonster extends Ccharacter {
         ctx.fillStyle = gradient;
         var wt = ctx.measureText(this._name);//text width  
         
-        ctx.fillText(this._name ,x - wt.width/2 + this._width/2,y);
+        ctx.fillText(this._name ,x - wt.width/2 + this._width*this.scale/2,y);
     }
 };
 

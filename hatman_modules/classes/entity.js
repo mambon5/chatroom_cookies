@@ -55,7 +55,6 @@ class Centity extends Crectangle {
     set scale(e) { this._scale = e; }
 
     cut_rect() {
-        console.log(this.name + " marg: " + this.margins[0] + ", "+ this.margins[1] + ", "+ this.margins[2] + ", "+ this.margins[3] )
         return new Centity(
                         this.x + this.margins[0]*this.scale, 
                         this.y + this.margins[1]*this.scale,
