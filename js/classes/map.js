@@ -30,6 +30,52 @@ class Cmap {
         this._resv = canvas.height/this._v_rows;
     }
     
+    tilePosition(pos1,pos2) {//type of tile, corner, center, lateral, etc 15 different positions for a tile
+        var tilepos = [-1,-1];
+        var cellt =  this._map_matrix[pos1][pos2];
+        
+        //get tile types arround main cell studied here
+        var left = cellt;
+        var top = cellt;
+        var right = cellt;
+        var bottom = cellt;
+        if( (pos1-1)>-1 && this._map_matrix[pos1-1][pos2] != cellt) top = "other";
+        if( (pos2-1)>-1 && this._map_matrix[pos1][pos2-1] != cellt) left = "other";
+        if( (pos1+1)< this._rows && this._map_matrix[pos1+1][pos2] != cellt) bottom = "other";
+        if( (pos2+1)<  this._cols && this._map_matrix[pos1][pos2+1] != cellt) right = "other";
+        
+        //center
+        if(left == cellt && top ==cellt && right == cellt && bottom == cellt) tilepos = [1,1];
+        
+        //laterals, 3 adjacent cells full, 1 empty
+        if(left == cellt && top ==cellt && right == cellt && bottom =="other") tilepos = [2,1];
+        if(left == cellt && top ==cellt && right =="other" && bottom == cellt ) tilepos = [1,2];
+        if(left == cellt && top =="other"&& right ==cellt && bottom == cellt  ) tilepos = [0,1];
+        if(left =="other"&& top ==cellt && right == cellt && bottom == cellt ) tilepos = [1,0];
+        
+        //2 surrounding cells empty, 2 adjacent
+        if(left == cellt && top ==cellt && right =="other" && bottom =="other") tilepos = [2,2];
+        if(left == cellt && top =="other" && right == cellt && bottom =="other") tilepos = [1,3];
+        if(left =="other" && top ==cellt && right == cellt && bottom =="other") tilepos = [2,0];
+        if(left == cellt && top =="other" && right =="other" && bottom == cellt) tilepos = [0,2];
+        if(left =="other" && top ==cellt && right =="other" && bottom == cellt) tilepos = [1,5];
+        if(left =="other" && top =="other" && right == cellt && bottom == cellt) tilepos = [0,0];
+        
+        //peninsulas, 3 adjacent cells empty, 1 full
+        if(left == "other" && top =="other" && right == "other" && bottom ==cellt) tilepos = [2,3];
+        if(left == "other" && top =="other" && right ==cellt && bottom == "other" ) tilepos = [0,3];
+        if(left == "other" && top ==cellt && right =="other" && bottom == "other"  ) tilepos = [2,4];
+        if(left ==cellt && top =="other" && right == "other" && bottom == "other" ) tilepos = [1,4];
+        
+        //island
+        if(left == "other" && top =="other" && right == "other" && bottom =="other") tilepos = [0,4];
+
+      
+        return(tilepos)
+        
+        
+    }
+    
     drawmatrix() {
         //image to use for pattern:
         var img1 = document.getElementById("wall");
@@ -39,6 +85,8 @@ class Cmap {
         var img3 = document.getElementById("grass");
         var img4 = document.getElementById("tiles1");
         
+        var tiles = grassSheet;
+        
         let x = player.x_init - player.x ;
         let y = player.y_init - player.y;
 
@@ -46,7 +94,12 @@ class Cmap {
             for(let j = 0; j < this._rows; j++) {
                 switch(this._map_matrix[j][i]) {
                     case 0:
-                        ctx.drawImage(img1,i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1);
+                        var tpos = this.tilePosition(j,i);
+                        ctx.drawImage(img4,i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1); //draw the mountain on top of the floor
+                        ctx.drawImage(tiles.image,tpos[1]*tiles.frameWidth,tpos[0]*tiles.frameHeight, tiles.frameWidth, tiles.frameHeight,
+                                i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1);
+
+//                        ctx.drawImage(img1,i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1);
                         break;
                     case 1:
                     case 2:

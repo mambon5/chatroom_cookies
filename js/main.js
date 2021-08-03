@@ -28,6 +28,8 @@ function mouseCoords(event) { //computing mouse coordinates when hovering on can
      }
 
 const map = new Cmap(3,5);
+const grassSheet = new TileSheet("images/forest/basicGrassWall3.png", 192,96, 3, 6);
+
 
 const playerAnimationSheet   = new AnimationSheet("images/henryjones.png", 128, 192, 4, 4);
 const monster1AnimationSheet = new AnimationSheet("images/captainamerica_shield.png", 128, 192, 4, 4);
