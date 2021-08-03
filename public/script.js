@@ -241,15 +241,24 @@ function find_item(obj) {
     
     if(name == "stove1") { 
         obja.animations.push(new Animation(stove1AnimationSheet, 0, [5,5,5,5,5,5,5]));
-        obja.animation = stove1.animations[0];
+        obja.animation = obja.animations[0];
         obja.animation.animating = true;
     } else if(name == "stove2") {
         obja.animations.push(new Animation(stove2AnimationSheet, 0, 1));
-        obja.animation = stove2.animations[0];
+        obja.animation = obja.animations[0];
     
     } else if(clase == "barril candy") {
         obja.animations.push(new Animation(barril1AnimationSheet, 0, 1));
-        obja.animation = barril2.animations[0];
+        obja.animation = obja.animations[0];
+    }  else if(name == "lightsaber") {
+        obja.animations.push(new Animation(lightsaberSheet, 0, [4,4,4,4,4]));
+        obja.animation = obja.animations[0];
+        obja.animation.animating = true;
+        
+        
+        
+        
+        
     } 
     return(obja);
 }

@@ -50,6 +50,11 @@ console.log(stove1.name + " margins: " + margins.marg_stove);
 margins.marg_stove, "stove2", "obj");
         classes.CobjectManager.add(stove2);
         
+        //light saber
+        const lightsaber = new classes.Cobject(canvasw / 10 * 6, canvash * 2 / 3, 24, 48, scale, 0, 
+[0,0,0,0], "lightsaber", "char_item");
+        classes.CobjectManager.add(lightsaber);
+        
         //barrils de candy aleatoriament
         for(let i=0; i<5; ++i) {
             const barril3 = new  classes.Cobject(canvasw / 10 * 6, canvash * 3 / 3, 32, 37, scale, 0, 

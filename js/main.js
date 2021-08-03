@@ -28,7 +28,7 @@ function mouseCoords(event) { //computing mouse coordinates when hovering on can
      }
 
 const map = new Cmap(3,5);
-const grassSheet = new TileSheet("images/forest/basicGrassWall3.png", 192,96, 3, 6);
+const grassSheet = new TileSheet("images/forest/basicGrassWall4.png", 192,96, 3, 6);
 
 
 const playerAnimationSheet   = new AnimationSheet("images/henryjones.png", 128, 192, 4, 4);
@@ -53,6 +53,7 @@ const trumpSheet = new AnimationSheet("images/trump_run.png", 600,400, 4, 6);
 const sheepDogSheet = new AnimationSheet("images/sprites_char/DogSheepdog01.png", 264,240, 5, 4);
 const beagleDogSheet = new AnimationSheet("images/sprites_char/DogBeagle01.png", 160,240, 6, 4);
 const rivKittySheet = new AnimationSheet("images/sprites_char/riverKitty01.png", 128,128, 4, 4);
+const lightsaberSheet = new AnimationSheet("images/char_items/lightsabericonblue.png", 120,43, 1, 5);
 
 
 
@@ -148,6 +149,8 @@ marg_stove,  name= "stove2", clase="obj");
 stove2.animations.push(new Animation(stove2AnimationSheet, 0, 1));
 stove2.animation = stove2.animations[0];
 //CobjectManager.add(stove2);
+
+
 
 const planta = "Null";
 for(let i=0; i<10; ++i) {
