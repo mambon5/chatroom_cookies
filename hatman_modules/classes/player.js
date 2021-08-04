@@ -8,15 +8,77 @@ if (typeof module !== "undefined" && module.exports) {
 
 class Cplayer extends Ccharacter {
 
-    constructor(x, y, width, height, scale, speed, margins, name="hero", clase="char", dir = 0) {
+    constructor(x, y, width, height, scale, speed, margins, name="hero", clase="char", dir = 0, love=200, bag = [], hand="empty",
+    lover="", clicking=false) {
 
         super(x, y, width, height, scale, speed, margins, name, clase);
         this._dir = dir;
+        this._love = love;
+        this._bag = bag;
+        this._hand = hand;
+        this._lover = lover;
+        this._clicking = clicking;
     }
 
     get dir() {return this._dir;}
+    get love() {return this._love;}
+    get bag() {return this._bag;}
+    get hand() {return this._hand;}
+    get lover() {return this._lover;}
+    get clicking() {return this._clicking;}
 
     set dir(e) {this._dir = e;}
+    set love(e) {this._love = e;}
+    set bag(e) {this._bag = e;}
+    set hand(e) {this._hand = e;}
+    set lover(e) {this._lover = e;}
+    set clicking(e) {this._clicking = e;}
+
+
+    kiss(target) {
+        
+    }
+    
+    eat(item) {
+        
+    }
+    drink(item) {
+        
+    }
+    
+    hit(target) {
+        
+    }
+    
+    shoot() {
+        
+    }
+    
+    slap(target) {
+        
+    }
+    
+    warmup() {
+        
+    }
+    
+    propose_lover() {
+        
+    }
+    
+    propose_marry() {
+        
+    }
+    
+    heartbroken() {// activate if your love reaches 0
+        
+    }
+    
+    blissfuljoy() {// activate if your love reaches 400
+        
+    }
+    
+
 
     move() {
 
