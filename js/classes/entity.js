@@ -77,6 +77,14 @@ class Centity extends Crectangle {
         if(dir===8) {this.y -= rspeed; this.x -= rspeed;}
     }
 
+    whoHit(entity) {
+          ventities.forEach(elem  => {
+                var name = elem.name       
+                if(elem.name != entity.name && checkxoc(elem,entity)) return elem;
+            });
+            return "none";
+    }
+    
     choque(dir) {
         var arrxoc = []; //array con characteres excepto el mismo
         let cind = -1;

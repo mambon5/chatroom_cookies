@@ -12,6 +12,16 @@ class Cplayer extends Ccharacter {
         
     }
     
+    click() {
+        var target = whoHit(this);
+        if(mouse.click && target != "none") {
+            switch(target.clase) {
+                case "barril candy":
+                    
+            
+            }
+        }
+    }
     
 
     move() {

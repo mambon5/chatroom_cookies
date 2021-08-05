@@ -65,50 +65,49 @@ app.get('/:room', (req, res) => {
   res.render('room', { roomName: req.params.room });
 });
 
-server.listen(5000, function () {console.log('connected');});
+// server listen to port:
+port = 5000
+server.listen(port, function () {console.log('connected port:' + port);});
+
 
 io.on('connection', socket => {
-  socket.on('new-user', (room, player) => {
+    socket.on('new-user', (room, player) => {
       
-      //first we send the current players to the new user (without the new user)
-      //then we add the new user to the server character array
-      socket.emit("current users",vchar, vobj);
-      
-      
-    socket.join(room);
-    //fer un generateValid pos que usi tots els usuaris de lhabitació, 
-    //rooms[room].users
-     plyr = JSON.parse(JSON.stringify(player));//we parse the JSON string(the object
-     console.log(plyr)
-     //structure is completely lost when transfering objects from Client/server
-    //now we add this player to the character vector
-    player = new classes.Cplayer(plyr._x,plyr._y, plyr._width, plyr._height, scale,
-    plyr._speed, plyr._margins, plyr._name, plyr._clase);
-//    console.log("player "+ player.name + " added, with scale: " + player.scale + ", width: " + player.width +
-//             " and height: " + player.height);
+        //first we send the current players to the new user (without the new user)
+        //then we add the new user to the server character array
+        socket.emit("current users",vchar, vobj);     
+        socket.join(room);
+            //fer un generateValid pos que usi tots els usuaris de lhabitació, 
+            //rooms[room].users
+        plyr = JSON.parse(JSON.stringify(player));//we parse the JSON string(the object
+        console.log(plyr)
+             //structure is completely lost when transfering objects from Client/server
+            //now we add this player to the character vector
+        player = new classes.Cplayer(plyr._x,plyr._y, plyr._width, plyr._height, scale,
+        plyr._speed, plyr._margins, plyr._name, plyr._clase);
+        //    console.log("player "+ player.name + " added, with scale: " + player.scale + ", width: " + player.width +
+        //             " and height: " + player.height);
 
-    rooms[room].users[socket.id] = player;
-    
-    classes.CcharacterManager.add(rooms[room].users[socket.id]);
-    classes.CentityManager.fillArray();
+        rooms[room].users[socket.id] = player;
 
-//    rooms[room].users[socket.id] = {
-//            name: player.name,
-//            x: player.x,
-//            y: player.y
-//            //last_sequence_number: 0
-//        };
-    
-//    console.log("user: "+ rooms[room].users[socket.id].name);
-//    console.log("rooma name: " + room);
-    socket.to(room).emit('user-connected', player, rooms[room].users[socket.id]);
-console.log("new player detected");
-//socket.to(room).broadcast.emit('user-connected', player, "whatever");
-  })
-  
-  socket.on("current state", function() {
-      
+        classes.CcharacterManager.add(rooms[room].users[socket.id]);
+        classes.CentityManager.fillArray();
+
+        //    rooms[room].users[socket.id] = {
+        //            name: player.name,
+        //            x: player.x,
+        //            y: player.y
+        //            //last_sequence_number: 0
+        //        };
+
+        //    console.log("user: "+ rooms[room].users[socket.id].name);
+        //    console.log("rooma name: " + room);
+        socket.to(room).emit('user-connected', player, rooms[room].users[socket.id]);
+        console.log("new player detected");
+        //socket.to(room).broadcast.emit('user-connected', player, "whatever");
   });
+  
+
   
   
   
@@ -120,35 +119,57 @@ console.log("new player detected");
 //    socket.emit('movement', player, roomName );
 //}, 1000 / 60);
   
-  socket.on('send-chat-message', (room, message) => {
-    socket.to(room).emit('chat-message', { message: message, name: rooms[room].users[socket.id].name })
-  })
-  socket.on('disconnect', () => {
-    getUserRooms(socket).forEach(room => {
-      socket.to(room).emit('user-disconnected', rooms[room].users[socket.id] )
-      delete rooms[room].users[socket.id];
-    })
-  })
+    socket.on('send-chat-message', (room, message) => {
+        socket.to(room).emit('chat-message', { message: message, name: rooms[room].users[socket.id].name })
+    });
+    
+    socket.on('disconnect', () => {
+        getUserRooms(socket).forEach(room => {
+            socket.to(room).emit('user-disconnected', rooms[room].users[socket.id] )
+            delete rooms[room].users[socket.id];
+          })
+        })
   
   
-        socket.on("player movement", (room, dir) => {
-       
+    socket.on("player movement", (room, dir) => {
         rooms[room].users[socket.id].dir = dir;
         plyr = rooms[room].users[socket.id];
         plyr.dir = dir;
+    });
         
-
-                
-         
-
-        });
+    socket.on("player click", (room, targetname) => {
+        rooms[room].users[socket.id].dir = dir;
+        plyr = rooms[room].users[socket.id];
+        target = finditem(targetname);
+        if(item == "No item found") target = findchar(targetname);
+        
+        if(target.clase == "barril candy" && checkxoc(target, plyr)) {
+            console.log("+25 love <3");
+        }
+    });
   
   
-})
+});
+
+
 
 function getUserRooms(socket) {
   return Object.entries(rooms).reduce((names, [name, room]) => {
     if (room.users[socket.id] != null) names.push(name);
     return names
   }, []);
+}
+
+function finditem(itname) {
+    vobj.forEach(obj  => {
+        if(obj.name == itname) return obj;
+    });
+    return "No item found";
+}
+
+function findchar(charname) {
+    vchar.forEach(char  => {
+        if(char.name == charname) return char;
+    });
+    return "No characer found";
 }

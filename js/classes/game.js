@@ -37,6 +37,9 @@ class Cgame {
             CentityManager.update();
             map.drawmatrix();
             CentityManager.draw();
+//            console.log("left mouse pressed: " +mouse.mousedown);
+//            console.log("left mouse clicked: " +mouse.click);
+            mouse.clearEvents();
             aux2.innerHTML = "x: " + Math.round(player.x) + ", y: " + Math.round(player.y);
 //            socket.emit("current state");
             //imgmargins(ctx, canvas.width/2, canvas.height/2, player.width, player.height);

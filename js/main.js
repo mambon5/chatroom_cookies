@@ -13,7 +13,7 @@ const speed = 6;
 walkdt = 5;
 
 
-mouse = new Crectangle(0,0,1,1,scale);
+mouse = new Cmouse(0,0,1,1,scale);
 
 function mouseCoords(event) { //computing mouse coordinates when hovering on canvas
     
@@ -262,11 +262,25 @@ CobjectManager.generateValidPoses();
 const keys = [];
 window.addEventListener("keydown", function(e){
     keys[e.keyCode] = true;
+//    console.log("key code pressed: " +e.keyCode);
 });
 window.addEventListener("keyup", function(e){
     delete keys[e.keyCode];
 });
 
+window.addEventListener("mousedown", function(e){
+    mouse.mousedown = true;
+//    console.log("left mouse pressed: " +mouse.mousedown);
+});
+window.addEventListener("mouseup", function(e){
+    mouse.mouseup = true;
+    mouse.mousedown = false;
+//    console.log("left mouse released: " + mouse.mouseup);
+});
+window.addEventListener("click", function(e){
+    mouse.click = true;
+//    console.log("left mouse clicked: " +  mouse.click);
+});
 /* *
  *
     37(left arrow)
