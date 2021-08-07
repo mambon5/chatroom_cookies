@@ -64,6 +64,13 @@ class Centity extends Crectangle {
                         
     }
     
+    who(name) {
+          ventities.forEach(elem  => {
+                if(elem.name == name) return elem;
+            });
+            return "none";
+    }
+    
     dirmove(dir) {
         let rspeed = 0;
         
@@ -81,7 +88,7 @@ class Centity extends Crectangle {
         if(dir===8) {this.y -= rspeed; this.x -= rspeed;}
     }
 
-    choque(dir) {
+    choque(dir) {//find which object would hit this moving along dir direction
         var arrxoc = []; //array con characteres excepto el mismo
         let cind = -1;
         for (let i = 0; i < ventities.length; i++) {

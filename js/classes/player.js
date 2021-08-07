@@ -7,20 +7,42 @@ if (typeof module !== "undefined" && module.exports) {
 }
 
 class Cplayer extends Ccharacter {
-    constructor(x, y, width, height, scale, speed, margins, name="hero", clase="char") {
+       constructor(x, y, width, height, scale, speed, margins, name="hero", clase="char", dir = 0, love=200, bag = [], hand="empty",
+    lover="", clicking=false, targetName ="none") {
+
         super(x, y, width, height, scale, speed, margins, name, clase);
-        
+        this._dir = dir;
+        this._love = love;
+        this._bag = bag;
+        this._hand = hand;
+        this._lover = lover;
+        this._clicking = clicking;
+        this._targetName = targetName;
     }
+
+    get dir() {return this._dir;}
+    get love() {return this._love;}
+    get bag() {return this._bag;}
+    get hand() {return this._hand;}
+    get lover() {return this._lover;}
+    get clicking() {return this._clicking;}
+    get targetName() {return this._targetName;}
+
+    set dir(e) {this._dir = e;}
+    set love(e) {this._love = e;}
+    set bag(e) {this._bag = e;}
+    set hand(e) {this._hand = e;}
+    set lover(e) {this._lover = e;}
+    set clicking(e) {this._clicking = e;}
+    set targetName(e) {this._targetName = e;}
     
-    click() {
-        var target = whoHit(this);
-        if(mouse.click && target != "none") {
-            switch(target.clase) {
-                case "barril candy":
-                    
-            
-            }
-        }
+    checkClick() {
+        
+            var target = selobj.host;
+            this._targetName = "none";
+            if(target!="empty") this._targetName = target.name;
+            this._clicking = mouse.click;
+        
     }
     
 
@@ -69,7 +91,8 @@ class Cplayer extends Ccharacter {
                 this.moving = false;
               this.animation.animating = false;
             }
-            socket.emit("player movement", roomName, dir);
+            this.dir = dir
+//            socket.emit("player movement", roomName, dir);
             this.animation.animate();
         }
     }

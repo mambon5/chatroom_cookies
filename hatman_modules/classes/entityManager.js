@@ -9,8 +9,10 @@ class CentityManager {
     }
 
     static update() {
+        vchar.forEach(charac => charac.click());
         ventities.forEach(entity => entity.move());  //we should do an update function on character, to generalize, for now we call draw
-         bubble1.move();
+        bubble1.move();
+        
     }
 
     static emit() {

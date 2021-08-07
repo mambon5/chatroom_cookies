@@ -35,6 +35,7 @@ class Cgame {
             //map.recalculateCenter();  // Quotient Space!!!
 
             CentityManager.update();
+            CentityManager.emit();
             map.drawmatrix();
             CentityManager.draw();
 //            console.log("left mouse pressed: " +mouse.mousedown);

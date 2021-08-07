@@ -4,7 +4,7 @@ const server = require('http').Server(app);
 io = require('socket.io')(server);
 classes = require('./hatman_modules/server_classess');
 global = require('./hatman_modules/globalVars/entityVars');
-functions = require('./js/functions/xocs');
+functions = require('./hatman_modules/server_functions');
 margins = require('./js/globalVars/img_margins');
 
 canvasw = 930;
@@ -12,6 +12,7 @@ canvash = 462;
 scale = 1.6;
 speed=10;
 
+users = []
 map = new classes.Cmap(3,5);
 bubble1 = new classes.Cbubble(canvasw/10*4, canvash/3,
         18, 16, scale, 0,[2,0,2,0], "bubble1", "empty");
@@ -89,6 +90,9 @@ io.on('connection', socket => {
         //             " and height: " + player.height);
 
         rooms[room].users[socket.id] = player;
+        user = new classes.Cuser(socket.id, false, player.name);
+        classes.CuserManager.add(user);
+
 
         classes.CcharacterManager.add(rooms[room].users[socket.id]);
         classes.CentityManager.fillArray();
@@ -131,21 +135,19 @@ io.on('connection', socket => {
         })
   
   
-    socket.on("player movement", (room, dir) => {
-        rooms[room].users[socket.id].dir = dir;
+//    socket.on("player movement", (room, dir) => {
+//        rooms[room].users[socket.id].dir = dir;
+//        plyr = rooms[room].users[socket.id];
+//        plyr.dir = dir;
+//    });
+
+    socket.on("player move_click", (room, dir, clicking, targetName) => {
+        if(clicking)  console.log("player move click recieved! dir, click, target" + dir +
+                " " + clicking + " " + targetName)
         plyr = rooms[room].users[socket.id];
         plyr.dir = dir;
-    });
-        
-    socket.on("player click", (room, targetname) => {
-        rooms[room].users[socket.id].dir = dir;
-        plyr = rooms[room].users[socket.id];
-        target = finditem(targetname);
-        if(item == "No item found") target = findchar(targetname);
-        
-        if(target.clase == "barril candy" && checkxoc(target, plyr)) {
-            console.log("+25 love <3");
-        }
+        plyr.clicking = clicking;
+        plyr.targetName =targetName;
     });
   
   

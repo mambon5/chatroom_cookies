@@ -20,6 +20,7 @@ class Cuser {
     set req_sent(e) {this._req_sent = e;}
     set usrname(e) {this._usrname = e;}
   
+
 };
 
 

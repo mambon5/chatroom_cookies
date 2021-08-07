@@ -10,7 +10,8 @@ class CentityManager {
 
     static update() {
         ventities.forEach(entity => entity.move());  //we should do an update function on character, to generalize, for now we call draw
-        CentityManager.checkMouseHit();
+        CentityManager.checkMouseMove();
+        player.checkClick();
         bubble1.move();
         selobj.move();
 
@@ -31,12 +32,20 @@ class CentityManager {
         aux1.innerHTML = "bubble host: <b>" + bubble1.host.name + "</b>"+ 
                 "<br> time bubbling: " + (Math.floor((now - bubtake)/100)/10).toFixed(1) + " sec";
     }
+    
+    static emit() {
+         socket.emit("player move_click", roomName,
+         player.dir, player.clicking, player.targetName);
+         if(player.clicking) console.log("player move-click emitted!: dir, click, target" + player.dir + " " +
+                 player.clicking + " " + player.targetName)
+    }
+    
     static sortfordraw() {//sort for printing on screen, lowest y first to print
         ventities.sort(function (a, b) { return a.y + a.height - b.y - b.height; });
     }
     
     
-     static checkMouseHit(){
+     static checkMouseMove(){
         var any = false;
          ventities.forEach(entity => {
              if(checkxoc(mouse,entity)) {

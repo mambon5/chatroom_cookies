@@ -85,6 +85,13 @@ class Centity extends Crectangle {
             return "none";
     }
     
+    who(name) {
+          ventities.forEach(elem  => {
+                if(elem.name == name) return elem;
+            });
+            return "none";
+    }
+    
     choque(dir) {
         var arrxoc = []; //array con characteres excepto el mismo
         let cind = -1;

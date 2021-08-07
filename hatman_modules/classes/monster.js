@@ -16,10 +16,16 @@ class Cmonster extends Ccharacter {
 
     set dir(e) {this._dir = e;}
 
+    click() {
+        
+    }
+    
     move() {
         this.randmove();
 //        this.animation.animate();
     }
+    
+
 
     randmove() {
         this._moving = false;

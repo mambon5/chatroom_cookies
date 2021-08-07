@@ -25,6 +25,8 @@ bubtake = bubble.bubtake
 var CobjectManager = require('./classes/objectManager');
 var CfloorManager = require('./classes/floorManager');
 var CentityManager = require('./classes/entityManager');
+var CuserManager = require('./classes/userManager');
+var Cuser = require('./classes/user');
 //var Cclient = require('../js/classes/client_trial');
 //
 //
@@ -47,6 +49,7 @@ module.exports.Cobject = Cobject
 module.exports.CobjectManager = CobjectManager
 module.exports.Cplayer = Cplayer
 module.exports.Crectangle = Crectangle
-
+module.exports.Cuser = Cuser
+module.exports.CuserManager = CuserManager
 
 

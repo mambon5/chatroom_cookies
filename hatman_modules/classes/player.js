@@ -9,7 +9,7 @@ if (typeof module !== "undefined" && module.exports) {
 class Cplayer extends Ccharacter {
 
     constructor(x, y, width, height, scale, speed, margins, name="hero", clase="char", dir = 0, love=200, bag = [], hand="empty",
-    lover="", clicking=false) {
+    lover="", clicking=false, targetName ="none") {
 
         super(x, y, width, height, scale, speed, margins, name, clase);
         this._dir = dir;
@@ -18,6 +18,7 @@ class Cplayer extends Ccharacter {
         this._hand = hand;
         this._lover = lover;
         this._clicking = clicking;
+        this._targetName = targetName;
     }
 
     get dir() {return this._dir;}
@@ -26,6 +27,7 @@ class Cplayer extends Ccharacter {
     get hand() {return this._hand;}
     get lover() {return this._lover;}
     get clicking() {return this._clicking;}
+    get targetName() {return this._targetName;}
 
     set dir(e) {this._dir = e;}
     set love(e) {this._love = e;}
@@ -33,6 +35,7 @@ class Cplayer extends Ccharacter {
     set hand(e) {this._hand = e;}
     set lover(e) {this._lover = e;}
     set clicking(e) {this._clicking = e;}
+    set targetName(e) {this._targetName = e;}
 
 
     kiss(target) {
@@ -79,7 +82,19 @@ class Cplayer extends Ccharacter {
     }
     
 
-
+    click() {
+        if(this._clicking && this._targetName != "none") {
+            let target = super.choque(this._dir);
+            if(target != "null" && target.name == this._targetName) {
+                switch(target.clase) {
+                    case "barril candy":                        
+                        var msg = this.name + " has eaten candy! +25 love";
+                        console.log(msg);                                  
+                }
+            }
+        }
+    }
+    
     move() {
 
        var dir = this._dir;
@@ -106,15 +121,17 @@ class Cplayer extends Ccharacter {
 //            else dir = 3;
 //        }
         if(dir !== 0){
-          let xoc = super.choque(dir);
-          if(xoc === "null") super.apuramove(dir);
-          else if(this === bubble1.host && xoc.clase==="char") {
+          let target = super.choque(dir);
+          if(target === "null") super.apuramove(dir);
+          else if(this === bubble1.host && target.clase==="char") {
               bubtake = Date.now();              
-              bubble1.host = xoc;
-             console.log("xoc tipus: " + xoc.clase);
+              bubble1.host = target;
+//             console.log("xoc tipus: " + target.clase);
           
           }
-         else  console.log("xoc2 tipus: " + xoc.clase);
+         else  {
+//             console.log("xoc2 tipus: " + target.clase);
+         }
 //          this.animation.animating = true;
         
         } else{
