@@ -42,6 +42,8 @@ class Cplayer extends Ccharacter {
             this._targetName = "none";
             if(target!="empty") this._targetName = target.name;
             this._clicking = mouse.click;
+            
+            
         
     }
     
@@ -99,6 +101,9 @@ class Cplayer extends Ccharacter {
 
     draw() {
         ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, this.x_init, this.y_init, this.width*this.scale, this.height*this.scale);
+        let text = Math.round(player.love/5)+"%";
+        lovebar.style.width = text;
+        lovebar.innerHTML = player.love
     }
 };
 

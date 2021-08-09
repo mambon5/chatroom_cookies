@@ -1,6 +1,17 @@
 let aux1 =  document.getElementById('aux');
 let aux2 =  document.getElementById('aux2');
 let aux3 =  document.getElementById('aux3');
+let lovebar =  document.getElementById('lovebar');
+let lover =  document.getElementById('lover');
+let bag =  document.getElementById('bag');
+let hand =  document.getElementById('hand');
+
+lovebar.style.width = "50%";
+lover.innerHTML = "no lover yet.."
+bag.innerHTML = "bag is empty"
+hand.innerHTML = "hands are free"
+
+
 
 const canvas = document.getElementById('my_canvas');
 const ctx = canvas.getContext('2d');

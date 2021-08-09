@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Chat App</title>
+  <title>ToughLove</title>
   <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="/style/score_bars.css">
   <script>
     const roomName = "<%= roomName %>"
 
@@ -18,6 +19,16 @@
 
 <div id="bgimage"></div>
 <div id="bggradient"></div>
+<div id="barcontainer">
+    <div class="love_frame">
+        <div id="lovebar">  
+            your self love
+        </div>
+    </div>
+    <div id="lover"></div>
+    <div id="bag"></div>
+    <div id="hand"></div>
+</div>
 <canvas id="my_canvas_background"></canvas>
 <canvas id="my_canvas" onmousemove="mouseCoords(event)"></canvas>
 <div id="aux" class="aux">hola</div>

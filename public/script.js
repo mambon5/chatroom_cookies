@@ -6,6 +6,10 @@ const roomContainer = document.getElementById('room-container');
 const messageForm = document.getElementById('send-container');
 const messageInput = document.getElementById('message-input');
 
+
+
+
+
 if (messageForm != null) {
   const name = prompt('What is your name?');
   player.name = name;
@@ -152,6 +156,7 @@ socket.on('current states', function(users) {
       var x = user._x
       var y = user._y
       var dir = user._dir;
+      var love = user._love;
 
       
       vchar.forEach(plyr => {
@@ -159,6 +164,7 @@ socket.on('current states', function(users) {
               plyr.x = x;
               plyr.y = y;
               plyr.dir  = dir;
+              plyr.love  = love;
           }
       })
       

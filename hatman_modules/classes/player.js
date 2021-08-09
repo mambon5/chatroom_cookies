@@ -4,6 +4,9 @@
 
 if (typeof module !== "undefined" && module.exports) {
     Ccharacter = require("./character");
+    
+    find = require("../../js/functions/find")
+    distances = require("../../js/functions/distances")
 }
 
 class Cplayer extends Ccharacter {
@@ -84,14 +87,26 @@ class Cplayer extends Ccharacter {
 
     click() {
         if(this._clicking && this._targetName != "none") {
-            let target = super.choque(this._dir);
-            if(target != "null" && target.name == this._targetName) {
+//            let target = super.choque(this._dir);
+            let target = find.finditem(this._targetName);
+            if(target == "none") target = find.findchar(this._targetName);
+            let dist = 0;
+            if(target != "none")  {
+                dist = distances.distancel2(target,this)
+                console.log("player dir: " + this.dir + 
+                ", click: " + this.clicking + " targetName: " + 
+                this._targetName + ", distance: " + dist);
+            }
+            
+            if(target != "none" && dist==0) {
                 switch(target.clase) {
                     case "barril candy":                        
                         var msg = this.name + " has eaten candy! +25 love";
+                        this.love = this.love + 25;
                         console.log(msg);                                  
                 }
             }
+            this._clicking = false;
         }
     }
     

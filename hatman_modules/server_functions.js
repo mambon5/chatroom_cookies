@@ -7,9 +7,11 @@
 //
 var xocs = require('../js/functions/xocs');
 var distances = require('../js/functions/distances');
+var find = require('../js/functions/find');
  
 module.exports.xocs= xocs
 module.exports.distances = distances
+module.exports.find = find
 
 
 

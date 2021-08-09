@@ -142,8 +142,9 @@ io.on('connection', socket => {
 //    });
 
     socket.on("player move_click", (room, dir, clicking, targetName) => {
-        if(clicking)  console.log("player move click recieved! dir, click, target" + dir +
-                " " + clicking + " " + targetName)
+        
+        //            if(target != "none") console.log("distance: " + )
+
         plyr = rooms[room].users[socket.id];
         plyr.dir = dir;
         plyr.clicking = clicking;
@@ -163,15 +164,14 @@ function getUserRooms(socket) {
 }
 
 function finditem(itname) {
-    vobj.forEach(obj  => {
-        if(obj.name == itname) return obj;
-    });
-    return "No item found";
+    const res =  vobj.find(obj => obj.name == itname)
+    if(res==undefined) return "none"
+    return res
+    
 }
 
 function findchar(charname) {
-    vchar.forEach(char  => {
-        if(char.name == charname) return char;
-    });
-    return "No characer found";
+    const res =  vchar.find(obj => obj.name == charname)
+    if(res==undefined) return "none"
+    return res
 }
