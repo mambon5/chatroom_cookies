@@ -23,7 +23,7 @@ class Cobject extends Centity {
         this.animation.animate();
         let x  = this.x - player.x + player.x_init;
         let y  = this.y - player.y + player.y_init;
-        ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, x, y, this.width*this.scale, this.height*this.scale);
+        canvas.ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, x, y, this.width*this.scale, this.height*this.scale);
     }
     
    

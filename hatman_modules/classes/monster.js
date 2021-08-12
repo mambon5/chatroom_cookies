@@ -6,7 +6,7 @@ if (typeof module !== "undefined" && module.exports) {
 }
 
 class Cmonster extends Ccharacter {
-    constructor(x, y, width, height, scale=1, speed, margins, name="", clase="char", dir) {
+    constructor(x, y, width, height, scale=1, speed, margins, name="", clase="char", dir=0) {
         super(x, y, width, height, scale, speed, margins, name, clase);
         this._pastdir = -1;
         this._dir = dir;

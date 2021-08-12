@@ -12,7 +12,7 @@ if (typeof module !== "undefined" && module.exports) {
 class Cplayer extends Ccharacter {
 
     constructor(x, y, width, height, scale, speed, margins, name="hero", clase="char", dir = 0, love=200, bag = [], hand="empty",
-    lover="", clicking=false, targetName ="none") {
+    lover="", action="none",clicking=false, targetName ="none") {
 
         super(x, y, width, height, scale, speed, margins, name, clase);
         this._dir = dir;
@@ -46,7 +46,11 @@ class Cplayer extends Ccharacter {
     }
     
     eat(item) {
-        
+        if(item=="candy") {
+//            var msg = this.name + " has eaten candy! +25 love";
+            this.addlove(25);
+//            console.log(msg);  
+        }
     }
     drink(item) {
         
@@ -84,6 +88,10 @@ class Cplayer extends Ccharacter {
         
     }
     
+    addlove(amount) {
+         this.love = this.love + amount;
+         if(this.love>500) this.love=500
+    }
 
     click() {
         if(this._clicking && this._targetName != "none") {
@@ -92,7 +100,7 @@ class Cplayer extends Ccharacter {
             if(target == "none") target = find.findchar(this._targetName);
             let dist = 0;
             if(target != "none")  {
-                dist = distances.distancel2(target,this)
+                dist = distances.distancel2(target,this);
                 console.log("player dir: " + this.dir + 
                 ", click: " + this.clicking + " targetName: " + 
                 this._targetName + ", distance: " + dist);
@@ -100,10 +108,10 @@ class Cplayer extends Ccharacter {
             
             if(target != "none" && dist==0) {
                 switch(target.clase) {
-                    case "barril candy":                        
-                        var msg = this.name + " has eaten candy! +25 love";
-                        this.love = this.love + 25;
-                        console.log(msg);                                  
+                    case "barril candy":
+                        this.eat("candy");    
+                    case "pet":
+                        
                 }
             }
             this._clicking = false;
@@ -157,7 +165,7 @@ class Cplayer extends Ccharacter {
     }
 
     draw() {
-        ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, this.x_init, this.y_init, this.width, this.height);
+//        ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, this.x_init, this.y_init, this.width, this.height);
     }
 };
 

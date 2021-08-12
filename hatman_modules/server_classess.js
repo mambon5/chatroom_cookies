@@ -27,6 +27,7 @@ var CfloorManager = require('./classes/floorManager');
 var CentityManager = require('./classes/entityManager');
 var CuserManager = require('./classes/userManager');
 var Cuser = require('./classes/user');
+
 //var Cclient = require('../js/classes/client_trial');
 //
 //

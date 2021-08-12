@@ -13,22 +13,21 @@ hand.innerHTML = "hands are free"
 
 
 
-const canvas = document.getElementById('my_canvas');
-const ctx = canvas.getContext('2d');
 
-canvas.width = 930;
-canvas.height = 462;
+
 
 scale = 1.6;
 const speed = 6;
 walkdt = 5;
 
-
+canvas = new Ccanvas(0,0,930, 462, 1);
+console.log("scale " + scale)
+console.log("canvas w h: " + canvas.width + " " + canvas.height)
 mouse = new Cmouse(0,0,1,1,scale);
 
 function mouseCoords(event) { //computing mouse coordinates when hovering on canvas
     
-    var canvRect = canvas.getBoundingClientRect(), // abs. size of element
+    var canvRect = canvas.dom.getBoundingClientRect(), // abs. size of element
     scaleX = canvas.width / canvRect.width,    // relationship bitmap vs. element for X
     scaleY = canvas.height / canvRect.height;  // relationship bitmap vs. element for Y
     

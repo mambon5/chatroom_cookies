@@ -35,7 +35,7 @@ class CentityManager {
     
     static emit() {
          socket.emit("player move_click", roomName,
-         player.dir, player.clicking, player.targetName);
+         player.dir, player.action, player.targetName);
          if(player.clicking) console.log("player move-click emitted!: dir, click, target" + player.dir + " " +
                  player.clicking + " " + player.targetName)
     }

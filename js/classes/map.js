@@ -81,7 +81,7 @@ this._map_matrix = [
         var img1 = document.getElementById("wall");
 //        var pat1 = ctx.createPattern(img1, "repeat");
         var img2 = document.getElementById("floor");
-        var pat2 = ctx.createPattern(img2, "repeat");
+        var pat2 = canvas.ctx.createPattern(img2, "repeat");
         var img3 = document.getElementById("grass");
         var img4 = document.getElementById("tiles1");
         
@@ -95,8 +95,8 @@ this._map_matrix = [
                 switch(this._map_matrix[j][i]) {
                     case 0:
                         var tpos = this.tilePosition(j,i);
-                        ctx.drawImage(img4,i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1); //draw the mountain on top of the floor
-                        ctx.drawImage(tiles.image,tpos[1]*tiles.frameWidth,tpos[0]*tiles.frameHeight, tiles.frameWidth, tiles.frameHeight,
+                        canvas.ctx.drawImage(img4,i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1); //draw the mountain on top of the floor
+                        canvas.ctx.drawImage(tiles.image,tpos[1]*tiles.frameWidth,tpos[0]*tiles.frameHeight, tiles.frameWidth, tiles.frameHeight,
                                 i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1);
 
 //                        ctx.drawImage(img1,i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1);
@@ -108,7 +108,7 @@ this._map_matrix = [
 //                    ctx.fillRect(i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1);
 //                    ctx.fillStyle = "black";
 //                    ctx.globalAlpha = 1;
-                        ctx.drawImage(img4,i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1);
+                        canvas.ctx.drawImage(img4,i*this._resh+x,j*this._resv+y,this._resh+1,this._resv+1);
                         break;
                 }
             }

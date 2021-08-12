@@ -98,6 +98,7 @@ body {
     height:100%;
     background-color:white;
     opacity:1.0;
+    text-align: center;
 }
 
 #bag {
@@ -107,6 +108,7 @@ body {
     height:100%;
     background-color:beige;
     opacity:1.0;
+    text-align: center;
 }
 
 #hand {
@@ -116,5 +118,6 @@ body {
     height:100%;
     background-color:salmon;
     opacity:1.0;
+    text-align: center;
 }
 

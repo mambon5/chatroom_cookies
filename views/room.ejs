@@ -7,6 +7,7 @@
   <title>ToughLove</title>
   <link rel="stylesheet" href="/style/style.css">
   <link rel="stylesheet" href="/style/score_bars.css">
+  <link rel="stylesheet" href="/style/button.css">
   <script>
     const roomName = "<%= roomName %>"
 
@@ -30,10 +31,16 @@
     <div id="hand"></div>
 </div>
 <canvas id="my_canvas_background"></canvas>
-<canvas id="my_canvas" onmousemove="mouseCoords(event)"></canvas>
+<canvas id="my_canvas" onmousemove="mouseCoords(event)">
+    
+</canvas>
+<div id="optionMenu"></div>
+
 <div id="aux" class="aux">hola</div>
 <div id="aux2" class="aux">aux2</div>
 <div id="aux3" class="aux">aux3</div>
+
+
 
 <img src="images/floor-tile3_light.jpg" id="floor" width="32" height="32">
 <img src="images/wood_big1.png" id="wall" width="32" height="32">
@@ -49,6 +56,7 @@
 <script src="js/functions/aritmetic.js"></script>
 <script src="js/functions/getblankspaces.js"></script>
 <script src="js/functions/xocs.js"></script>
+<script src="js/functions/distances.js"></script>
 
 <script src="js/classes/map.js"></script>
 <script src="js/classes/rectangle.js"></script>
@@ -69,6 +77,7 @@
 <script src="js/classes/objectManager.js"></script>
 <script src="js/classes/floorManager.js"></script>
 <script src="js/classes/entityManager.js"></script>
+<script src="js/classes/canvas.js"></script>
 
 <script src="js/main.js"></script>
 

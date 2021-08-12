@@ -26,13 +26,13 @@ class Cgame {
     
      generate_monsts() {
         const doggo1 = new classes.Cmonster(canvasw/10*1, canvash/3,
-                        32, 32, scale, speed/2, margins.marg_greebo2, "sheepDog");
+                        32, 32, scale, speed/2, margins.marg_greebo2, "sheepDog", "pet");
         classes.CcharacterManager.add(doggo1);
         const doggo2 = new classes.Cmonster(canvasw/10*1, canvash/3,
-                        32, 32, scale, speed/2, margins.marg_greebo2, "beagleDog");
+                        32, 32, scale, speed/2, margins.marg_greebo2, "beagleDog", "pet");
         classes.CcharacterManager.add(doggo2);
         const cat1 = new classes.Cmonster(canvasw/10*1, canvash/3,
-                        32, 32, scale, speed/2, margins.marg_greebo2, "riverKitty");
+                        32, 32, scale, speed/2, margins.marg_greebo2, "riverKitty", "pet");
         classes.CcharacterManager.add(cat1);
     
         classes.CentityManager.fillArray();

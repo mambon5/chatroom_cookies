@@ -25,8 +25,9 @@ class Centity extends Crectangle {
         this._animation = null;
         this._animations = [];
         this._name = name;
+        
     }
-
+    
     get x_init() { return this._x_init; }
     get y_init() { return this._y_init; }
     get speed() {return this._speed;}

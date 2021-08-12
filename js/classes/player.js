@@ -8,7 +8,7 @@ if (typeof module !== "undefined" && module.exports) {
 
 class Cplayer extends Ccharacter {
        constructor(x, y, width, height, scale, speed, margins, name="hero", clase="char", dir = 0, love=200, bag = [], hand="empty",
-    lover="", clicking=false, targetName ="none") {
+    lover="", action="none",clicking=false, targetName ="none") {
 
         super(x, y, width, height, scale, speed, margins, name, clase);
         this._dir = dir;
@@ -17,6 +17,7 @@ class Cplayer extends Ccharacter {
         this._hand = hand;
         this._lover = lover;
         this._clicking = clicking;
+        this._action = action;
         this._targetName = targetName;
     }
 
@@ -27,6 +28,7 @@ class Cplayer extends Ccharacter {
     get lover() {return this._lover;}
     get clicking() {return this._clicking;}
     get targetName() {return this._targetName;}
+    get action() {return this._action;}
 
     set dir(e) {this._dir = e;}
     set love(e) {this._love = e;}
@@ -35,6 +37,25 @@ class Cplayer extends Ccharacter {
     set lover(e) {this._lover = e;}
     set clicking(e) {this._clicking = e;}
     set targetName(e) {this._targetName = e;}
+    set action(e) {this._action = e;}
+    
+    openMenu(type) {
+         let html ="";
+         switch(type) {
+            case "candy":
+                html =  '<button id="eat" class="optionb">eat</button>'+
+                        '<button id="take" class="optionb">take</button>';
+                break;
+            case "pet": //una mascota té les opcions de pet o slap!
+                html =  '<button id="pet" class="optionb">pet</button>'+
+                        '<button id="slap" class="optionb">slap</button>';
+                break;
+            case "close": //una mascota té les opcions de pet o slap!
+                html =  '';
+                break;
+        }
+         document.getElementById("optionMenu").innerHTML = html; 
+    }
     
     checkClick() {
         
@@ -42,6 +63,18 @@ class Cplayer extends Ccharacter {
             this._targetName = "none";
             if(target!="empty") this._targetName = target.name;
             this._clicking = mouse.click;
+            if(mouse.click && target!="empty") {
+                const dist = distancel2(target,this);
+                switch(target.clase) {
+                    case "barril candy":
+                        if(dist==0 )  this.openMenu("candy");
+                        break;
+                    case "pet":
+                        this.openMenu("pet");
+                        break;
+                        
+                }
+            } else if(mouse.click || this.dir != 0) this.openMenu("close");
             
             
         
@@ -100,12 +133,14 @@ class Cplayer extends Ccharacter {
     }
 
     draw() {
-        ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, this.x_init, this.y_init, this.width*this.scale, this.height*this.scale);
+        canvas.ctx.drawImage(this.animation.animationSheet.image, this.animation.currentFrame*this.animation.animationSheet.frameWidth, this.animation.animation*this.animation.animationSheet.frameHeight, this.animation.animationSheet.frameWidth, this.animation.animationSheet.frameHeight, this.x_init, this.y_init, this.width*this.scale, this.height*this.scale);
         let text = Math.round(player.love/5)+"%";
         lovebar.style.width = text;
         lovebar.innerHTML = player.love
     }
 };
+
+
 
 
 if (typeof module !== "undefined" && module.exports) {
