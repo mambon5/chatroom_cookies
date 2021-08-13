@@ -20,6 +20,7 @@ class Cplayer extends Ccharacter {
         this._bag = bag;
         this._hand = hand;
         this._lover = lover;
+        this._action = action;
         this._clicking = clicking;
         this._targetName = targetName;
     }
@@ -31,7 +32,9 @@ class Cplayer extends Ccharacter {
     get lover() {return this._lover;}
     get clicking() {return this._clicking;}
     get targetName() {return this._targetName;}
-
+    set action(e) {this._action = e;}
+    
+    get action() {return this._action;}
     set dir(e) {this._dir = e;}
     set love(e) {this._love = e;}
     set bag(e) {this._bag = e;}

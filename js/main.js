@@ -5,6 +5,7 @@ let lovebar =  document.getElementById('lovebar');
 let lover =  document.getElementById('lover');
 let bag =  document.getElementById('bag');
 let hand =  document.getElementById('hand');
+let optionMenu = document.getElementById("optionMenu");
 
 lovebar.style.width = "50%";
 lover.innerHTML = "no lover yet.."

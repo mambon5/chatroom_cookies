@@ -39,11 +39,33 @@ class Cplayer extends Ccharacter {
     set targetName(e) {this._targetName = e;}
     set action(e) {this._action = e;}
     
+    doAction(dom) {
+        let html ="";
+        console.log("dom id: " + dom.id);
+        switch(dom.id) {
+            case "eat":
+                console.log("EATING!!")
+                html =  '<div id="eat" class="action">NYAM!!</div>';
+                break;
+            case "take": //una mascota té les opcions de pet o slap!
+                html =  '<div id="take" class="action">FLOP!</div>';
+                break;
+            case "slap": //una mascota té les opcions de pet o slap!
+               html =  '<div id="slap" class="action">PLAFF!!</div>';
+                break;
+            case "pet": //una mascota té les opcions de pet o slap!
+                html =  '<div id="eat" class="action">cou-cou ^^!!</div>';
+                break;
+        }
+        document.getElementById("optionMenu").innerHTML = html;
+        this.action = dom.id
+    }
+    
     openMenu(type) {
          let html ="";
          switch(type) {
             case "candy":
-                html =  '<button id="eat" class="optionb">eat</button>'+
+                html =  '<button id="eat" onclick="player.doAction(this)" class="optionb">eat</button>'+
                         '<button id="take" class="optionb">take</button>';
                 break;
             case "pet": //una mascota té les opcions de pet o slap!
@@ -54,7 +76,7 @@ class Cplayer extends Ccharacter {
                 html =  '';
                 break;
         }
-         document.getElementById("optionMenu").innerHTML = html; 
+         optionMenu.innerHTML = html; 
     }
     
     checkClick() {
@@ -74,12 +96,13 @@ class Cplayer extends Ccharacter {
                         break;
                         
                 }
-            } else if(mouse.click || this.dir != 0) this.openMenu("close");
+            } else if(mouse.click &&  this.action =="none"|| this.dir != 0) this.openMenu("close");
             
             
         
     }
     
+
 
     move() {
         let dir = 0;
